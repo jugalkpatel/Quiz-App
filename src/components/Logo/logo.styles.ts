@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import logo_img from "../../assets/linux_logo.svg";
+import logo from "../../assets/quiz_logo.svg";
+import { Link } from "react-router-dom";
+import { quiz_black } from "../../styles/colors.styles";
 
-const StyledLogo = styled.article`
+const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: ${quiz_black};
 `;
 
 const LogoImgWrapper = styled.section`
@@ -11,14 +15,19 @@ const LogoImgWrapper = styled.section`
   max-width: 2rem;
 `;
 
-const LogoImg = styled.img.attrs((_) => ({ src: logo_img }))`
+const LogoImg = styled.img.attrs((_) => ({ src: logo }))`
   width: 100%;
 `;
 
 const LogoText = styled.span`
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-left: 0.5rem;
   font-weight: 800;
+  display: none;
+
+  @media (min-width: 568px) {
+    display: block;
+  }
 `;
 
-export { StyledLogo, LogoImgWrapper, LogoImg, LogoText };
+export { StyledLink, LogoImgWrapper, LogoImg, LogoText };
