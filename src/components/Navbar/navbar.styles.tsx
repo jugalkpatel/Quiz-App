@@ -5,17 +5,8 @@ import { border_grey, quiz_black } from "../../styles/colors.styles";
 
 const StyledNavbar = styled.div`
   border-bottom: 1px solid ${border_grey};
-`;
 
-const Container = styled.article`
-  font-family: "JetBrainsMono";
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   color: ${quiz_black};
-  max-width: 960px;
-  margin: 0 auto;
 `;
 
 const UserProfile = styled(FaRegUserCircle)`
@@ -32,4 +23,4 @@ const Menu = styled(CgMenu)`
   }
 `;
 
-export { StyledNavbar, UserProfile, Menu, Container };
+export { StyledNavbar, UserProfile, Menu };
