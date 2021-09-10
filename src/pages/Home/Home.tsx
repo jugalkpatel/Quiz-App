@@ -1,5 +1,11 @@
+import { Navbar, Footer } from "../../components/";
 function Home() {
-  return <h1>This is home</h1>;
+  return (
+    <>
+      <Navbar />
+      <Footer />
+    </>
+  );
 }
 
 export { Home };
