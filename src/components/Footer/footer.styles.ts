@@ -6,6 +6,8 @@ const FooterContainer = styled.article`
   background-color: ${quiz_black};
   color: ${primary_white};
   font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: auto;
 `;
 
 const FooterText = styled.span`
