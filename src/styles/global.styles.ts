@@ -1,7 +1,16 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import JetBrainsMono from "../fonts/JetBrainsMono-Medium.ttf";
 
 const GlobalStyle = createGlobalStyle`
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,12 +22,10 @@ const GlobalStyle = createGlobalStyle`
     src: url(${JetBrainsMono});
 }
 
-`;
+#root {
+  height: 100vh;
+}
 
-export const MainContainer = styled.div`
-  display: grid;
-  gap: 20px;
-  grid-template-rows: 1fr auto 0.8fr;
 `;
 
 export default GlobalStyle;
