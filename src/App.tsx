@@ -1,14 +1,18 @@
 import GlobalStyle from "./styles/global.styles";
+import { MainContainer } from "./styles/global.styles";
 
 import { AppRoutes } from "./AppRoutes";
-import { Navbar } from "./components/";
+import { Navbar, Footer } from "./components/";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Navbar />
-      <AppRoutes />
+      <MainContainer>
+        <GlobalStyle />
+        <Navbar />
+        <AppRoutes />
+        <Footer />
+      </MainContainer>
     </>
   );
 }
