@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import JetBrainsMono from "../fonts/JetBrainsMono-Medium.ttf";
 
 const GlobalStyle = createGlobalStyle`
@@ -12,6 +12,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'JetBrainsMono';
     src: url(${JetBrainsMono});
 }
+
+`;
+
+export const MainContainer = styled.div`
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr auto 0.8fr;
 `;
 
 export default GlobalStyle;
