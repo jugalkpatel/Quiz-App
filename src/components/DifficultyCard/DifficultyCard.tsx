@@ -4,25 +4,28 @@ import {
   LevelLabel,
   LevelName,
   ContentWrapper,
+  CardImg,
 } from "./difficultycard.styles";
 
 import { FaPlay } from "react-icons/fa";
 
 type DifficultyCardProps = {
-  level: 1 | 2 | 3;
+  level: string;
   levelName: string;
+  image: string;
 };
 
-function DifficultyCard({ level, levelName }: DifficultyCardProps) {
+function DifficultyCard({ level, levelName, image }: DifficultyCardProps) {
   return (
     <>
       <LevelCard>
+        <CardImg src={image} />
         <ContentWrapper>
+          <LevelLabel>level {level}</LevelLabel>
+          <LevelName>{levelName}</LevelName>
           <PlayButton>
             <FaPlay />
           </PlayButton>
-          <LevelLabel>level {level}</LevelLabel>
-          <LevelName>{levelName}</LevelName>
         </ContentWrapper>
       </LevelCard>
     </>
