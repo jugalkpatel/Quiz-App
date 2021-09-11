@@ -34,7 +34,7 @@ const PlayButton = styled.button`
   font-size: 1rem;
   padding: 0.5rem;
   width: fit-content;
-  border-radius: 25%;
+  border-radius: 40%;
   border: 3px solid ${quiz_black};
   background-color: transparent;
   margin: 0.5rem 0;
