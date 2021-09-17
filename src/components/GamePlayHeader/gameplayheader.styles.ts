@@ -11,7 +11,7 @@ const GamePlayHeaderContainer = styled.article`
   align-items: center;
   font-family: ${questionFont};
   color: ${({ theme }) => theme.tertiary};
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border: 1px solid ${({ theme }) => theme.border};
   background-color: ${({ theme }) => theme.primary};
   border-radius: 10px;
@@ -30,6 +30,7 @@ const QuitButton = styled.button`
   margin: 0;
   border: 0;
   color: ${({ theme }) => theme.tertiary};
+  cursor: pointer;
 `;
 
 const TimeLabel = styled.span`
@@ -38,15 +39,15 @@ const TimeLabel = styled.span`
 `;
 
 const ScoreIcon = styled(FaCheck)`
-  font-size: 1.5rem;
+  font-size: 1rem;
 `;
 
 const TimeIcon = styled(MdWatchLater)`
-  font-size: 1.5rem;
+  font-size: 1rem;
 `;
 
 const QuitIcon = styled(AiFillCloseCircle)`
-  font-size: 1.5rem;
+  font-size: 1rem;
 `;
 
 const CommonWrapper = styled.section`
