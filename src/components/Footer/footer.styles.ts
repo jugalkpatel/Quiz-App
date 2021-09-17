@@ -1,18 +1,24 @@
 import styled from "styled-components";
-import { quiz_black, primary_white } from "../../styles/colors.styles";
 import { HiCode } from "react-icons/hi";
+import { primaryFont } from "../../styles/common.styles";
+import { zindex_one } from "../../styles/common.styles";
+
+const bgColor = "#000";
+const textColor = "#E4E6EB";
 
 const FooterContainer = styled.article`
-  background-color: ${quiz_black};
-  color: ${primary_white};
+  background-color: ${bgColor};
+  color: ${textColor};
   font-size: 0.8rem;
   flex-shrink: 0;
   margin-top: auto;
+  z-index: ${zindex_one};
 `;
 
 const FooterText = styled.span`
   display: flex;
   align-items: center;
+  font-family: ${primaryFont};
 
   font-size: 0.8rem;
 `;
@@ -26,7 +32,7 @@ const LinkButton = styled.a.attrs((_) => ({ target: "_blank" }))`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: ${primary_white};
+  color: ${textColor};
   margin: 0 0.1rem;
 
   @media (min-width: 568px) {
