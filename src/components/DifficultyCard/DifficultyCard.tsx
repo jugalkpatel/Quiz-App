@@ -9,21 +9,24 @@ import {
 
 import { FaPlay } from "react-icons/fa";
 
+import { useNavigate } from "react-router-dom";
+
 type DifficultyCardProps = {
-  level: string;
-  levelName: string;
+  level?: string;
+  name: string;
   image: string;
 };
 
-function DifficultyCard({ level, levelName, image }: DifficultyCardProps) {
+function DifficultyCard({ level, name, image }: DifficultyCardProps) {
+  const navigate = useNavigate();
   return (
     <>
       <LevelCard>
         <CardImg src={image} />
         <ContentWrapper>
-          <LevelLabel>level {level}</LevelLabel>
-          <LevelName>{levelName}</LevelName>
-          <PlayButton>
+          {level && <LevelLabel>level {level}</LevelLabel>}
+          <LevelName>{name}</LevelName>
+          <PlayButton onClick={() => navigate("/play")}>
             <FaPlay />
           </PlayButton>
         </ContentWrapper>

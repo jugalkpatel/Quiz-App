@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { primaryFont } from "../../styles/common.styles";
 
 const ComponentWrapper = styled.article`
   padding: 2rem 1rem;
 
+  background-color: ${({ theme }) => theme.primary};
   @media (min-width: 960px) {
     width: 960px;
     margin: 0 auto;
@@ -11,8 +13,9 @@ const ComponentWrapper = styled.article`
 
 const PageHeader = styled.article`
   margin: 0;
-  font-family: "JetBrainsMono";
+  font-family: ${primaryFont};
   margin-bottom: 1.5rem;
+  margin-left: 1rem;
 `;
 
 const PageTitle = styled.h1`

@@ -1,26 +1,26 @@
 import styled from "styled-components";
-import { quiz_black } from "../../styles/colors.styles";
+import { primaryFont } from "../../styles/common.styles";
 
 const LevelCard = styled.article`
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  font-family: "JetBrainsMono";
-  border: 3px solid ${quiz_black};
+  font-family: ${primaryFont};
+  border: 1px solid ${({ theme }) => theme.border};
   padding: 1rem;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 1rem;
-  margin: 1rem 0;
+  margin: 1rem;
 
   @media (min-width: 568px) {
     grid-template-columns: 1fr 1.5fr;
-    margin-right: 1rem;
   }
 `;
 
 const ContentWrapper = styled.section`
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
   padding: 0 1rem;
 `;
 
@@ -35,10 +35,18 @@ const PlayButton = styled.button`
   padding: 0.5rem;
   width: fit-content;
   border-radius: 40%;
-  border: 3px solid ${quiz_black};
+  border: 3px solid ${({ theme }) => theme.tertiary};
   background-color: transparent;
   margin: 0.5rem 0;
   cursor: pointer;
+  color: ${({ theme }) => theme.tertiary};
+
+  @media (min-width: 568px) {
+    &:hover {
+      background-color: ${({ theme }) => theme.tertiary};
+      color: ${({ theme }) => theme.primary};
+    }
+  }
 `;
 
 const LevelLabel = styled.p`

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import JetBrainsMono from "../fonts/JetBrainsMono-Medium.ttf";
+import Alegreya from "../fonts/AlegreyaSansSC-Medium.ttf";
+import QuickSand from "../fonts/Quicksand-SemiBold.ttf";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -9,6 +10,9 @@ html {
 
 body {
   min-height: 100%;
+  background: ${({ theme }) => theme.secondary};
+  color: ${({ theme }) => theme.tertiary};
+  transition: all 0.50s linear;
 }
 
 * {
@@ -18,9 +22,17 @@ body {
 }
 
 @font-face {
-    font-family: 'JetBrainsMono';
-    src: url(${JetBrainsMono});
+  font-family: "Alegreya";
+  src: url(${Alegreya});
 }
+
+
+@font-face {
+  font-family: "QuickSand";
+  src: url(${QuickSand});
+}
+
+
 
 #root {
   height: 100vh;

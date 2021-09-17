@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import logo from "../../assets/quiz_logo.svg";
 import { Link } from "react-router-dom";
-import { quiz_black } from "../../styles/colors.styles";
+import { primaryFont } from "../../styles/common.styles";
 
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: ${quiz_black};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 const LogoImgWrapper = styled.section`
@@ -15,7 +14,7 @@ const LogoImgWrapper = styled.section`
   max-width: 2rem;
 `;
 
-const LogoImg = styled.img.attrs((_) => ({ src: logo }))`
+const LogoImg = styled.img`
   width: 100%;
 `;
 
@@ -24,6 +23,7 @@ const LogoText = styled.span`
   margin-left: 0.5rem;
   font-weight: 800;
   display: none;
+  font-family: ${primaryFont};
 
   @media (min-width: 568px) {
     display: block;

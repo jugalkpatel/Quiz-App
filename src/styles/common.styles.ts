@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
+const primaryFont = "Alegreya";
+const questionFont = "QuickSand";
+
+const zindex_one = 1;
+
 const WidthContainer = styled.article`
-  font-family: "JetBrainsMono";
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -14,4 +18,4 @@ const WidthContainer = styled.article`
   }
 `;
 
-export { WidthContainer };
+export { WidthContainer, primaryFont, questionFont, zindex_one };
