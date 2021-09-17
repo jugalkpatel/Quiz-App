@@ -13,8 +13,12 @@ const WidthContainer = styled.article`
   max-width: 960px;
   margin: 0 auto;
 
-  @media (min-width: 960px) {
-    padding: 1rem 0;
+  @media (min-width: 786px) {
+    padding: 0.6rem 1rem;
+  }
+
+  @media (min-width: 970px) {
+    padding: 0.6rem 0;
   }
 `;
 

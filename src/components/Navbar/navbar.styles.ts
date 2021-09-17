@@ -28,6 +28,10 @@ const DarkButton = styled.button`
   color: ${({ theme }) => theme.tertiary};
   background: transparent;
   border: 0;
+
+  @media (min-width: 568px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export { StyledNavbar, Menu, DarkButton };
