@@ -12,10 +12,10 @@ const ComponentWrapper = styled.article`
 `;
 
 const PageHeader = styled.article`
-  margin: 0;
-  font-family: ${primaryFont};
-  margin-bottom: 1.5rem;
-  margin-left: 1rem;
+margin: 0;
+font-family: ${primaryFont};
+margin-bottom: 1rem;
+margin-left: 1rem;
 `;
 
 const PageTitle = styled.h1`
@@ -30,7 +30,7 @@ const CardWrapper = styled.article`
   display: grid;
 
   @media (min-width: 568px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 `;
 
