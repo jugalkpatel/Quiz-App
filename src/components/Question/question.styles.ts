@@ -54,8 +54,8 @@ const Option = styled.button`
     width: 20rem;
 
     &:hover {
-      background-color: ${({ theme }) => theme.tertiary};
-      color: ${({ theme }) => theme.primary};
+      background-color: ${({ theme }) => theme.valid};
+      color: ${({ theme }) => theme.tertiary};
     }
   }
 `;

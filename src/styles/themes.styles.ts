@@ -6,6 +6,8 @@ export const lightTheme: DefaultTheme = {
   tertiary: "#000000",
   border: "#D4D8E8",
   label: "#727272",
+  valid: "#078D2C",
+  invalid: "#CD3A11",
 };
 
 export const darkTheme: DefaultTheme = {
@@ -14,4 +16,6 @@ export const darkTheme: DefaultTheme = {
   tertiary: "#E4E6EB",
   border: "#B3B3B3",
   label: "#AAAAAA",
+  valid: "#078D2C",
+  invalid: "#CD3A11",
 };

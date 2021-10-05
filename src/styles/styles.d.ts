@@ -7,5 +7,7 @@ declare module "styled-components" {
     tertiary: string;
     border: string;
     label: string;
+    valid: string;
+    invalid: string;
   }
 }
