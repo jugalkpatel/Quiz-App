@@ -7,9 +7,9 @@ import {
   ComponentWrapper,
   PageHeader,
   PageTitle,
-  SubText,
   CardWrapper,
 } from "./main.styles";
+import { Label } from "../../styles/common.styles";
 
 import { DifficultyCard } from "../../components";
 
@@ -19,7 +19,7 @@ function Main() {
       <ComponentWrapper>
         <PageHeader>
           <PageTitle>Let's Play</PageTitle>
-          <SubText>Be the first!</SubText>
+          <Label>Be the first!</Label>
         </PageHeader>
 
         <CardWrapper>

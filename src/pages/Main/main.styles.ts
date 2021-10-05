@@ -22,9 +22,6 @@ const PageTitle = styled.h1`
   font-size: 1.5rem;
 `;
 
-const SubText = styled.p`
-  margin: 0;
-`;
 
 const CardWrapper = styled.article`
   display: grid;
@@ -34,4 +31,4 @@ const CardWrapper = styled.article`
   }
 `;
 
-export { ComponentWrapper, PageHeader, PageTitle, SubText, CardWrapper };
+export { ComponentWrapper, PageHeader, PageTitle, CardWrapper };

@@ -22,4 +22,9 @@ const WidthContainer = styled.article`
   }
 `;
 
-export { WidthContainer, primaryFont, questionFont, zindex_one };
+const Label = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.tertiary};
+`;
+
+export { WidthContainer, primaryFont, questionFont, zindex_one, Label};
