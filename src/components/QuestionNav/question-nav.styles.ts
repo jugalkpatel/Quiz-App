@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { questionFont } from "../../styles/common.styles";
+import { secondaryFont } from "../../styles/common.styles";
 
 const QuestionNavigation = styled.article`
   display: flex;
@@ -8,7 +8,7 @@ const QuestionNavigation = styled.article`
   background-color: ${({ theme }) => theme.primary};
   padding: 1rem 0;
   border-radius: 10px;
-  font-family: ${questionFont};
+  font-family: ${secondaryFont};
   flex-wrap: nowrap;
   overflow-x: auto;
   margin-bottom: 1rem;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Field } from "formik";
 
 const primaryFont = "Alegreya";
-const questionFont = "QuickSand";
+const secondaryFont = "QuickSand";
 
 const zindex_one = 1;
 
@@ -22,9 +23,56 @@ const WidthContainer = styled.article`
   }
 `;
 
-const Label = styled.p`
+const SubText = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.tertiary};
 `;
 
-export { WidthContainer, primaryFont, questionFont, zindex_one, Label};
+const Label = styled.label`
+  color: ${({ theme }) => theme.tertiary};
+  font-family: ${primaryFont};
+  font-size: 1.6rem;
+`;
+
+const Input = styled(Field)`
+  font-size: 1.1rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid ${({ theme }) => theme.border};
+  outline-color: ${({ theme }) => theme.tertiary};
+  border-radius: 0.3rem;
+`;
+
+const SubmitButton = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.primary};
+  border: 0;
+  font-family: ${primaryFont};
+  font-size: 1rem;
+  width: 100%;
+  margin: 0.5rem 0;
+`;
+
+const RowContainer = styled.article`
+  display: flex;
+  flex-direction: row;
+`;
+
+const InputWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0;
+`;
+
+export {
+  WidthContainer,
+  primaryFont,
+  secondaryFont,
+  zindex_one,
+  Label,
+  SubText,
+  Input,
+  SubmitButton,
+  RowContainer,
+  InputWrapper,
+};

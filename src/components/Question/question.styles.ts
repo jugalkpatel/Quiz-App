@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { questionFont } from "../../styles/common.styles";
+import { secondaryFont } from "../../styles/common.styles";
 
 const QuestionContainer = styled.article`
   display: flex;
@@ -8,7 +8,7 @@ const QuestionContainer = styled.article`
   background-color: ${({ theme }) => theme.primary};
   border-radius: 10px;
   padding: 1.5rem;
-  font-family: ${questionFont};
+  font-family: ${secondaryFont};
   grid-area: question;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 `;
@@ -46,7 +46,7 @@ const Option = styled.button`
   background-color: transparent;
   border-radius: 26px;
   margin: 0.5rem 0;
-  font-family: ${questionFont};
+  font-family: ${secondaryFont};
   font-size: 1rem;
   color: ${({ theme }) => theme.tertiary};
   border-color: ${({ theme }) => theme.border};
@@ -70,7 +70,7 @@ const NextButton = styled.button`
   border-radius: 1.5rem;
   font-size: 1rem;
   background-color: transparent;
-  font-family: ${questionFont};
+  font-family: ${secondaryFont};
   border: 2px solid ${({ theme }) => theme.border};
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   color: ${({ theme }) => theme.tertiary};

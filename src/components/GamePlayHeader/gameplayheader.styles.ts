@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { questionFont } from "../../styles/common.styles";
+import { secondaryFont } from "../../styles/common.styles";
 
 import { FaCheck } from "react-icons/fa";
 import { MdWatchLater } from "react-icons/md";
@@ -9,7 +9,7 @@ const GamePlayHeaderContainer = styled.article`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: ${questionFont};
+  font-family: ${secondaryFont};
   color: ${({ theme }) => theme.tertiary};
   padding: 0.5rem;
   border: 1px solid ${({ theme }) => theme.border};

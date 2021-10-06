@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { primaryFont } from "../../styles/common.styles";
-import { Label } from "../../styles/common.styles";
+import { primaryFont, SubText } from "../../styles/common.styles";
 
 const LevelCard = styled.article`
   display: grid;
@@ -50,7 +49,7 @@ const PlayButton = styled.button`
   }
 `;
 
-const LevelLabel = styled(Label)`
+const LevelLabel = styled(SubText)`
   font-size: 0.8rem;
 `;
 
