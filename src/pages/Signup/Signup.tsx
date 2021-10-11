@@ -14,6 +14,7 @@ import { RegisterTypes } from "../../common";
 import { InputField } from "../../components/";
 import { register } from "../../services/";
 import { registerSchema } from "../../validation/register.schema";
+import { useAuth } from "../../contexts/";
 
 const handleSubmit = async (values: RegisterTypes) => {
   try {
@@ -38,6 +39,8 @@ function Signup() {
     password: "",
     confirmPassword: "",
   };
+  const { authenticated } = useAuth();
+  console.log(authenticated);
   return (
     <SingupContainer>
       <SignUpHeader>
