@@ -6,4 +6,12 @@ const config: AxiosRequestConfig = {
 
 const axiosInstance: AxiosInstance = axios.create(config);
 
-export { axiosInstance };
+const setupAuthHeaderForServiceCalls = (token: string) => {
+  if (token) {
+    axiosInstance.defaults.headers.common["authorization"] = token;
+    console.log("Authorization set successfully");
+  }
+  delete axiosInstance.defaults.headers.common["Authorization"];
+};
+
+export { axiosInstance, setupAuthHeaderForServiceCalls };

@@ -16,22 +16,6 @@ import { register } from "../../services/";
 import { registerSchema } from "../../validation/register.schema";
 import { useAuth } from "../../contexts/";
 
-const handleSubmit = async (values: RegisterTypes) => {
-  try {
-    const data = await register(values);
-    if (!("user" in data)) {
-      throw new Error(data.message);
-    }
-    // Save JWT
-    console.log(data.user);
-  } catch (error) {
-    const toastError = error as Error;
-    toast.error(toastError.message, {
-      position: "bottom-center",
-    });
-  }
-};
-
 function Signup() {
   const initialValues: RegisterTypes = {
     name: "",
@@ -39,8 +23,27 @@ function Signup() {
     password: "",
     confirmPassword: "",
   };
-  const { authenticated } = useAuth();
+  const { authenticated, setupAuth } = useAuth();
   console.log(authenticated);
+
+  const handleSubmit = async (values: RegisterTypes) => {
+    try {
+      const data = await register(values);
+      if (!("user" in data)) {
+        throw new Error(data.message);
+      }
+      // Save JWT
+      console.log(data.user);
+      const { id, name, token } = data.user;
+      setupAuth({ id, name, token });
+    } catch (error) {
+      const toastError = error as Error;
+      toast.error(toastError.message, {
+        position: "bottom-center",
+      });
+    }
+  };
+
   return (
     <SingupContainer>
       <SignUpHeader>
@@ -101,4 +104,4 @@ function Signup() {
   );
 }
 
-export { Signup, handleSubmit };
+export { Signup };
