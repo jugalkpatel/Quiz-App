@@ -12,16 +12,12 @@ const ComponentWrapper = styled.article`
 `;
 
 const PageHeader = styled.article`
-margin: 0;
-font-family: ${primaryFont};
-margin-bottom: 1rem;
-margin-left: 1rem;
+  margin: 0;
+  font-family: ${primaryFont};
+  margin: 0 1rem 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
 `;
-
-const PageTitle = styled.h1`
-  font-size: 1.5rem;
-`;
-
 
 const CardWrapper = styled.article`
   display: grid;
@@ -31,4 +27,4 @@ const CardWrapper = styled.article`
   }
 `;
 
-export { ComponentWrapper, PageHeader, PageTitle, CardWrapper };
+export { ComponentWrapper, PageHeader, CardWrapper };
