@@ -6,3 +6,4 @@ export { GamePlayHeader } from "./GamePlayHeader/GamplayHeader";
 export { QuestionNav } from "./QuestionNav/QuestionNav";
 export { Question } from "./Question/Question";
 export { InputField } from "./InputField/InputField";
+export { SideMenu } from "./SideMenu/SideMenu";
