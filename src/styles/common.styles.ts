@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Field } from "formik";
+import { Link } from "react-router-dom";
 
 const primaryFont = "Alegreya";
 const secondaryFont = "QuickSand";
@@ -84,6 +85,30 @@ const FormContainer = styled.article`
   }
 `;
 
+const FormHeader = styled.h1`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.border};
+`;
+
+const FormLabel = styled(Label)`
+  font-family: ${primaryFont};
+  color: ${({ theme }) => theme.label};
+  font-size: 1rem;
+  text-decoration-color: ${({ theme }) => theme.label};
+`;
+
+const FormTitle = styled(Label)`
+  font-size: 2rem;
+  font-family: ${primaryFont};
+`;
+
+const FormLink = styled(Link)`
+  color: ${({ theme }) => theme.label};
+  margin-left: 0.3rem;
+`;
+
 export {
   WidthContainer,
   primaryFont,
@@ -98,4 +123,8 @@ export {
   ColumnContainer,
   BigText,
   FormContainer,
+  FormHeader,
+  FormLabel,
+  FormTitle,
+  FormLink,
 };
