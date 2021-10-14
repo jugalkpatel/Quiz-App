@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import {
   SignUpHeader,
@@ -34,8 +34,8 @@ function Signup() {
       }
       // Save JWT
       console.log(data.user);
-      const { id, name, token } = data.user;
-      setupAuth({ id, name, token });
+      const { id, name, token, level } = data.user;
+      setupAuth({ id, name, token, level });
     } catch (error) {
       const toastError = error as Error;
       toast.error(toastError.message, {
@@ -95,11 +95,10 @@ function Signup() {
 
             <SubmitButton type="submit">Submit</SubmitButton>
 
-            <pre>{JSON.stringify(values, null, 4)}</pre>
+            {/* <pre>{JSON.stringify(values, null, 4)}</pre> */}
           </Form>
         )}
       </Formik>
-      <Toaster />
     </SingupContainer>
   );
 }

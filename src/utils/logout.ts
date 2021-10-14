@@ -6,7 +6,7 @@ const logout = (
   navigate: NavigateFunction
 ) => {
   return () => {
-    setAuth({ authenticated: false, token: "", name: "", id: "" });
+    setAuth({ authenticated: false, token: "", name: "", id: "", level: "" });
     navigate("/login");
   };
 };

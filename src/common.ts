@@ -8,7 +8,7 @@ export type RegisterTypes = {
 export type RegisterResponse = {
   success: boolean;
   message: string;
-  user: { id: string; name: string; token: string };
+  user: { id: string; name: string; token: string; level: string };
 };
 
 export type ServerError = {
@@ -21,4 +21,5 @@ export type AuthTypes = {
   id: string;
   token: string;
   name: string;
+  level: string;
 };
