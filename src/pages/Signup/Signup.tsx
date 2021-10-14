@@ -2,13 +2,13 @@ import { Formik, Form } from "formik";
 import toast from "react-hot-toast";
 
 import {
-  SignUpHeader,
-  SignUpTitle,
-  SingupContainer,
-  SignupLabel,
-  LoginLink,
-} from "./signup.styles";
-import { SubmitButton } from "../../styles/common.styles";
+  SubmitButton,
+  FormContainer,
+  FormHeader,
+  FormLabel,
+  FormTitle,
+  FormLink,
+} from "../../styles/common.styles";
 
 import { RegisterTypes } from "../../common";
 import { InputField } from "../../components/";
@@ -45,14 +45,14 @@ function Signup() {
   };
 
   return (
-    <SingupContainer>
-      <SignUpHeader>
-        <SignUpTitle>Sign Up</SignUpTitle>
-        <SignupLabel>
+    <FormContainer>
+      <FormHeader>
+        <FormTitle>Sign Up</FormTitle>
+        <FormLabel>
           alredy registered?
-          <LoginLink to="/login">log in</LoginLink>
-        </SignupLabel>
-      </SignUpHeader>
+          <FormLink to="/login">log in</FormLink>
+        </FormLabel>
+      </FormHeader>
 
       <Formik
         initialValues={initialValues}
@@ -99,7 +99,7 @@ function Signup() {
           </Form>
         )}
       </Formik>
-    </SingupContainer>
+    </FormContainer>
   );
 }
 
