@@ -73,6 +73,17 @@ const InputWrapper = styled.article`
   margin: 1.5rem 0;
 `;
 
+const FormContainer = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+
+  @media (min-width: 568px) {
+    width: 25.6rem;
+    margin: 0 auto;
+  }
+`;
+
 export {
   WidthContainer,
   primaryFont,
@@ -86,4 +97,5 @@ export {
   InputWrapper,
   ColumnContainer,
   BigText,
+  FormContainer,
 };
