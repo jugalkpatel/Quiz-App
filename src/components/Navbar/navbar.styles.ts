@@ -87,7 +87,7 @@ const LoginButton = styled.button`
   }
 
   @media (min-width: 568px) and (max-width: 1040px) {
-    margin: 0 2rem 0 0;
+    margin: 0 2.5rem 0 0;
   }
 `;
 
