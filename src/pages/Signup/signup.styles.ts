@@ -7,6 +7,11 @@ const SingupContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem 1rem;
+
+  @media (min-width: 568px) {
+    width: 410px;
+    margin: 0 auto;
+  }
 `;
 
 const SignUpHeader = styled.h1`
