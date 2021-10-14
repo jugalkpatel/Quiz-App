@@ -13,6 +13,7 @@ body {
   background: ${({ theme }) => theme.secondary};
   color: ${({ theme }) => theme.tertiary};
   transition: all 0.50s linear;
+  font-family: url(${Alegreya})
 }
 
 * {
