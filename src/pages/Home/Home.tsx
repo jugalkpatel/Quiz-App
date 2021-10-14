@@ -1,4 +1,6 @@
 import { Outlet } from "react-router";
+import { Toaster } from "react-hot-toast";
+
 import { MainContainer } from "./home.styles";
 
 import { Navbar, Footer } from "../../components/";
@@ -11,6 +13,7 @@ function Home({ mode, setMode }: ThemeProps) {
         <Navbar mode={mode} setMode={setMode} />
         <Outlet />
         <Footer />
+        <Toaster />
       </MainContainer>
     </>
   );
