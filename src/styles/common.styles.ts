@@ -23,6 +23,10 @@ const WidthContainer = styled.article`
   }
 `;
 
+const BigText = styled.h1`
+  font-size: 1.5rem;
+`;
+
 const SubText = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.tertiary};
@@ -58,6 +62,11 @@ const RowContainer = styled.article`
   flex-direction: row;
 `;
 
+const ColumnContainer = styled.article`
+  display: flex;
+  flex-direction: column;
+`;
+
 const InputWrapper = styled.article`
   display: flex;
   flex-direction: column;
@@ -75,4 +84,6 @@ export {
   SubmitButton,
   RowContainer,
   InputWrapper,
+  ColumnContainer,
+  BigText,
 };

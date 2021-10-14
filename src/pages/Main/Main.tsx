@@ -3,13 +3,8 @@ import intermediate from "../../assets/intermediate.svg";
 import expert from "../../assets/expert.svg";
 import profile from "../../assets/profile.svg";
 
-import {
-  ComponentWrapper,
-  PageHeader,
-  PageTitle,
-  CardWrapper,
-} from "./main.styles";
-import { SubText } from "../../styles/common.styles";
+import { ComponentWrapper, PageHeader, CardWrapper } from "./main.styles";
+import { BigText, SubText, ColumnContainer } from "../../styles/common.styles";
 
 import { DifficultyCard } from "../../components";
 
@@ -18,8 +13,10 @@ function Main() {
     <>
       <ComponentWrapper>
         <PageHeader>
-          <PageTitle>Let's Play</PageTitle>
-          <SubText>Be the first!</SubText>
+          <ColumnContainer>
+            <BigText>Let's Play</BigText>
+            <SubText>Be the first</SubText>
+          </ColumnContainer>
         </PageHeader>
 
         <CardWrapper>
