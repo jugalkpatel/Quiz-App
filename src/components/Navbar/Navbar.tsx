@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 import { Logo } from "../Logo/Logo";
-import { TiWeatherNight } from "react-icons/ti";
-import { BiSun } from "react-icons/bi";
+import { HiSun } from "react-icons/hi";
+import { IoIosCloudyNight } from "react-icons/io";
 
 import {
   StyledNavbar,
@@ -37,7 +37,7 @@ function Navbar({ mode, setMode }: ThemeProps) {
           <Logo mode={mode} />
 
           <DarkButton onClick={() => setMode()}>
-            {mode === "light" ? <TiWeatherNight /> : <BiSun />}
+            {mode === "light" ? <IoIosCloudyNight /> : <HiSun />}
           </DarkButton>
 
           {credentials?.authenticated ? (
