@@ -1,3 +1,5 @@
+import { NavigateFunction } from "react-router";
+
 export type RegisterTypes = {
   name: string;
   email: string;
@@ -5,21 +7,31 @@ export type RegisterTypes = {
   confirmPassword: string;
 };
 
-export type RegisterResponse = {
+export type LoginTypes = {
+  email: string;
+  password: string;
+};
+
+export type AuthTypes = {
+  setAuthCredentials: React.Dispatch<React.SetStateAction<User>>;
+  navigate: NavigateFunction;
+};
+
+export type AuthResponse = {
   success: boolean;
   message: string;
   user: { id: string; name: string; token: string; level: string };
 };
 
-export type ServerError = {
+export type AuthError = {
   success: boolean;
   message: string;
 };
 
-export type AuthTypes = {
-  authenticated: boolean;
+export type User = {
   id: string;
   token: string;
   name: string;
   level: string;
+  authenticated?: boolean;
 };
