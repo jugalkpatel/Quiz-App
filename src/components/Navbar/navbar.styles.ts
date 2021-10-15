@@ -50,11 +50,20 @@ const DarkButton = styled.button`
 const ButtonContainer = styled(RowContainer)`
   align-items: center;
   font-size: ${primaryFont};
+
+  @media (max-width: 568px) {
+    display: none;
+  }
+
+  @media (min-width: 568px) and (max-width: 1040px) {
+    margin: 0 2.5rem 0 0;
+  }
 `;
 
 const UserName = styled.h5`
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: ${({ theme }) => theme.tertiary};
+  font-family: ${primaryFont};
 `;
 
 const Level = styled.p`
@@ -62,6 +71,7 @@ const Level = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.tertiary};
   font-size: 0.7rem;
+  font-family: ${primaryFont};
 `;
 
 const NavUserIcon = styled(TiUser)`
