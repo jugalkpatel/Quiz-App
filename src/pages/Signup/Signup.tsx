@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 import {
   SubmitButton,
@@ -11,10 +11,10 @@ import {
 } from "../../styles/common.styles";
 
 import { RegisterTypes } from "../../common";
-import { InputField } from "../../components/";
-import { register } from "../../services/";
-import { registerSchema } from "../../validation/register.schema";
 import { useAuth } from "../../contexts/";
+import { InputField } from "../../components/";
+import { registerSchema } from "../../validation";
+import { handleAuthClick } from "../../helpers";
 
 function Signup() {
   const initialValues: RegisterTypes = {
@@ -23,31 +23,18 @@ function Signup() {
     password: "",
     confirmPassword: "",
   };
-  const { authenticated, setupAuth } = useAuth();
-  console.log(authenticated);
+  const { setAuthCredentials } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (values: RegisterTypes) => {
-    try {
-      const data = await register(values);
-      if (!("user" in data)) {
-        throw new Error(data.message);
-      }
-      // Save JWT
-      console.log(data.user);
-      const { id, name, token, level } = data.user;
-      setupAuth({ id, name, token, level });
-    } catch (error) {
-      const toastError = error as Error;
-      toast.error(toastError.message, {
-        position: "bottom-center",
-      });
-    }
+  const handleSubmit = (values: typeof initialValues) => {
+    const url = "/auth/register";
+    handleAuthClick({ values, setAuthCredentials, navigate, url });
   };
 
   return (
     <FormContainer>
       <FormHeader>
-        <FormTitle>Sign Up</FormTitle>
+        <FormTitle>sign up</FormTitle>
         <FormLabel>
           alredy registered?
           <FormLink to="/login">log in</FormLink>
@@ -59,7 +46,7 @@ function Signup() {
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
-        {({ values }) => (
+        {() => (
           <Form>
             <InputField
               label="Name"
@@ -93,7 +80,7 @@ function Signup() {
               placeholder="Re Enter Password"
             />
 
-            <SubmitButton type="submit">Submit</SubmitButton>
+            <SubmitButton type="submit">sign in</SubmitButton>
 
             {/* <pre>{JSON.stringify(values, null, 4)}</pre> */}
           </Form>
