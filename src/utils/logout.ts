@@ -1,8 +1,8 @@
 import React from "react";
 import { NavigateFunction } from "react-router";
-import { AuthTypes } from "../common";
+import { User } from "../common";
 const logout = (
-  setAuth: React.Dispatch<React.SetStateAction<AuthTypes>>,
+  setAuth: React.Dispatch<React.SetStateAction<User>>,
   navigate: NavigateFunction
 ) => {
   return () => {
