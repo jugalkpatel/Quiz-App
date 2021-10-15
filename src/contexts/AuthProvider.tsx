@@ -1,64 +1,45 @@
-import React, { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 
-import { AuthTypes } from "../common";
-import { logout, setupAuthExceptionHandler } from "../utils";
-import { setupAuthHeaderForServiceCalls } from "../helpers/axios";
-
-export type SetupAuthTypes = {
-  id: string;
-  name: string;
-  token: string;
-  level: string;
-};
-
-export type AuthContextTypes = {
-  authenticated: boolean;
-  token: string;
-  name: string;
-  level: string;
-  setAuth: React.Dispatch<React.SetStateAction<AuthTypes>>;
-  setupAuth: (params: SetupAuthTypes) => void;
-};
-
-const AuthContext = createContext<AuthContextTypes>({
-  authenticated: false,
-  token: "",
-  name: "",
-  level: "",
-  setAuth: () => null,
-  setupAuth: () => true,
-});
+import { AuthContext } from "./AuthContext";
+import { User } from "../common";
+import toast from "react-hot-toast";
 
 const AuthProvider: React.FC = ({ children }) => {
-  const initialAuthState: AuthTypes = {
+  const initialAuthState: User = {
     authenticated: false,
     token: "",
     name: "",
     id: "",
     level: "",
   };
-  // used useState because i'm get all data from api at same time
-  const [auth, setAuth] = useState<AuthTypes>(initialAuthState);
-  const navigate = useNavigate();
-  const logoutUser = logout(setAuth, navigate);
 
-  console.log({ auth });
+  // used useState because i'm getting all data from api at same time
+  const [authCredentials, setAuthCredentials] = useState<User>(() => {
+    try {
+      const data = localStorage?.getItem("liquiz") || null;
 
-  const setupAuth = ({ id, name, token, level }: SetupAuthTypes) => {
-    console.log(id, name, token, level);
-    if (id && name && token && level) {
-      setupAuthHeaderForServiceCalls(token);
-      setupAuthExceptionHandler(logoutUser);
-      setAuth((prevState: AuthTypes) => {
-        return { ...prevState, authenticated: true, token, name, id, level };
+      if (!data) {
+        return initialAuthState;
+      }
+
+      const { id, name, level, token }: User = JSON.parse(data);
+
+      if (id && name && level && token) {
+        return { authenticated: true, id, name, level, token };
+      }
+
+      return initialAuthState;
+    } catch (error) {
+      const toastError = error as Error;
+      toast.error(toastError.message || "error while accessing localstorage!", {
+        position: "bottom-center",
       });
-      navigate("/");
+      return initialAuthState;
     }
-  };
+  });
 
   return (
-    <AuthContext.Provider value={{ ...auth, setAuth, setupAuth }}>
+    <AuthContext.Provider value={{ ...authCredentials, setAuthCredentials }}>
       {children}
     </AuthContext.Provider>
   );
