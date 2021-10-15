@@ -9,7 +9,7 @@ export type ThemeProps = {
 
 const useDarkMode = () => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const localTheme = localStorage?.getItem("theme");
+    const localTheme = localStorage?.getItem("liquiz-theme");
 
     return localTheme === "light" ? "light" : "dark";
   });
@@ -19,7 +19,7 @@ const useDarkMode = () => {
   };
 
   useEffect(() => {
-    localStorage?.setItem("theme", theme);
+    localStorage?.setItem("liquiz-theme", theme);
   }, [theme]);
 
   console.log(theme);
