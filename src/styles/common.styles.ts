@@ -56,6 +56,7 @@ const SubmitButton = styled.button`
   font-size: 1rem;
   width: 100%;
   margin: 0.5rem 0;
+  cursor: pointer;
 `;
 
 const RowContainer = styled.article`
