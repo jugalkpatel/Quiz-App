@@ -1,6 +1,6 @@
 import { User, AuthTypes } from "../common";
 import { logout, setupAuthExceptionHandler } from ".";
-import { setupAuthHeaderForServiceCalls } from "../helpers";
+import { setupAuthHeader } from "../utils";
 
 const setupAuth = ({
   setAuthCredentials,
@@ -9,7 +9,7 @@ const setupAuth = ({
   const logoutUser = logout(setAuthCredentials, navigate);
   return ({ id, name, token, level }: User) => {
     if (id && name && token && level) {
-      setupAuthHeaderForServiceCalls(token);
+      setupAuthHeader(token);
       setupAuthExceptionHandler(logoutUser);
       setAuthCredentials((prevState: User) => {
         return { ...prevState, authenticated: true, id, name, token, level };
