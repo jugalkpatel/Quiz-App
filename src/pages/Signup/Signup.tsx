@@ -1,5 +1,6 @@
 import { Formik, Form } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Location } from "history";
 
 import {
   SubmitButton,
@@ -25,10 +26,13 @@ function Signup() {
   };
   const { setAuthCredentials } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const state = location.state as { from: Location };
+  const from = state ? state.from.pathname : "/";
 
   const handleSubmit = (values: typeof initialValues) => {
     const url = "/auth/register";
-    handleAuthClick({ values, setAuthCredentials, navigate, url });
+    handleAuthClick({ values, setAuthCredentials, navigate, url, path: from });
   };
 
   return (
