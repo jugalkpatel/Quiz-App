@@ -8,6 +8,7 @@ const logout = (
   return () => {
     setAuth({ authenticated: false, token: "", name: "", id: "", level: "" });
     navigate("/login");
+    localStorage?.removeItem("liquiz");
   };
 };
 
