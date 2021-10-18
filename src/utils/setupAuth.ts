@@ -11,14 +11,8 @@ const setupAuth = ({
     if (id && name && token && level) {
       setupAuthHeader(token);
       setupAuthExceptionHandler(logoutUser);
-      setAuthCredentials((prevState: User) => {
-        return { ...prevState, authenticated: true, id, name, token, level };
-      });
-      localStorage?.setItem(
-        "liquiz",
-        JSON.stringify({ id, name, token, level })
-      );
-      navigate("/");
+    } else {
+      logoutUser();
     }
   };
 };

@@ -1,8 +1,7 @@
 import toast from "react-hot-toast";
 
-import { RegisterTypes, AuthTypes, LoginTypes } from "../common";
-import { setupAuth } from "../utils/setupAuth";
-import { authenticate } from "../services/authenticate/authenticate.service";
+import { RegisterTypes, AuthTypes, LoginTypes, User } from "../common";
+import { authenticate } from "../services";
 
 export type SubmitTypes = AuthTypes & {
   url: string;
@@ -16,14 +15,25 @@ const handleAuthClick = async ({
   url,
 }: SubmitTypes) => {
   try {
-    const setAuthConfig = setupAuth({ setAuthCredentials, navigate });
     const data = await authenticate(url, values);
+
     if (!("user" in data)) {
       throw new Error(data.message);
     }
-    console.log(data.user);
+
     const { id, name, token, level } = data.user;
-    setAuthConfig({ id, name, token, level });
+
+    if (!id || !name || !token || !level) {
+      throw new Error("missing values in response");
+    }
+
+    setAuthCredentials((prevState: User) => {
+      return { ...prevState, authenticated: true, id, name, token, level };
+    });
+
+    localStorage?.setItem("liquiz", JSON.stringify({ id, name, token, level }));
+
+    navigate("/");
   } catch (error) {
     const toastError = error as Error;
     toast.error(toastError.message, { position: "bottom-center" });

@@ -1,8 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from "./AuthContext";
-import { User } from "../common";
 import toast from "react-hot-toast";
+
+import { User } from "../common";
+import { AuthContext } from "./AuthContext";
+import { setupAuth } from "../utils";
 
 const AuthProvider: React.FC = ({ children }) => {
   const initialAuthState: User = {
@@ -37,6 +40,14 @@ const AuthProvider: React.FC = ({ children }) => {
       return initialAuthState;
     }
   });
+  const navigate = useNavigate();
+  const setAuthConfig = useRef(setupAuth({ setAuthCredentials, navigate }));
+
+  useEffect(() => {
+    if (authCredentials?.authenticated) {
+      setAuthConfig.current(authCredentials);
+    }
+  }, [authCredentials]);
 
   return (
     <AuthContext.Provider value={{ ...authCredentials, setAuthCredentials }}>
