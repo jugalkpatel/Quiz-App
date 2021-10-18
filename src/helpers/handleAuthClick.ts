@@ -5,6 +5,7 @@ import { authenticate } from "../services";
 
 export type SubmitTypes = AuthTypes & {
   url: string;
+  path: string;
   values: RegisterTypes | LoginTypes;
 };
 
@@ -13,6 +14,7 @@ const handleAuthClick = async ({
   setAuthCredentials,
   navigate,
   url,
+  path,
 }: SubmitTypes) => {
   try {
     const data = await authenticate(url, values);
@@ -33,7 +35,7 @@ const handleAuthClick = async ({
 
     localStorage?.setItem("liquiz", JSON.stringify({ id, name, token, level }));
 
-    navigate("/");
+    navigate(path, { replace: true });
   } catch (error) {
     const toastError = error as Error;
     toast.error(toastError.message, { position: "bottom-center" });

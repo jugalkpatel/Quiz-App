@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Location } from "history";
 
 import {
   FormContainer,
@@ -23,10 +24,13 @@ function Login() {
   };
   const { setAuthCredentials } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const state = location.state as { from: Location };
+  const from = state ? state.from.pathname : "/";
 
   const handleSumit = (values: typeof initialValues) => {
     const url = "/auth/login";
-    handleAuthClick({ values, setAuthCredentials, navigate, url });
+    handleAuthClick({ values, setAuthCredentials, navigate, url, path: from });
   };
 
   return (
