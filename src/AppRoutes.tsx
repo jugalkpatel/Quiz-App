@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home, GamePlay, Login, Signup, Main } from "./pages/";
 import { ThemeProps } from "./hooks/useDarkMode.hook";
-import { PrivateRoute } from "./helpers";
+
+import { Home, GamePlay, Login, Signup, Main } from "./pages/";
+import { PrivateRoute, LevelRoute } from "./helpers";
 
 function AppRoutes({ mode, setMode }: ThemeProps): JSX.Element {
   return (
@@ -12,7 +13,14 @@ function AppRoutes({ mode, setMode }: ThemeProps): JSX.Element {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
       </Route>
-      <PrivateRoute path="/play" element={<GamePlay />} />
+      <PrivateRoute
+        path="/play/:level"
+        element={
+          <LevelRoute>
+            <GamePlay />
+          </LevelRoute>
+        }
+      />
     </Routes>
   );
 }

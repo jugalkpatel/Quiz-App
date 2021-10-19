@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   LevelCard,
   PlayButton,
@@ -6,10 +8,7 @@ import {
   ContentWrapper,
   CardImg,
 } from "./difficultycard.styles";
-
 import { FaPlay } from "react-icons/fa";
-
-import { useNavigate } from "react-router-dom";
 
 type DifficultyCardProps = {
   level?: string;
@@ -26,7 +25,7 @@ function DifficultyCard({ level, name, image }: DifficultyCardProps) {
         <ContentWrapper>
           {level && <LevelLabel>level {level}</LevelLabel>}
           <LevelName>{name}</LevelName>
-          <PlayButton onClick={() => navigate("/play")}>
+          <PlayButton onClick={() => navigate(`/play/${name}`)}>
             <FaPlay />
           </PlayButton>
         </ContentWrapper>
