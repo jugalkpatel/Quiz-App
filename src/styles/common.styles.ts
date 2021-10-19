@@ -6,6 +6,9 @@ const primaryFont = "Alegreya";
 const secondaryFont = "QuickSand";
 
 const zindex_one = 1;
+const zindex_two = 2;
+const zindex_three = 3;
+const zindex_four = 4;
 
 const WidthContainer = styled.article`
   padding: 1rem;
@@ -115,6 +118,9 @@ export {
   primaryFont,
   secondaryFont,
   zindex_one,
+  zindex_two,
+  zindex_three,
+  zindex_four,
   Label,
   SubText,
   Input,

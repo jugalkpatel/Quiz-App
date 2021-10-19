@@ -1,12 +1,9 @@
-import beginner from "../../assets/beginner.svg";
-import intermediate from "../../assets/intermediate.svg";
-import expert from "../../assets/expert.svg";
-import profile from "../../assets/profile.svg";
-
 import { ComponentWrapper, PageHeader, CardWrapper } from "./main.styles";
 import { BigText, SubText, ColumnContainer } from "../../styles/common.styles";
 
 import { DifficultyCard } from "../../components";
+import { dashboardData } from "../../utils";
+import { DashBoardTypes } from "../../utils/dashboardData";
 
 function Main() {
   return (
@@ -20,10 +17,9 @@ function Main() {
         </PageHeader>
 
         <CardWrapper>
-          <DifficultyCard level="1" name="Rookie" image={beginner} />
-          <DifficultyCard level="2" name="Skillful" image={intermediate} />
-          <DifficultyCard level="3" name="Expert" image={expert} />
-          <DifficultyCard name="Profile" image={profile} />
+          {dashboardData.map(({ name, level, image }: DashBoardTypes) => (
+            <DifficultyCard level={level} name={name} image={image} />
+          ))}
         </CardWrapper>
       </ComponentWrapper>
     </>

@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { ColumnContainer, primaryFont } from "../../styles/common.styles";
+import {
+  ColumnContainer,
+  primaryFont,
+  zindex_three,
+  zindex_four,
+} from "../../styles/common.styles";
 import { TiUser } from "react-icons/ti";
 
 type SideMenuProps = {
@@ -17,6 +22,7 @@ const SideMenuContainer = styled.article<SideMenuProps>`
   width: 100vw;
   background-color: transparent;
   font-family: ${primaryFont};
+  z-index: ${zindex_three};
 `;
 
 const SideMenuContent = styled(ColumnContainer)`
@@ -25,6 +31,7 @@ const SideMenuContent = styled(ColumnContainer)`
   padding: 1rem;
   min-height: 100%;
   border-right: 1px solid ${({ theme }) => theme.border};
+  z-index: ${zindex_four};
 `;
 
 const MenuList = styled.ul`

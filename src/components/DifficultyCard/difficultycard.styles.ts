@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { primaryFont, SubText } from "../../styles/common.styles";
+import {
+  primaryFont,
+  RowContainer,
+  SubText,
+  zindex_two,
+} from "../../styles/common.styles";
+import { RiLock2Fill } from "react-icons/ri";
 
 const LevelCard = styled.article`
   display: grid;
@@ -7,6 +13,7 @@ const LevelCard = styled.article`
   font-family: ${primaryFont};
   border: 1px solid ${({ theme }) => theme.border};
   padding: 1rem;
+  position: relative;
 
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 1rem;
@@ -49,6 +56,21 @@ const PlayButton = styled.button`
   }
 `;
 
+const LockOverlay = styled(RowContainer)`
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(158, 158, 158, 0.2);
+  border-radius: 1rem;
+`;
+
+const LockIcon = styled(RiLock2Fill)`
+  font-size: 2rem;
+  color: ${({ theme }) => theme.tertiary};
+`;
+
 const LevelLabel = styled(SubText)`
   font-size: 0.8rem;
 `;
@@ -66,4 +88,6 @@ export {
   LevelName,
   ContentWrapper,
   CardImg,
+  LockOverlay,
+  LockIcon,
 };

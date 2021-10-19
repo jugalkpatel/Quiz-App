@@ -7,10 +7,14 @@ import {
   LevelName,
   ContentWrapper,
   CardImg,
+  LockOverlay,
+  LockIcon,
 } from "./difficultycard.styles";
 import { FaPlay } from "react-icons/fa";
 
-type DifficultyCardProps = {
+import { useAuth } from "../../contexts";
+
+export type DifficultyCardProps = {
   level?: string;
   name: string;
   image: string;
@@ -18,6 +22,7 @@ type DifficultyCardProps = {
 
 function DifficultyCard({ level, name, image }: DifficultyCardProps) {
   const navigate = useNavigate();
+  const { level: userLevel } = useAuth();
   return (
     <>
       <LevelCard>
@@ -29,6 +34,11 @@ function DifficultyCard({ level, name, image }: DifficultyCardProps) {
             <FaPlay />
           </PlayButton>
         </ContentWrapper>
+        {level && userLevel !== name && (
+          <LockOverlay>
+            <LockIcon />
+          </LockOverlay>
+        )}
       </LevelCard>
     </>
   );
