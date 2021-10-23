@@ -18,7 +18,12 @@ function Main() {
 
         <CardWrapper>
           {dashboardData.map(({ name, level, image }: DashBoardTypes) => (
-            <DifficultyCard level={level} name={name} image={image} />
+            <DifficultyCard
+              key={name}
+              level={level}
+              name={name}
+              image={image}
+            />
           ))}
         </CardWrapper>
       </ComponentWrapper>

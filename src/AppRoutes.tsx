@@ -1,26 +1,38 @@
 import { Routes, Route } from "react-router-dom";
 
+import { Home, Login, Signup, Main } from "./pages/";
+import { Start, Lobby, LeaderBoard, NotFound } from "./components";
 import { ThemeProps } from "./hooks/useDarkMode.hook";
-
-import { Home, GamePlay, Login, Signup, Main } from "./pages/";
 import { PrivateRoute, LevelRoute } from "./helpers";
 
-function AppRoutes({ mode, setMode }: ThemeProps): JSX.Element {
+function AppRoutes({ mode, setMode }: ThemeProps) {
   return (
     <Routes>
       <Route path="/" element={<Home mode={mode} setMode={setMode} />}>
-        <PrivateRoute path="/" element={<Main />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+        <Route
+          index
+          element={
+            <PrivateRoute>
+              <Main />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/play/:level"
+          element={
+            <LevelRoute>
+              <Start />
+            </LevelRoute>
+          }
+        >
+          <Route index element={<Lobby />} />
+          <Route path="/play/:level/leaderboard" element={<LeaderBoard />} />
+        </Route>
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <PrivateRoute
-        path="/play/:level"
-        element={
-          <LevelRoute>
-            <GamePlay />
-          </LevelRoute>
-        }
-      />
     </Routes>
   );
 }

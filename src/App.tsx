@@ -1,7 +1,8 @@
-import GlobalStyle from "./styles/global.styles";
-import { AppRoutes } from "./AppRoutes";
 import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styles/global.styles";
 import { lightTheme, darkTheme } from "./styles/themes.styles";
+
+import { AppRoutes } from "./AppRoutes";
 import { useDarkMode } from "./hooks/useDarkMode.hook";
 
 function App() {

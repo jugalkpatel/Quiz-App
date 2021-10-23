@@ -9,7 +9,7 @@ import {
   CardImg,
   LockOverlay,
   LockIcon,
-} from "./difficultycard.styles";
+} from "./Difficultycard.styles";
 import { FaPlay } from "react-icons/fa";
 
 import { useAuth } from "../../contexts";

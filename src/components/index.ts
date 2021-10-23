@@ -7,3 +7,7 @@ export { QuestionNav } from "./QuestionNav/QuestionNav";
 export { Question } from "./Question/Question";
 export { InputField } from "./InputField/InputField";
 export { SideMenu } from "./SideMenu/SideMenu";
+export { Start } from "./Start/Start";
+export { Lobby } from "./Lobby/Lobby";
+export { LeaderBoard } from "./LeaderBoard/LoaderBoard";
+export { NotFound } from "./NotFound/NotFound";
