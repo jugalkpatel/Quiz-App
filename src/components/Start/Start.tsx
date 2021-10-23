@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import {
   Header,
@@ -14,7 +14,6 @@ import { useAuth } from "../../contexts";
 
 function Start() {
   const { level } = useAuth();
-  const navigate = useNavigate();
 
   const routes = {
     lobby: `/play/${level}`,
@@ -26,7 +25,7 @@ function Start() {
       <StartContainer>
         <Header>
           <NavBar>
-            <BackButton onClick={() => navigate(-1)}>
+            <BackButton to="/">
               <BackIcon />
               back to home
             </BackButton>

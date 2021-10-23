@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import { RowContainer, primaryFont } from "../../styles/common.styles";
 
@@ -16,7 +16,7 @@ const NavBar = styled.nav`
   flex-direction: column;
 `;
 
-const BackButton = styled.button`
+const BackButton = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,6 +28,8 @@ const BackButton = styled.button`
   padding: 0.5rem;
   padding-left: 0;
   font-family: ${primaryFont};
+  cursor: pointer;
+  text-decoration: none;
 `;
 
 const StartContainer = styled.article`
