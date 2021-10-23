@@ -1,19 +1,16 @@
-import { Route, RouteProps, useLocation, Navigate } from "react-router";
+import { useLocation, Navigate } from "react-router";
 
 import { useAuth } from "../contexts";
 
-function PrivateRoute({ path, ...props }: RouteProps) {
+function PrivateRoute({ children }: { children: JSX.Element }) {
   const { authenticated } = useAuth();
   const location = useLocation();
-  return (
-    <>
-      {authenticated ? (
-        <Route path={path} {...props} />
-      ) : (
-        <Navigate to="/login" state={{ from: location }} />
-      )}
-    </>
-  );
+
+  if (!authenticated) {
+    return <Navigate to="/login" state={{ from: location }} />;
+  }
+
+  return children;
 }
 
 export { PrivateRoute };
