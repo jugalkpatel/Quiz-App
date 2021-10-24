@@ -11,6 +11,7 @@ import {
 import { BigText, SubText, ColumnContainer } from "../../styles/common.styles";
 
 import { useAuth } from "../../contexts";
+import { logout } from "../../utils/logout";
 
 export type SideMenuProps = {
   visibility: boolean;
@@ -20,18 +21,22 @@ export type SideMenuProps = {
 function SideMenu({ visibility, setVisibility }: SideMenuProps) {
   const navigate = useNavigate();
   const credentials = useAuth();
+  const userLogout = logout(credentials.setAuthCredentials, navigate);
   return (
     <SideMenuContainer show={visibility} onClick={() => setVisibility(false)}>
       <SideMenuContent>
         <MenuList>
           {credentials?.authenticated ? (
-            <MenuItem>
-              <UserIcon />
-              <ColumnContainer>
-                <BigText>{credentials?.name}</BigText>
-                <SubText>{credentials?.level}</SubText>
-              </ColumnContainer>
-            </MenuItem>
+            <>
+              <MenuItem>
+                <UserIcon />
+                <ColumnContainer>
+                  <BigText>{credentials?.name}</BigText>
+                  <SubText>{credentials?.level}</SubText>
+                </ColumnContainer>
+              </MenuItem>
+              <MenuItem onClick={() => userLogout()}>logout</MenuItem>
+            </>
           ) : (
             <MenuItem onClick={() => navigate("/login")}>login</MenuItem>
           )}
