@@ -30,6 +30,7 @@ const WidthContainer = styled.article`
 
 const BigText = styled.h1`
   font-size: 1.5rem;
+  font-family: ${primaryFont};
 `;
 
 const SubText = styled.p`

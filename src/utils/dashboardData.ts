@@ -14,7 +14,7 @@ const dashboardData: GamePlayTypes = {
     instructions: [
       "no timelimit",
       "there are total 10 questions",
-      "1 point for every right answer.",
+      "1 point for every right answer",
       "exit from quiz results in 0 points in total",
     ],
   },
