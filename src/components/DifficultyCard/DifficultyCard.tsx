@@ -15,7 +15,7 @@ import {
 import { useAuth } from "../../contexts";
 
 export type DifficultyCardProps = {
-  level?: string;
+  level?: 1 | 2 | 3;
   name: string;
   image: string;
 };
