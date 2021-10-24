@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { secondaryFont } from "../../styles/common.styles";
-
 import { FaCheck } from "react-icons/fa";
 import { MdWatchLater } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
+
+import { secondaryFont } from "../../styles/common.styles";
 
 const GamePlayHeaderContainer = styled.article`
   display: flex;

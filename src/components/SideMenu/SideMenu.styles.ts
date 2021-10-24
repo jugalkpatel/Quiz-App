@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { TiUser } from "react-icons/ti";
+
 import {
   ColumnContainer,
   primaryFont,
   zindex_three,
   zindex_four,
 } from "../../styles/common.styles";
-import { TiUser } from "react-icons/ti";
 
 type SideMenuProps = {
   readonly show: boolean;

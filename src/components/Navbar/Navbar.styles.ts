@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { CgMenu } from "react-icons/cg";
 import { TiUser } from "react-icons/ti";
+
 import {
   zindex_one,
   RowContainer,
   primaryFont,
+  WidthContainer,
 } from "../../styles/common.styles";
 
-const StyledNavbar = styled.div`
+const NavbarContainer = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.border};
   color: ${({ theme }) => theme.tertiary};
   flex-shrink: 0;
@@ -16,6 +18,12 @@ const StyledNavbar = styled.div`
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   z-index: ${zindex_one};
   position: relative;
+`;
+
+const NavbarContent = styled(WidthContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Menu = styled(CgMenu)`
@@ -102,7 +110,7 @@ const LoginButton = styled.button`
 `;
 
 export {
-  StyledNavbar,
+  NavbarContainer,
   Menu,
   DarkButton,
   ButtonContainer,
@@ -110,4 +118,5 @@ export {
   NavUserIcon,
   Level,
   LoginButton,
+  NavbarContent,
 };

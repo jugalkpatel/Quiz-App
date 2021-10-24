@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-import { Logo } from "../Logo/Logo";
 import { HiSun } from "react-icons/hi";
 import { IoIosCloudyNight } from "react-icons/io";
-
 import {
-  StyledNavbar,
+  NavbarContainer,
   Menu,
   DarkButton,
   ButtonContainer,
@@ -14,11 +12,12 @@ import {
   NavUserIcon,
   Level,
   LoginButton,
-} from "./navbar.styles";
-import { ColumnContainer, WidthContainer } from "../../styles/common.styles";
+  NavbarContent,
+} from "./Navbar.styles";
+import { ColumnContainer } from "../../styles/common.styles";
 
 import { ThemeProps } from "../../hooks/useDarkMode.hook";
-import { SideMenu } from "../index";
+import { Logo, SideMenu } from "../../components";
 import { useAuth } from "../../contexts";
 
 function Navbar({ mode, setMode }: ThemeProps) {
@@ -27,8 +26,8 @@ function Navbar({ mode, setMode }: ThemeProps) {
   const navigate = useNavigate();
   return (
     <>
-      <StyledNavbar>
-        <WidthContainer>
+      <NavbarContainer>
+        <NavbarContent>
           <Menu
             onClick={() =>
               setSideBarVisibility((prevState) => (prevState ? false : true))
@@ -52,13 +51,13 @@ function Navbar({ mode, setMode }: ThemeProps) {
           ) : (
             <LoginButton onClick={() => navigate("/login")}>LOG IN</LoginButton>
           )}
-        </WidthContainer>
+        </NavbarContent>
 
         <SideMenu
           visibility={sidebarVisibility}
           setVisibility={setSideBarVisibility}
         />
-      </StyledNavbar>
+      </NavbarContainer>
     </>
   );
 }

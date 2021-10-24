@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Toaster } from "react-hot-toast";
 
-import { MainContainer } from "./home.styles";
+import { MainContainer } from "./Home.styles";
 
 import { Navbar, Footer } from "../../components/";
 import { ThemeProps } from "../../hooks/useDarkMode.hook";

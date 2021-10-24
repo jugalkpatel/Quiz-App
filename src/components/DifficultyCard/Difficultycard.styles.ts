@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { primaryFont, RowContainer, SubText } from "../../styles/common.styles";
 import { RiLock2Fill } from "react-icons/ri";
+
+import { primaryFont, RowContainer, SubText } from "../../styles/common.styles";
 
 const LevelCard = styled.article`
   display: grid;

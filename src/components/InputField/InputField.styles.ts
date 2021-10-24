@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Label, primaryFont, Input } from "../../styles/common.styles";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+
+import { Label, primaryFont, Input } from "../../styles/common.styles";
 
 const InputLabel = styled(Label)`
   font-size: 1.5rem;

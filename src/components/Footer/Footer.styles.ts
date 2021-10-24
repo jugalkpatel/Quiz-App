@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { HiCode } from "react-icons/hi";
-import { primaryFont } from "../../styles/common.styles";
-import { zindex_one } from "../../styles/common.styles";
+
+import {
+  zindex_one,
+  primaryFont,
+  WidthContainer,
+} from "../../styles/common.styles";
 
 const bgColor = "#000";
 const textColor = "#E4E6EB";
@@ -13,6 +17,12 @@ const FooterContainer = styled.article`
   flex-shrink: 0;
   margin-top: auto;
   z-index: ${zindex_one};
+`;
+
+const FooterContent = styled(WidthContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const FooterText = styled.span`
@@ -54,4 +64,5 @@ export {
   FooterText,
   CodeIcon,
   LinkButton,
+  FooterContent,
 };

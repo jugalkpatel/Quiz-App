@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import { FaPlay } from "react-icons/fa";
 import {
   LevelCard,
   PlayButton,
@@ -10,7 +11,6 @@ import {
   LockOverlay,
   LockIcon,
 } from "./Difficultycard.styles";
-import { FaPlay } from "react-icons/fa";
 
 import { useAuth } from "../../contexts";
 

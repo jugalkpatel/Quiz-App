@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { primaryFont } from "../../styles/common.styles";
 
 const ComponentWrapper = styled.article`

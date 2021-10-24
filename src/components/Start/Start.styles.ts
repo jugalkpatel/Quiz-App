@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
-import { RowContainer, primaryFont } from "../../styles/common.styles";
+
+import {
+  RowContainer,
+  primaryFont,
+  WidthContainer,
+} from "../../styles/common.styles";
 
 export type TabProps = {
   isActive: boolean;
@@ -32,11 +37,10 @@ const BackButton = styled(Link)`
   text-decoration: none;
 `;
 
-const StartContainer = styled.article`
+const StartContainer = styled(WidthContainer)`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 50vh;
-  padding: 1rem;
 `;
 
 const TabContainer = styled(RowContainer)`

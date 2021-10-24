@@ -11,15 +11,16 @@ const zindex_three = 3;
 const zindex_four = 4;
 
 const WidthContainer = styled.article`
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0.7rem;
   max-width: 960px;
-  margin: 0 auto;
 
   @media (min-width: 786px) {
     padding: 0.6rem 1rem;
+  }
+
+  @media (min-width: 960px) {
+    width: 960px;
+    margin: 0 auto;
   }
 
   @media (min-width: 970px) {

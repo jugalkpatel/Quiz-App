@@ -1,24 +1,22 @@
 import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
+import {
   FooterContainer,
   FooterText,
   FooterIconsWrapper,
   CodeIcon,
   LinkButton,
-} from "./footer.styles";
-
-import { WidthContainer } from "../../styles/common.styles";
-
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillTwitterCircle,
-} from "react-icons/ai";
+  FooterContent,
+} from "./Footer.styles";
 
 function Footer() {
   return (
     <>
       <FooterContainer>
-        <WidthContainer>
+        <FooterContent>
           <FooterText>Made with {<CodeIcon />} by Jugal Patel.</FooterText>
           <FooterIconsWrapper>
             <LinkButton href="https://github.com/jugalkpatel">
@@ -33,7 +31,7 @@ function Footer() {
               <AiFillTwitterCircle />
             </LinkButton>
           </FooterIconsWrapper>
-        </WidthContainer>
+        </FooterContent>
       </FooterContainer>
     </>
   );

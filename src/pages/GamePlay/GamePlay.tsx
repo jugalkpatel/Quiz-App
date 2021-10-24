@@ -2,7 +2,7 @@ import {
   GamePlayContent,
   GamePlayWrapper,
   MaxWidthWrapper,
-} from "./gameplay.styles";
+} from "./GamePlay.styles";
 
 import { GamePlayHeader, QuestionNav, Question } from "../../components/";
 
@@ -12,7 +12,6 @@ function GamePlay() {
       <MaxWidthWrapper>
         <GamePlayWrapper>
           <GamePlayHeader />
-
           <GamePlayContent>
             <Question />
             <QuestionNav />

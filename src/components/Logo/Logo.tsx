@@ -1,7 +1,7 @@
-import { StyledLink, LogoImg, LogoImgWrapper, LogoText } from "./logo.styles";
-
 import black_logo from "../../assets/quiz_logo.svg";
 import white_logo from "../../assets/quiz_logo_white.svg";
+import { StyledLink, LogoImg, LogoImgWrapper, LogoText } from "./Logo.styles";
+
 import { Theme } from "../../hooks/useDarkMode.hook";
 
 type LogoProps = {

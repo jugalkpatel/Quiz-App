@@ -7,7 +7,7 @@ import {
   ScoreIcon,
   QuitIcon,
   CommonWrapper,
-} from "./gameplayheader.styles";
+} from "./GamePlayHeader.styles";
 
 function GamePlayHeader() {
   return (

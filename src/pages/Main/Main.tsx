@@ -1,4 +1,4 @@
-import { ComponentWrapper, PageHeader, CardWrapper } from "./main.styles";
+import { ComponentWrapper, PageHeader, CardWrapper } from "./Main.styles";
 import { BigText, SubText, ColumnContainer } from "../../styles/common.styles";
 
 import { DifficultyCard } from "../../components";

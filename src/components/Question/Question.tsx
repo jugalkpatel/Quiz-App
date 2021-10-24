@@ -1,3 +1,4 @@
+import { IoMdArrowBack } from "react-icons/io";
 import {
   QuestionContainer,
   QuestionNumberLabel,
@@ -7,9 +8,7 @@ import {
   QuestionFooter,
   NextButton,
   BackButton,
-} from "./question.styles";
-
-import { IoMdArrowBack } from "react-icons/io";
+} from "./Question.styles";
 
 function Question() {
   const question_number = 6;

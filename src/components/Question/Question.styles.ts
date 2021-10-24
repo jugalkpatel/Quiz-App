@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { secondaryFont } from "../../styles/common.styles";
 
 const QuestionContainer = styled.article`

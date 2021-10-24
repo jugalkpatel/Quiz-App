@@ -9,7 +9,7 @@ import {
   Show,
   Hide,
   Error,
-} from "./inputfield.styles";
+} from "./InputField.styles";
 
 type InputFieldProps = {
   label?: string;
