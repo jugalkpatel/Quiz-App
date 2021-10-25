@@ -11,3 +11,4 @@ export { Start } from "./Start/Start";
 export { Lobby } from "./Lobby/Lobby";
 export { LeaderBoard } from "./LeaderBoard/LoaderBoard";
 export { NotFound } from "./NotFound/NotFound";
+export { SubmitButton } from "./SubmitButton/SubmitButton";

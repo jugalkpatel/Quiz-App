@@ -8,10 +8,6 @@ import {
   WidthContainer,
 } from "../../styles/common.styles";
 
-export type TabProps = {
-  isActive: boolean;
-};
-
 const Header = styled.header`
   font-size: 1rem;
 `;
@@ -41,6 +37,10 @@ const StartContainer = styled(WidthContainer)`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 50vh;
+
+  @media (min-width: 568px) {
+    padding: 1.5rem 1rem;
+  }
 `;
 
 const TabContainer = styled(RowContainer)`

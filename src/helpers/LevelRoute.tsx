@@ -3,10 +3,10 @@ import { Navigate, useParams } from "react-router";
 import { useAuth } from "../contexts";
 
 function LevelRoute({ children }: { children: JSX.Element }) {
-  const { level } = useAuth();
-  const { level: rank } = useParams();
+  const { level: userLevel } = useAuth();
+  const { level } = useParams();
 
-  if (level !== rank) {
+  if (userLevel !== level) {
     return <Navigate to="/" />;
   }
 

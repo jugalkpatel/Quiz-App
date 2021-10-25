@@ -36,9 +36,12 @@ const handleAuthClick = async ({
     localStorage?.setItem("liquiz", JSON.stringify({ id, name, token, level }));
 
     navigate(path, { replace: true });
+
+    return data;
   } catch (error) {
     const toastError = error as Error;
     toast.error(toastError.message, { position: "bottom-center" });
+    return error;
   }
 };
 

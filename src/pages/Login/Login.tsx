@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, Formik } from "formik";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Location } from "history";
@@ -8,12 +9,11 @@ import {
   FormLabel,
   FormTitle,
   FormLink,
-  SubmitButton,
 } from "../../styles/common.styles";
 
 import { LoginTypes } from "../../common";
 import { useAuth } from "../../contexts";
-import { InputField } from "../../components";
+import { InputField, SubmitButton } from "../../components";
 import { loginSchema } from "../../validation";
 import { handleAuthClick } from "../../helpers";
 
@@ -22,16 +22,36 @@ function Login() {
     email: "",
     password: "",
   };
+
+  // const savedValues: LoginTypes = {
+  //   email: "expert@co.mail",
+  //   password: "Expert1234",
+  // };
+
+  const [loginCredentials, setLoginCredentials] =
+    useState<LoginTypes>(initialValues);
+
   const { setAuthCredentials } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as { from: Location };
   const from = state ? state.from.pathname : "/";
 
-  const handleSumit = (values: typeof initialValues) => {
+  // const expertLogin = (values: typeof initialValues) => {};
+
+  const handleSubmit = async (values: typeof initialValues) => {
     const url = "/auth/login";
-    handleAuthClick({ values, setAuthCredentials, navigate, url, path: from });
+    const result = await handleAuthClick({
+      values,
+      setAuthCredentials,
+      navigate,
+      url,
+      path: from,
+    });
+    return result;
   };
+
+  console.log({ setLoginCredentials });
 
   return (
     <FormContainer>
@@ -44,11 +64,12 @@ function Login() {
       </FormHeader>
 
       <Formik
-        initialValues={initialValues}
+        initialValues={loginCredentials}
         validationSchema={loginSchema}
-        onSubmit={handleSumit}
+        onSubmit={handleSubmit}
+        enableReinitialize
       >
-        {() => (
+        {({ isSubmitting, handleSubmit }) => (
           <Form>
             <InputField
               label="email"
@@ -66,7 +87,7 @@ function Login() {
               placeholder="Enter Password"
             />
 
-            <SubmitButton type="submit">log in</SubmitButton>
+            <SubmitButton type="login" isSubmitting={isSubmitting} />
           </Form>
         )}
       </Formik>

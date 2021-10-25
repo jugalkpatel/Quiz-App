@@ -29,7 +29,9 @@ function Lobby() {
       <InstructionTitle>instructions</InstructionTitle>
       <InstructionList>
         {instructions?.length
-          ? instructions.map((rule) => <Instruction>{rule}</Instruction>)
+          ? instructions.map((rule, index) => (
+              <Instruction key={index}>{rule}</Instruction>
+            ))
           : null}
       </InstructionList>
       <Play>start</Play>
