@@ -22,8 +22,6 @@ const useDarkMode = () => {
     localStorage?.setItem("liquiz-theme", theme);
   }, [theme]);
 
-  console.log(theme);
-
   return [theme, toggleTheme] as const;
 };
 

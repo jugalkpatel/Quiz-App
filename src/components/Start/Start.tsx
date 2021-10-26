@@ -10,7 +10,7 @@ import {
   TabContainer,
 } from "./Start.styles";
 
-import { useAuth } from "../../contexts";
+import { useAuth, QuizProvider } from "../../contexts";
 
 function Start() {
   const { level } = useAuth();
@@ -21,32 +21,34 @@ function Start() {
   };
 
   return (
-    <>
-      <StartContainer>
-        <Header>
-          <NavBar>
-            <BackButton to="/">
-              <BackIcon />
-              back to home
-            </BackButton>
+    <QuizProvider>
+      <>
+        <StartContainer>
+          <Header>
+            <NavBar>
+              <BackButton to="/">
+                <BackIcon />
+                back to home
+              </BackButton>
 
-            <TabContainer>
-              {Object.keys(routes).map((routeName) => (
-                <Tab
-                  key={routeName}
-                  to={routes[routeName as keyof typeof routes]}
-                  end
-                >
-                  {routeName}
-                </Tab>
-              ))}
-            </TabContainer>
-          </NavBar>
-        </Header>
+              <TabContainer>
+                {Object.keys(routes).map((routeName) => (
+                  <Tab
+                    key={routeName}
+                    to={routes[routeName as keyof typeof routes]}
+                    end
+                  >
+                    {routeName}
+                  </Tab>
+                ))}
+              </TabContainer>
+            </NavBar>
+          </Header>
 
-        <Outlet />
-      </StartContainer>
-    </>
+          <Outlet />
+        </StartContainer>
+      </>
+    </QuizProvider>
   );
 }
 

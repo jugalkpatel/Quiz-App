@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
-import { User } from "../common";
+import { User } from "../../common";
 import { AuthContext } from "./AuthContext";
-import { setupAuth } from "../utils";
+import { setupAuth } from "../../utils";
 
 const AuthProvider: React.FC = ({ children }) => {
   const initialAuthState: User = {

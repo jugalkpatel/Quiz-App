@@ -1,1 +1,2 @@
-export { useAuth, AuthProvider } from "./AuthProvider";
+export { useAuth, AuthProvider } from "./AuthContext/AuthProvider";
+export { QuizProvider, useQuiz } from "./QuizContext/QuizProvider";
