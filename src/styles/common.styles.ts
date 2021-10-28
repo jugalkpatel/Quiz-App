@@ -52,7 +52,12 @@ const Input = styled(Field)`
   border-radius: 0.3rem;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.button.attrs(() => ({
+  type: "submit",
+}))`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem 1rem;
   background-color: ${({ theme }) => theme.tertiary};
   color: ${({ theme }) => theme.primary};

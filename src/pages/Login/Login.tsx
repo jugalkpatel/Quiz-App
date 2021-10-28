@@ -9,11 +9,12 @@ import {
   FormLabel,
   FormTitle,
   FormLink,
+  SubmitButton,
 } from "../../styles/common.styles";
 
 import { LoginTypes } from "../../common";
 import { useAuth } from "../../contexts";
-import { InputField, SubmitButton } from "../../components";
+import { InputField, Spinner } from "../../components";
 import { loginSchema } from "../../validation";
 import { handleAuthClick } from "../../helpers";
 
@@ -41,6 +42,7 @@ function Login() {
 
   const handleSubmit = async (values: typeof initialValues) => {
     const url = "/auth/login";
+    // TODO: Add types to result
     const result = await handleAuthClick({
       values,
       setAuthCredentials,
@@ -50,8 +52,6 @@ function Login() {
     });
     return result;
   };
-
-  console.log({ setLoginCredentials });
 
   return (
     <FormContainer>
@@ -87,7 +87,13 @@ function Login() {
               placeholder="Enter Password"
             />
 
-            <SubmitButton type="login" isSubmitting={isSubmitting} />
+            <SubmitButton disabled={isSubmitting}>
+              {isSubmitting ? (
+                <Spinner isLoading={isSubmitting} size="5px" />
+              ) : (
+                "login"
+              )}
+            </SubmitButton>
           </Form>
         )}
       </Formik>
