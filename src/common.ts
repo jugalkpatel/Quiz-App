@@ -87,7 +87,7 @@ export type AuthResponse = {
   };
 };
 
-export type AuthError = {
+export type ServerError = {
   success: boolean;
   message: string;
 };
