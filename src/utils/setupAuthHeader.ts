@@ -1,9 +1,9 @@
-import { axiosInstance } from "../helpers";
+import axios from "axios";
 const setupAuthHeader = (token: string) => {
   if (token) {
-    axiosInstance.defaults.headers.common["Authorization"] = token;
+    axios.defaults.headers.common["Authorization"] = token;
   }
-  delete axiosInstance.defaults.headers.common["Authorization"];
+  delete axios.defaults.headers.common["Authorization"];
 };
 
 export { setupAuthHeader };

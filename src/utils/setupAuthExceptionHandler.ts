@@ -1,7 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { axiosInstance } from "../helpers";
 const setupAuthExceptionHandler = (logout: () => void) => {
-  axiosInstance.interceptors.response.use(
+  axios.interceptors.response.use(
     (response: AxiosResponse) => {
       return response;
     },
