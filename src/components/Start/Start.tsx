@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import {
   Header,
@@ -10,10 +10,12 @@ import {
   TabContainer,
 } from "./Start.styles";
 
-import { useAuth, QuizProvider } from "../../contexts";
+import { QuizProvider } from "../../contexts";
+import { obtainLevel } from "../../utils";
 
 function Start() {
-  const { level } = useAuth();
+  const location = useLocation();
+  const level = obtainLevel(location.pathname);
 
   const routes = {
     lobby: `/play/${level}`,

@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ColumnContainer } from "../../styles/common.styles";
 import {
@@ -10,18 +11,19 @@ import {
   Play,
 } from "./Lobby.styles";
 
-import { DifficultyTypes } from "../../common";
 import { useQuiz } from "../../contexts";
 import { Spinner } from "..";
 import { dashboardData } from "../../utils/dashboardData";
+import { obtainLevel } from "../../utils";
 
 function Lobby() {
   const { pathname } = useLocation();
-  const difficulty = pathname.split("/")[2];
-  const { level, description, instructions } =
-    dashboardData[difficulty as keyof DifficultyTypes];
+  const level = obtainLevel(pathname);
+
+  const { levelNumber, description, instructions } = dashboardData[level];
 
   const { isLoading, error, questions } = useQuiz();
+  const navigate = useNavigate();
 
   console.log({ questions });
 
@@ -29,20 +31,22 @@ function Lobby() {
   return (
     <ColumnContainer>
       <LobbyHeader>
-        level {level}: {difficulty.toLowerCase()}
+        level {levelNumber}: {level.toLowerCase()}
       </LobbyHeader>
       <LobbyDesc>{description}</LobbyDesc>
       <InstructionTitle>instructions</InstructionTitle>
       <InstructionList>
         {instructions?.length
-          ? instructions.map((rule, index) => (
-              <Instruction key={index}>{rule}</Instruction>
+          ? instructions.map((rule) => (
+              <Instruction key={rule}>{rule}</Instruction>
             ))
           : null}
       </InstructionList>
       <Play
         disabled={disable}
-        onClick={() => console.log("play button clicked")}
+        onClick={() =>
+          navigate(`/play/${level}/questions`, { state: { questions } })
+        }
       >
         {isLoading ? <Spinner isLoading={isLoading} size="5px" /> : "start"}
       </Play>
