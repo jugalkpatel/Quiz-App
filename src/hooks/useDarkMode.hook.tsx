@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 
-export type Theme = "dark" | "light";
-
-export type ThemeProps = {
-  mode: Theme;
-  setMode: () => void;
-};
+import { Theme } from "../common";
 
 const useDarkMode = () => {
   const [theme, setTheme] = useState<Theme>(() => {

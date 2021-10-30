@@ -2,7 +2,7 @@ import black_logo from "../../assets/quiz_logo.svg";
 import white_logo from "../../assets/quiz_logo_white.svg";
 import { StyledLink, LogoImg, LogoImgWrapper, LogoText } from "./Logo.styles";
 
-import { Theme } from "../../hooks/useDarkMode.hook";
+import { Theme } from "../../common";
 
 type LogoProps = {
   mode: Theme;

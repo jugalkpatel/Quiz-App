@@ -1,19 +1,20 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import { MainContainer } from "./Home.styles";
+import { secondaryFont } from "../../styles/common.styles";
 
+import { ThemeTypes } from "../../common";
 import { Navbar, Footer } from "../../components/";
-import { ThemeProps } from "../../hooks/useDarkMode.hook";
 
-function Home({ mode, setMode }: ThemeProps) {
+function Home({ mode, setMode }: ThemeTypes) {
   return (
     <>
       <MainContainer>
         <Navbar mode={mode} setMode={setMode} />
         <Outlet />
         <Footer />
-        <Toaster />
+        <Toaster toastOptions={{ style: { fontFamily: secondaryFont } }} />
       </MainContainer>
     </>
   );

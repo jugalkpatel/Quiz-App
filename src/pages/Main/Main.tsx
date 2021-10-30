@@ -3,7 +3,7 @@ import { BigText, SubText, ColumnContainer } from "../../styles/common.styles";
 
 import { DifficultyCard } from "../../components";
 import { dashboardData } from "../../utils";
-import { DashBoardTypes, LevelInfoTypes } from "../../common";
+import { LevelTypes, LevelInfoTypes } from "../../common";
 
 function Main() {
   return (
@@ -17,16 +17,16 @@ function Main() {
         </PageHeader>
 
         <CardWrapper>
-          {Object.keys(dashboardData).map((difficulty) => {
-            const { image, level } = dashboardData[
-              difficulty as keyof DashBoardTypes
+          {Object.keys(dashboardData).map((level) => {
+            const { image, levelNumber } = dashboardData[
+              level as LevelTypes
             ] as LevelInfoTypes;
             return (
               <DifficultyCard
-                key={difficulty}
+                key={level}
+                levelNumber={levelNumber}
                 image={image}
-                level={level}
-                name={difficulty}
+                level={level as LevelTypes}
               />
             );
           })}

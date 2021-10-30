@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import { HiSun } from "react-icons/hi";
 import { IoIosCloudyNight } from "react-icons/io";
@@ -16,11 +16,11 @@ import {
 } from "./Navbar.styles";
 import { ColumnContainer } from "../../styles/common.styles";
 
-import { ThemeProps } from "../../hooks/useDarkMode.hook";
-import { Logo, SideMenu } from "../../components";
+import { ThemeTypes } from "../../common";
 import { useAuth } from "../../contexts";
+import { Logo, SideMenu } from "../../components";
 
-function Navbar({ mode, setMode }: ThemeProps) {
+function Navbar({ mode, setMode }: ThemeTypes) {
   const [sidebarVisibility, setSideBarVisibility] = useState(false);
   const credentials = useAuth();
   const navigate = useNavigate();

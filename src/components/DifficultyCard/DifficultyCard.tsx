@@ -12,33 +12,37 @@ import {
   LockIcon,
 } from "./Difficultycard.styles";
 
+import { Levels, LevelTypes } from "../../common";
 import { useAuth } from "../../contexts";
 
 export type DifficultyCardProps = {
-  level?: 1 | 2 | 3;
-  name: string;
+  levelNumber?: 1 | 2 | 3;
   image: string;
+  level: LevelTypes;
 };
 
-function DifficultyCard({ level, name, image }: DifficultyCardProps) {
+function DifficultyCard({ levelNumber, level, image }: DifficultyCardProps) {
   const navigate = useNavigate();
   const { level: userLevel } = useAuth();
+  const isUnlock =
+    !userLevel || Levels[level] > Levels[userLevel] ? false : true;
+
   return (
     <>
       <LevelCard>
         <CardImg src={image} />
         <ContentWrapper>
-          {level && <LevelLabel>level {level}</LevelLabel>}
-          <LevelName>{name}</LevelName>
-          <PlayButton onClick={() => navigate(`/play/${name}`)}>
+          {level && <LevelLabel>level {levelNumber}</LevelLabel>}
+          <LevelName>{level}</LevelName>
+          <PlayButton onClick={() => navigate(`/play/${level}`)}>
             <FaPlay />
           </PlayButton>
         </ContentWrapper>
-        {level && userLevel !== name && (
+        {!isUnlock ? (
           <LockOverlay>
             <LockIcon />
           </LockOverlay>
-        )}
+        ) : null}
       </LevelCard>
     </>
   );

@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Login, Signup, Main } from "./pages/";
+import { ThemeTypes } from "./common";
+import { Home, Login, Signup, Main } from "./pages";
 import { Start, Lobby, LeaderBoard, NotFound } from "./components";
-import { ThemeProps } from "./hooks/useDarkMode.hook";
 import { PrivateRoute, LevelRoute } from "./helpers";
 
-function AppRoutes({ mode, setMode }: ThemeProps) {
+function AppRoutes({ mode, setMode }: ThemeTypes) {
   return (
     <Routes>
       <Route path="/" element={<Home mode={mode} setMode={setMode} />}>

@@ -1,5 +1,12 @@
 import { NavigateFunction } from "react-router";
 
+export type Theme = "dark" | "light";
+
+export type ThemeTypes = {
+  mode: Theme;
+  setMode: () => void;
+};
+
 // Register
 export type RegisterTypes = {
   name: string;
@@ -14,14 +21,23 @@ export type LoginTypes = {
   password: string;
 };
 
-// Difficulty or Level Types
-export type DifficultyTypes = {
-  Rookie: string;
-  Skillful: string;
-  Expert: string;
+// Level Types
+export const Levels = {
+  Rookie: 1,
+  Skillful: 2,
+  Expert: 3,
+} as const;
+
+export type LevelTypes = keyof typeof Levels;
+
+export type User = {
+  id: string;
+  token: string;
+  name: string;
+  level: LevelTypes | "";
+  authenticated?: boolean;
 };
 
-// Gameplay
 export type QuestionType = {
   id: string;
   statement: string;
@@ -33,40 +49,32 @@ export type SprintType = {
   userName: string;
   points: number;
   time: string;
-  level: keyof DifficultyTypes;
+  level: LevelTypes;
 };
 
 export type QuizType = {
   id: string;
-  level: keyof DifficultyTypes | "";
+  level: LevelTypes | "";
   questions: QuestionType[] | [];
   leaderBoard: SprintType[] | [];
 };
 
-// User
-export type User = {
-  id: string;
-  token: string;
-  name: string;
-  level: string;
-  authenticated?: boolean;
+// Gameplay
+
+export type GamePlayTypes = {
+  readonly [property in LevelTypes]: LevelInfoTypes;
 };
 
-// DashBoard
-export type DashBoardTypes = DifficultyTypes & {
-  Profile?: string;
+export type GamePlayStateType = {
+  questions: QuestionType[];
 };
 
 // Level instructions
 export type LevelInfoTypes = {
-  level?: 1 | 2 | 3;
+  levelNumber?: 1 | 2 | 3;
   image: string;
   description?: string;
   instructions?: string[];
-};
-
-export type GamePlayTypes = {
-  readonly [property in keyof DashBoardTypes]: LevelInfoTypes;
 };
 
 // Auth Types
@@ -79,12 +87,7 @@ export type AuthTypes = {
 export type AuthResponse = {
   success: boolean;
   message: string;
-  user: {
-    id: string;
-    name: string;
-    token: string;
-    level: keyof DifficultyTypes;
-  };
+  user: User;
 };
 
 export type ServerError = {
