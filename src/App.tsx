@@ -3,7 +3,7 @@ import GlobalStyle from "./styles/global.styles";
 import { lightTheme, darkTheme } from "./styles/themes.styles";
 
 import { AppRoutes } from "./AppRoutes";
-import { useDarkMode } from "./hooks/useDarkMode.hook";
+import { useDarkMode } from "./hooks";
 
 function App() {
   const [theme, toggleTheme] = useDarkMode();

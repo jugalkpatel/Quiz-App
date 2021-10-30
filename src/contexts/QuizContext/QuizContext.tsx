@@ -5,7 +5,6 @@ import { QuizType } from "../../common";
 export type QuizContextType = QuizType & {
   isLoading: boolean;
   error: string;
-  setQuiz: React.Dispatch<React.SetStateAction<QuizType>>;
 };
 
 const initialQuizValues: QuizContextType = {
@@ -15,7 +14,6 @@ const initialQuizValues: QuizContextType = {
   leaderBoard: [],
   isLoading: false,
   error: "",
-  setQuiz: () => null,
 };
 
 const QuizContext = createContext(initialQuizValues);
