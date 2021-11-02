@@ -61,7 +61,7 @@ export type QuizType = {
 
 // Gameplay
 
-export type GamePlayTypes = {
+export type QuizDescTypes = {
   readonly [property in LevelTypes]: LevelInfoTypes;
 };
 

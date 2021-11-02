@@ -2,9 +2,9 @@ import beginner from "../assets/beginner.svg";
 import intermediate from "../assets/intermediate.svg";
 import expert from "../assets/expert.svg";
 
-import { GamePlayTypes } from "../common";
+import { QuizDescTypes } from "../common";
 
-const dashboardData: GamePlayTypes = {
+const dashboardData: QuizDescTypes = {
   Rookie: {
     levelNumber: 1,
     image: beginner,
