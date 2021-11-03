@@ -75,6 +75,7 @@ const NextButton = styled.button`
   border: 2px solid ${({ theme }) => theme.border};
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   color: ${({ theme }) => theme.tertiary};
+  cursor: pointer;
 
   @media (min-width: 768px) {
     &:hover {
@@ -94,6 +95,7 @@ const BackButton = styled.button`
   background-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   color: ${({ theme }) => theme.tertiary};
+  cursor: pointer;
 
   @media (min-width: 768px) {
     &:hover {
