@@ -18,6 +18,14 @@ const QuizProvider: React.FC = ({ children }) => {
   );
 };
 
-const useQuiz = () => useContext(QuizContext);
+const useQuiz = () => {
+  const context = useContext(QuizContext);
+
+  if (!context) {
+    throw Error("Context Values should not be null");
+  }
+
+  return context;
+};
 
 export { QuizProvider, useQuiz };

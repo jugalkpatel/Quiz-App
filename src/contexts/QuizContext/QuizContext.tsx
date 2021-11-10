@@ -7,15 +7,6 @@ export type QuizContextType = QuizType & {
   error: string;
 };
 
-const initialQuizValues: QuizContextType = {
-  id: "",
-  level: "",
-  questions: [],
-  leaderBoard: [],
-  isLoading: false,
-  error: "",
-};
-
-const QuizContext = createContext(initialQuizValues);
+const QuizContext = createContext<QuizContextType | null>(null);
 
 export { QuizContext };

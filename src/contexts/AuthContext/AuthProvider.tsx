@@ -16,6 +16,7 @@ const AuthProvider: React.FC = ({ children }) => {
     level: "",
   };
 
+  // TODO: Seperate out localstorage code
   // used useState because i'm getting all data from api at same time
   const [authCredentials, setAuthCredentials] = useState<User>(() => {
     try {
@@ -56,6 +57,14 @@ const AuthProvider: React.FC = ({ children }) => {
   );
 };
 
-const useAuth = () => useContext(AuthContext);
+const useAuth = () => {
+  const context = useContext(AuthContext);
+
+  if(!context) {
+    throw Error("Context values should not be null");
+  }
+  
+  return context;
+};
 
 export { useAuth, AuthProvider };
