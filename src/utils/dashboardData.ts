@@ -15,6 +15,7 @@ const dashboardData: QuizDescTypes = {
       "there are total 10 questions",
       "1 point for every right answer",
       "exit from quiz results in zero points in total",
+      "once you select option it can't be modified"
     ],
   },
   Skillful: {
@@ -22,14 +23,23 @@ const dashboardData: QuizDescTypes = {
     image: intermediate,
     description:
       "this quiz has been designed to test your knowledge about important and helpful commands and programs often executed by intermediate Linux users. ",
-    instructions: [""],
+    instructions: [
+      "30 seconds to answer each question",
+      "there are total 10 questions 1 point for every right answer",
+      "exit from quiz results in zero points in total",
+    ],
   },
   Expert: {
     levelNumber: 3,
     image: expert,
     description:
       "this quiz is designed to test your knowledge about  Linux Systems installs, configurations, and maintains assigned server operating system(s).",
-    instructions: [""],
+    instructions: [
+      "30 seconds to answer each question",
+      "there are total 10 quetsions 1 pint for every right answer",
+      "negative marking - 1 point deducted from total for each wrong answer",
+      "exit from quiz results in zero points in total",
+    ],
   },
 };
 
