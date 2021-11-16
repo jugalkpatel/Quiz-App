@@ -52,21 +52,31 @@ const Input = styled(Field)`
   border-radius: 0.3rem;
 `;
 
-const SubmitButton = styled.button.attrs(() => ({
-  type: "submit",
-}))`
+const PrimaryButton = styled.button`
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: ${({ theme }) => theme.tertiary};
+  justify-content: center;
+
   color: ${({ theme }) => theme.primary};
-  border: 0;
   font-family: ${primaryFont};
   font-size: 1rem;
+  font-weight: 600;
+
+  background-color: ${({ theme }) => theme.tertiary};
+
+  border: 1px solid ${({ theme }) => theme.tertiary};
+  border-radius: 0.3rem;
+
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+`;
+
+const SubmitButton = styled(PrimaryButton).attrs(() => ({
+  type: "submit",
+}))`
   width: 100%;
   margin: 0.5rem 0;
-  cursor: pointer;
 `;
 
 const RowContainer = styled.article`
@@ -131,6 +141,7 @@ export {
   Label,
   SubText,
   Input,
+  PrimaryButton,
   SubmitButton,
   RowContainer,
   InputWrapper,

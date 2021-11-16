@@ -6,6 +6,7 @@ import {
   primaryFont,
   SubText,
   Label,
+  PrimaryButton,
 } from "../../styles/common.styles";
 
 const LobbyHeader = styled(BigText)`
@@ -34,20 +35,9 @@ const Instruction = styled.li`
   font-size: 1rem;
 `;
 
-const Play = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.tertiary};
-  font-family: ${primaryFont};
-  font-size: 1rem;
-  padding: 0.5rem;
-  color: ${({ theme }) => theme.primary};
-  font-weight: 600;
+const Play = styled(PrimaryButton)`
   margin: 1rem 0;
-  cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.tertiary};
-  border-radius: 0.3rem;
+
   @media (min-width: 768px) {
     width: 100%;
   }
