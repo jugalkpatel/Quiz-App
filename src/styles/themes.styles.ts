@@ -7,7 +7,7 @@ export const lightTheme: DefaultTheme = {
   border: "#D4D8E8",
   label: "#727272",
   valid: "#078D2C",
-  invalid: "#CD3A11",
+  invalid: "#CD1111",
 };
 
 export const darkTheme: DefaultTheme = {
@@ -17,5 +17,5 @@ export const darkTheme: DefaultTheme = {
   border: "#B3B3B3",
   label: "#AAAAAA",
   valid: "#078D2C",
-  invalid: "#CD3A11",
+  invalid: "#CD1111",
 };
