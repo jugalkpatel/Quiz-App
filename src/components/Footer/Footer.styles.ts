@@ -11,11 +11,15 @@ const bgColor = "#000";
 const textColor = "#E4E6EB";
 
 const FooterContainer = styled.article`
-  background-color: ${bgColor};
-  color: ${textColor};
-  font-size: 0.8rem;
   flex-shrink: 0;
+
+  background-color: ${bgColor};
+
+  font-size: 0.8rem;
+  color: ${textColor};
+
   margin-top: auto;
+
   z-index: ${zindex_one};
 `;
 
@@ -28,22 +32,26 @@ const FooterContent = styled(WidthContainer)`
 const FooterText = styled.span`
   display: flex;
   align-items: center;
-  font-family: ${primaryFont};
 
   font-size: 0.8rem;
+  font-family: ${primaryFont};
 `;
 
 const CodeIcon = styled(HiCode)`
   font-size: 1rem;
+
   margin: 0 0.5rem;
 `;
 
 const LinkButton = styled.a.attrs((_) => ({ target: "_blank" }))`
   display: flex;
   align-items: center;
-  text-decoration: none;
+
   color: ${textColor};
+
   margin: 0 0.1rem;
+
+  text-decoration: none;
 
   @media (min-width: 568px) {
     margin: 0 0.3rem;

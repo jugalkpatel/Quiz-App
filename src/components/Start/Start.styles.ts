@@ -21,15 +21,22 @@ const BackButton = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
-  color: ${({ theme }) => theme.tertiary};
+
   width: fit-content;
-  border: 0;
+
+  background-color: transparent;
+
   font-size: 1.3rem;
+  font-family: ${primaryFont};
+  color: ${({ theme }) => theme.tertiary};
+
   padding: 0.5rem;
   padding-left: 0;
-  font-family: ${primaryFont};
+
+  border: 0;
+
   cursor: pointer;
+
   text-decoration: none;
 `;
 
@@ -45,6 +52,7 @@ const StartContainer = styled(WidthContainer)`
 
 const TabContainer = styled(RowContainer)`
   border-bottom: 1px solid ${({ theme }) => theme.border};
+
   margin: 1rem 0;
 `;
 
@@ -54,14 +62,17 @@ const Tab = styled(NavLink).attrs(({ theme }) => ({
     borderBottom: isActive ? `2px solid ${theme.tertiary}` : "none",
   }),
 }))`
-  color: ${({ theme }) => theme.tertiary};
-  text-decoration: none;
-  padding: 1rem;
   font-family: ${primaryFont};
+  color: ${({ theme }) => theme.tertiary};
+
+  padding: 1rem;
+
+  text-decoration: none;
 `;
 
 const BackIcon = styled(FaChevronLeft)`
   font-size: 1rem;
+
   margin-right: 0.5rem;
 `;
 

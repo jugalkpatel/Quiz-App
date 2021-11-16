@@ -10,14 +10,19 @@ import {
 } from "../../styles/common.styles";
 
 const NavbarContainer = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.tertiary};
   flex-shrink: 0;
+  position: relative;
+
   background-color: ${({ theme }) => theme.primary};
+
+  color: ${({ theme }) => theme.tertiary};
+
+  border-bottom: 1px solid ${({ theme }) => theme.border};
+
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
   z-index: ${zindex_one};
-  position: relative;
 `;
 
 const NavbarContent = styled(WidthContainer)`
@@ -28,6 +33,7 @@ const NavbarContent = styled(WidthContainer)`
 
 const Menu = styled(CgMenu)`
   font-size: 1.5rem;
+
   cursor: pointer;
 
   @media (min-width: 568px) {
@@ -38,25 +44,34 @@ const Menu = styled(CgMenu)`
 const DarkButton = styled.button`
   display: flex;
   align-items: center;
+
+  background: transparent;
+
   font-size: 2rem;
   color: ${({ theme }) => theme.tertiary};
-  background: transparent;
+
   border: 0;
+
+  cursor: pointer;
+
   @media (min-width: 568px) {
     position: absolute;
     top: 0.7rem;
     right: 0;
-    padding: 0 1rem;
+
     font-size: 1.6rem;
+
+    padding: 0 1rem;
   }
 
   @media (min-width: 568px) and (max-width: 787px) {
-    top: 1.1rem;
+    top: 0.9rem;
   }
 `;
 
 const ButtonContainer = styled(RowContainer)`
   align-items: center;
+
   font-size: ${primaryFont};
 
   @media (max-width: 568px) {
@@ -70,34 +85,40 @@ const ButtonContainer = styled(RowContainer)`
 
 const UserName = styled.h5`
   font-size: 1rem;
-  color: ${({ theme }) => theme.tertiary};
   font-family: ${primaryFont};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 const Level = styled.p`
-  padding: 0;
-  margin: 0;
-  color: ${({ theme }) => theme.tertiary};
   font-size: 0.7rem;
   font-family: ${primaryFont};
+  color: ${({ theme }) => theme.tertiary};
+
+  margin: 0;
+  padding: 0;
 `;
 
 const NavUserIcon = styled(TiUser)`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.tertiary};
+
   margin-left: 0.5rem;
 `;
 
 const LoginButton = styled.button`
-  padding: 0.3rem 1rem;
-  border: 0;
-  padding: 0;
-  margin: 0 1rem;
-  color: ${({ theme }) => theme.tertiary};
   background-color: transparent;
-  font-weight: 800;
-  font-family: ${primaryFont};
+
   font-size: 1rem;
+  font-family: ${primaryFont};
+  font-weight: 800;
+  color: ${({ theme }) => theme.tertiary};
+
+  margin: 0 1rem;
+
+  padding: 0.3rem 1rem;
+
+  border: 0;
+
   cursor: pointer;
 
   @media (max-width: 568px) {

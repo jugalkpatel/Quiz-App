@@ -23,9 +23,9 @@ const OptionContainer = styled.section`
 `;
 
 const Option = styled.button`
-  color: ${({ theme }) => theme.tertiary};
-  font-family: ${secondaryFont};
   font-size: 1rem;
+  font-family: ${secondaryFont};
+  color: ${({ theme }) => theme.tertiary};
 
   padding: 1rem;
 

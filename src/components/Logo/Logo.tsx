@@ -9,7 +9,6 @@ type LogoProps = {
 };
 
 function Logo({ mode }: LogoProps) {
-  console.log(mode);
   return (
     <>
       <StyledLink to="/">

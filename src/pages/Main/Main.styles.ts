@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { primaryFont } from "../../styles/common.styles";
 
 const ComponentWrapper = styled.article`
-  padding: 2rem 1rem;
-
   background-color: ${({ theme }) => theme.primary};
+
+  padding: 2rem 1rem;
   @media (min-width: 960px) {
     width: 960px;
     margin: 0 auto;
@@ -13,11 +13,13 @@ const ComponentWrapper = styled.article`
 `;
 
 const PageHeader = styled.article`
-  margin: 0;
-  font-family: ${primaryFont};
-  margin: 0 1rem 1rem 1rem;
   display: flex;
   justify-content: space-between;
+
+  font-family: ${primaryFont};
+
+  margin: 0;
+  margin: 0 1rem 1rem 1rem;
 `;
 
 const CardWrapper = styled.article`

@@ -6,14 +6,19 @@ import { primaryFont, RowContainer, SubText } from "../../styles/common.styles";
 const LevelCard = styled.article`
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  font-family: ${primaryFont};
-  border: 1px solid ${({ theme }) => theme.border};
-  padding: 1rem;
+
   position: relative;
 
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-  border-radius: 1rem;
+  font-family: ${primaryFont};
+
   margin: 1rem;
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+  border: 1px solid ${({ theme }) => theme.border};
+
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 
   @media (min-width: 568px) {
     grid-template-columns: 1fr 1.5fr;
@@ -24,6 +29,7 @@ const ContentWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   padding: 0 1rem;
 `;
 
@@ -34,15 +40,22 @@ const CardImg = styled.img`
 const PlayButton = styled.button`
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  padding: 0.5rem;
+
+  background-color: transparent;
+
   width: fit-content;
+
+  font-size: 1rem;
+  color: ${({ theme }) => theme.tertiary};
+
+  margin: 0.5rem 0;
+
+  padding: 0.5rem;
+
   border-radius: 40%;
   border: 3px solid ${({ theme }) => theme.tertiary};
-  background-color: transparent;
-  margin: 0.5rem 0;
+
   cursor: pointer;
-  color: ${({ theme }) => theme.tertiary};
 
   @media (min-width: 568px) {
     &:hover {
@@ -53,12 +66,16 @@ const PlayButton = styled.button`
 `;
 
 const LockOverlay = styled(RowContainer)`
-  position: absolute;
   justify-content: center;
   align-items: center;
+
   width: 100%;
   height: 100%;
+
   background-color: rgba(158, 158, 158, 0.2);
+
+  position: absolute;
+
   border-radius: 1rem;
 `;
 
@@ -72,9 +89,10 @@ const LevelLabel = styled(SubText)`
 `;
 
 const LevelName = styled.p`
-  margin: 0;
   font-weight: 800;
   font-size: 1.5rem;
+
+  margin: 0;
 `;
 
 export {

@@ -6,13 +6,16 @@ import { Label, primaryFont, Input } from "../../styles/common.styles";
 const InputLabel = styled(Label)`
   font-size: 1.5rem;
   font-family: ${primaryFont};
+
   margin-bottom: 0.1rem;
 `;
 
 const ShowPassword = styled.button`
-  border: 0;
   background: transparent;
+
   padding: 0 1rem;
+
+  border: 0;
   outline-color: ${({ theme }) => theme.tertiary};
 `;
 
@@ -31,6 +34,7 @@ const Hide = styled(BsFillEyeSlashFill)`
 const Error = styled.span`
   color: ${({ theme }) => theme.invalid};
   font-family: ${primaryFont};
+
   padding: 0.2rem;
 `;
 

@@ -14,14 +14,17 @@ const LobbyHeader = styled(BigText)`
 `;
 
 const LobbyDesc = styled(SubText)`
-  margin: 0.7rem 0;
-  font-family: ${primaryFont};
-  text-align: justify;
   font-size: 1.2rem;
+  font-family: ${primaryFont};
+
+  margin: 0.7rem 0;
+
+  text-align: justify;
 `;
 
 const InstructionTitle = styled(Label)`
   font-size: 1.5rem;
+
   margin: 0.5rem 0;
 `;
 
@@ -30,9 +33,10 @@ const InstructionList = styled.ul`
 `;
 
 const Instruction = styled.li`
-  margin: 0.5rem 0;
   font-family: ${primaryFont};
   font-size: 1rem;
+
+  margin: 0.5rem 0;
 `;
 
 const Play = styled(PrimaryButton)`

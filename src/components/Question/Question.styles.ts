@@ -52,8 +52,8 @@ const QuestionFooter = styled.article`
 `;
 
 const NextButton = styled.button`
-  font-family: ${secondaryFont};
   font-size: 1rem;
+  font-family: ${secondaryFont};
   color: ${({ theme }) => theme.tertiary};
 
   padding: 0.5rem 1rem;

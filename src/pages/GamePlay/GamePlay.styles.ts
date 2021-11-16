@@ -53,8 +53,8 @@ const GamePlayFooter = styled.article`
 const NextButton = styled.button`
   background-color: transparent;
 
-  font-family: ${primaryFont};
   font-size: 1.5rem;
+  font-family: ${primaryFont};
 
   padding: 0.5rem 1rem;
 

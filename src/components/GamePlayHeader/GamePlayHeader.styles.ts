@@ -9,27 +9,39 @@ const GamePlayHeaderContainer = styled.article`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   font-family: ${secondaryFont};
   color: ${({ theme }) => theme.tertiary};
+
+  margin-bottom: 1rem;
+
   padding: 0.5rem;
+
   border: 1px solid ${({ theme }) => theme.border};
   background-color: ${({ theme }) => theme.primary};
   border-radius: 10px;
-  margin-bottom: 1rem;
+
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 `;
 
 const QuitButton = styled.button`
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  padding: 0.5rem;
+
   height: fit-content;
   width: fit-content;
+
   background-color: transparent;
-  margin: 0;
-  border: 0;
+
+  font-size: 1rem;
   color: ${({ theme }) => theme.tertiary};
+
+  margin: 0;
+
+  padding: 0.5rem;
+
+  border: 0;
+
   cursor: pointer;
 `;
 
