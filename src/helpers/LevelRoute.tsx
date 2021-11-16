@@ -9,7 +9,7 @@ function LevelRoute({ children }: { children: JSX.Element }) {
   const { pathname } = useLocation();
   const requestedLevel = obtainLevel(pathname);
 
-  if (!userLevel) {
+  if (!userLevel || !Levels[requestedLevel]) {
     return <Navigate to="/" />;
   }
 
