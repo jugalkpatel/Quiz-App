@@ -21,10 +21,8 @@ function Lobby() {
 
   const { levelNumber, description, instructions } = dashboardData[level];
 
-  const { isLoading, error, questions } = useQuiz();
+  const { questions, isLoading, error } = useQuiz();
   const navigate = useNavigate();
-
-  console.log({ questions });
 
   const disable = isLoading || (error as unknown as boolean);
   return (

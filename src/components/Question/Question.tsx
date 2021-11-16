@@ -3,40 +3,49 @@ import {
   QuestionContainer,
   QuestionNumberLabel,
   QuestionStatementLabel,
-  OptionContainer,
-  Option,
   QuestionFooter,
   NextButton,
   BackButton,
 } from "./Question.styles";
 
-function Question() {
-  const question_number = 6;
+import { ACTIONS } from "../../helpers";
+import { ACTIONTYPE } from "../../hooks/useGamePlay/useGamePlay.hook";
+
+
+export type QUESTION_ACTIONTYPE =
+  | { type: typeof ACTIONS.NEXT_QUESTION }
+  | { type: typeof ACTIONS.PREV_QUESTION };
+
+export type QuestionProps = {
+  children: React.ReactNode;
+  statement: string;
+  questionNumber: number;
+  dispatch: React.Dispatch<ACTIONTYPE>;
+};
+
+function Question({
+  children,
+  statement,
+  dispatch,
+  questionNumber,
+}: QuestionProps) {
   return (
-    <QuestionContainer>
-      <QuestionNumberLabel>
-        Question {question_number} of 10
-      </QuestionNumberLabel>
+      <QuestionContainer>
+        <QuestionNumberLabel>
+          Question {questionNumber + 1} of 10
+        </QuestionNumberLabel>
 
-      <QuestionStatementLabel>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores aut non
-        in enim soluta dolore impedit facilis nihi distinctio velit!
-      </QuestionStatementLabel>
-
-      <OptionContainer>
-        <Option>Lorem ipsum dolor sit amet</Option>
-        <Option>Lorem ipsum dolor sit amet</Option>
-        <Option>Lorem ipsum dolor sit amet</Option>
-        <Option>Lorem ipsum dolor sit amet</Option>
-      </OptionContainer>
-
-      <QuestionFooter>
-        <BackButton>
-          <IoMdArrowBack />
-        </BackButton>
-        <NextButton>Next</NextButton>
-      </QuestionFooter>
-    </QuestionContainer>
+        <QuestionStatementLabel>{statement}</QuestionStatementLabel>
+        {children}
+        <QuestionFooter>
+          <BackButton onClick={() => dispatch({ type: ACTIONS.PREV_QUESTION })}>
+            <IoMdArrowBack />
+          </BackButton>
+          <NextButton onClick={() => dispatch({ type: ACTIONS.NEXT_QUESTION })}>
+            Next
+          </NextButton>
+        </QuestionFooter>
+      </QuestionContainer>
   );
 }
 

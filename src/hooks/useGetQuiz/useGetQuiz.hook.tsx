@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
-import { QuizType, ServerError } from "../common";
+import { QuizType, ServerError } from "../../common";
 
 export type QuizResponse = {
   success: boolean;

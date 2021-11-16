@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { ThemeTypes } from "./common";
-import { Home, Login, Signup, Main, GamePlay } from "./pages";
+import { Home, Login, Signup, Main } from "./pages";
 import { Start, Lobby, LeaderBoard, NotFound } from "./components";
 import { PrivateRoute, LevelRoute, GamePlayRoute } from "./helpers";
 
@@ -33,14 +33,7 @@ function AppRoutes({ mode, setMode }: ThemeTypes) {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-      <Route
-        path="/play/:level/questions"
-        element={
-          <GamePlayRoute>
-            <GamePlay />
-          </GamePlayRoute>
-        }
-      />
+      <Route path="/play/:level/questions" element={<GamePlayRoute />} />
     </Routes>
   );
 }

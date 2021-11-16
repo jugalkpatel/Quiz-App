@@ -69,6 +69,28 @@ export type GamePlayStateType = {
   questions: QuestionType[];
 };
 
+export type RecordAnswerType = {
+  isVisited: boolean;
+  userAnswer: number;
+};
+
+export type AttendedType = {
+  [key: number]: RecordAnswerType;
+};
+
+export type QuestionStateType = {
+  questionNumber: number;
+  attended?: AttendedType;
+};
+
+export type GamePlayTypes = {
+  questionNumber: number;
+  points: number;
+  negativePoints: number;
+  isSubmitted: boolean;
+  attended?: AttendedType;
+};
+
 // Level instructions
 export type LevelInfoTypes = {
   levelNumber?: 1 | 2 | 3;
