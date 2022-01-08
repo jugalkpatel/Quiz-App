@@ -1,90 +1,111 @@
 import axios from "axios";
-import { register } from "..";
 
-import { axiosInstance } from "../../helpers/axios";
+import { LoginTypes, RegisterTypes } from "../../common";
 
-jest.mock("../../helpers/axios");
+import { authenticate } from "./authenticate.service";
 
-const mockedAxios = axiosInstance as jest.Mocked<typeof axiosInstance>;
-const mockedIsAxiosError = jest.spyOn(axios, "isAxiosError");
+const { isAxiosError } = axios;
+jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+const mockedIsAxiosError = axios.isAxiosError as jest.MockedFunction<
+  typeof isAxiosError
+>;
 
-describe("register", () => {
-  it("should register successfully", async () => {
-    mockedAxios.post.mockResolvedValue({
+describe("testing authentication service for login and register", () => {
+  const exampleResponseData = {
+    id: "123456789",
+    name: "bob",
+    token: "348sdf030434xdfs038943403",
+    level: "Expert",
+  };
+
+  it("login user successfully", async () => {
+    mockedAxios.post.mockResolvedValueOnce({
       data: {
         success: true,
-        message: "registered successfully",
-        user: {
-          id: "123456789",
-          name: "jugal patel",
-        },
+        message: "Authenticated Successfully",
+        user: exampleResponseData,
       },
     });
 
-    const user = await register({
-      name: "Jugal Patel",
-      email: "ptjimmy99@gmail.com",
-      password: "Abcd1234",
-      confirmPassword: "Abcd1234",
-    });
+    const loginPayload: LoginTypes = {
+      email: "bob@gmail.com",
+      password: "foobar12345",
+    };
 
-    expect(user).toEqual({
+    const response = await authenticate("/auth/login", loginPayload);
+
+    expect(mockedAxios.post).toHaveBeenCalledTimes(1);
+    expect(response).toEqual({
       success: true,
-      message: "registered successfully",
-      user: {
-        id: "123456789",
-        name: "jugal patel",
-      },
+      message: "Authenticated Successfully",
+      user: exampleResponseData,
     });
-    expect(mockedAxios.post).toHaveBeenCalledTimes(1);
   });
 
-  it("should fail at registration with axios error", async () => {
-    mockedAxios.post.mockRejectedValueOnce({
-      response: {
-        data: {
-          success: false,
-          message: "some random message",
-        },
+  it("register user successfully", async () => {
+    mockedAxios.post.mockResolvedValueOnce({
+      data: {
+        success: true,
+        message: "Registered Successfully",
+        user: exampleResponseData,
       },
     });
 
-    mockedIsAxiosError.mockImplementationOnce((_) => true);
+    const registerPayload: RegisterTypes = {
+      email: "bob@gmail.com",
+      name: "bob",
+      password: "Foobar12345",
+      confirmPassword: "Foobar12345",
+    };
 
-    jest.fn().mockImplementation((_) => true);
+    const response = await authenticate("/auth/register", registerPayload);
 
-    const user = await register({
-      name: "Jugal Patel",
-      email: "ptjimmy99@gmail.com",
-      password: "Abcd1234",
-      confirmPassword: "Abcd1234",
-    });
-
-    expect(user).toEqual({
-      success: false,
-      message: "some random message",
-    });
     expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockedIsAxiosError).toHaveBeenCalledTimes(1);
+    expect(response).toEqual({
+      success: true,
+      message: "Registered Successfully",
+      user: exampleResponseData,
+    });
   });
 
-  it("should fail at registration with default error message", async () => {
-    mockedAxios.post.mockRejectedValueOnce({
+  it("normal login error", async () => {
+    const exampleResponseError = {
       success: false,
       message: "something went wrong!",
-    });
+    };
 
-    const user = await register({
-      name: "jugal patel",
-      email: "ptjimmy99@gmail.com",
-      password: "abcd1234",
-      confirmPassword: "abcd1234",
-    });
+    mockedAxios.post.mockRejectedValueOnce(exampleResponseError);
 
-    expect(user).toEqual({ success: false, message: "something went wrong!" });
+    const loginPayload: LoginTypes = {
+      email: "bob@gmail.com",
+      password: "foobar12345",
+    };
+    const response = await authenticate("/auth/login", loginPayload);
     expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockedIsAxiosError).toHaveBeenCalledTimes(1);
+    expect(response).toEqual(exampleResponseError);
+  });
+
+  it("axios login error", async () => {
+    const exampleAxiosError = {
+      success: false,
+      message: "example message text",
+    };
+
+    const loginPayload: LoginTypes = {
+      email: "bob@gmail.com",
+      password: "foobar12345",
+    };
+
+    mockedAxios.post.mockRejectedValueOnce({
+      response: { data: exampleAxiosError },
+    });
+
+    mockedIsAxiosError.mockImplementationOnce(() => true);
+    const response = await authenticate("/auth/login", loginPayload);
+
+    expect(mockedAxios.post).toHaveBeenCalledTimes(1);
+    expect(mockedIsAxiosError).toHaveBeenCalled();
+    expect(response).toEqual(exampleAxiosError);
   });
 });
-
-export {};
