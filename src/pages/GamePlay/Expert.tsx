@@ -5,7 +5,7 @@ import {
   GamePlayContent,
   GamePlayWrapper,
   MaxWidthWrapper,
-} from "../GamePlay/GamePlay.styles";
+} from "./GamePlay.styles";
 
 export type ExpertProps = {
   questions: QuestionType[];
@@ -18,7 +18,7 @@ function Expert({ questions }: ExpertProps) {
     <MaxWidthWrapper>
       <h1>Hello, I'm Expert</h1>
       <GamePlayWrapper>
-        <GamePlayHeader />
+        {/* <GamePlayHeader /> */}
         <GamePlayContent></GamePlayContent>
       </GamePlayWrapper>
     </MaxWidthWrapper>

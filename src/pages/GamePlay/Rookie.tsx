@@ -1,18 +1,14 @@
-import { QuestionType } from "../../common";
-import {
-  GamePlayHeader,
-  Question,
-  QuestionNav,
-  Options,
-} from "../../components";
-import { ACTIONS } from "../../helpers";
-import { useGamePlay } from "../../hooks";
 import {
   FinishButton,
   GamePlayContent,
   GamePlayWrapper,
   MaxWidthWrapper,
-} from "../GamePlay/GamePlay.styles";
+} from "./GamePlay.styles";
+
+import { QuestionType } from "../../common";
+import { GamePlayHeader, Question, QuestionNav } from "../../components";
+import { useGamePlay } from "../../hooks";
+import { ACTIONS } from "../../helpers";
 
 export type RookieProps = {
   questions: QuestionType[];
@@ -20,35 +16,23 @@ export type RookieProps = {
 
 function Rookie({ questions }: RookieProps) {
   const { state, dispatch } = useGamePlay(questions);
-
-  const attended =
-    state?.attended && state.attended[state.questionNumber]
-      ? state.attended[state.questionNumber]
-      : null;
-
   return (
     <MaxWidthWrapper>
       <GamePlayWrapper>
-        <GamePlayHeader />
         <GamePlayContent>
-          <Question
-            statement={questions[state.questionNumber].statement}
+          <GamePlayHeader
             questionNumber={state.questionNumber}
             dispatch={dispatch}
-          >
-            <Options
-              question={questions[state.questionNumber]}
-              questionNumber={state.questionNumber}
-              dispatch={dispatch}
-              attended={attended}
-              isSubmitted={state.isSubmitted}
-            />
-          </Question>
+          />
+
+          <Question details={state} questions={questions} dispatch={dispatch} />
+
           <QuestionNav
             questionNumber={state.questionNumber}
             questions={questions}
             dispatch={dispatch}
           />
+
           <FinishButton
             onClick={() => dispatch({ type: ACTIONS.FINISH_ATTEMPT })}
           >

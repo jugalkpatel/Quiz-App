@@ -28,18 +28,18 @@ const MaxWidthWrapper = styled.article`
 const GamePlayContent = styled.article`
   display: grid;
   grid-template-areas:
+    "question_timebar"
     "question_nav"
     "question"
     "finish_btn";
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-
   margin-bottom: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: 2fr 0.7fr;
-    grid-template-rows: 0.7fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
     grid-template-areas:
+      "question_timebar question_timebar"
       "question question_nav"
       "question finish_btn";
   }
@@ -78,7 +78,6 @@ const BackButton = styled.button`
 
 const FinishButton = styled(PrimaryButton)`
   grid-area: finish_btn;
-
   margin: 1rem 0;
 
   @media (min-width: 768px) {

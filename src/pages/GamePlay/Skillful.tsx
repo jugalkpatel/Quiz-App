@@ -10,7 +10,7 @@ import {
   GamePlayContent,
   GamePlayWrapper,
   MaxWidthWrapper,
-} from "../GamePlay/GamePlay.styles";
+} from "./GamePlay.styles";
 
 export type SkillfulProps = {
   questions: QuestionType[];
@@ -26,9 +26,9 @@ function Skillful({ questions }: SkillfulProps) {
   return (
     <MaxWidthWrapper>
       <GamePlayWrapper>
-        <GamePlayHeader />
+        {/* <GamePlayHeader /> */}
         <GamePlayContent>
-          <Question
+          {/* <Question
             statement={questions[state.questionNumber].statement}
             questionNumber={state.questionNumber}
             dispatch={dispatch}
@@ -40,7 +40,7 @@ function Skillful({ questions }: SkillfulProps) {
               attended={attended}
               isSubmitted={state.isSubmitted}
             />
-          </Question>
+          </Question> */}
           <QuestionNav
             questionNumber={state.questionNumber}
             questions={questions}
