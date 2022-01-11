@@ -5,29 +5,47 @@ import {
   MaxWidthWrapper,
 } from "./GamePlay.styles";
 
-import { QuestionType } from "../../common";
+import { LevelTypes, QuestionType } from "../../common";
 import { GamePlayHeader, Question, QuestionNav } from "../../components";
 import { useGamePlay } from "../../hooks";
 import { ACTIONS } from "../../helpers";
+import { useEffect } from "react";
 
-export type RookieProps = {
+export type GamePlayProps = {
+  level: LevelTypes;
   questions: QuestionType[];
 };
 
-function Rookie({ questions }: RookieProps) {
+function GamePlay({ level, questions }: GamePlayProps) {
   const { state, dispatch } = useGamePlay(questions);
+
+  useEffect(() => {
+    if (state.negativePoints > 0 && level === "Expert") {
+      dispatch({ type: ACTIONS.FINISH_ATTEMPT });
+    }
+  }, [state.negativePoints, level, dispatch]);
+
   return (
     <MaxWidthWrapper>
       <GamePlayWrapper>
         <GamePlayContent>
           <GamePlayHeader
+            isSubmitted={state.isSubmitted}
+            level={level}
             questionNumber={state.questionNumber}
             dispatch={dispatch}
           />
 
-          <Question details={state} questions={questions} dispatch={dispatch} />
+          <Question
+            level={level}
+            gameState={state}
+            questions={questions}
+            dispatch={dispatch}
+          />
 
           <QuestionNav
+            level={level}
+            isSubmitted={state.isSubmitted}
             questionNumber={state.questionNumber}
             questions={questions}
             dispatch={dispatch}
@@ -44,4 +62,4 @@ function Rookie({ questions }: RookieProps) {
   );
 }
 
-export { Rookie };
+export { GamePlay };

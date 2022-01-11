@@ -1,7 +1,7 @@
 import { useLocation, Navigate } from "react-router-dom";
 
 import { Levels, GamePlayStateType, QuestionType } from "../common";
-import { Expert, Rookie, Skillful } from "../pages";
+import { GamePlay } from "../pages";
 import { obtainLevel } from "../utils";
 
 function checkState(state: GamePlayStateType): QuestionType[] | [] {
@@ -30,14 +30,7 @@ function GamePlayRoute() {
     return <Navigate to="/" />;
   }
 
-  if (path === "Skillful") {
-    return <Skillful questions={questions} />;
-  }
-  if (path === "Expert") {
-    return <Expert questions={questions} />;
-  }
-
-  return <Rookie questions={questions} />;
+  return <GamePlay level={path} questions={questions} />;
 }
 
 export { GamePlayRoute };
