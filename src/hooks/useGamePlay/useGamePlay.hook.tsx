@@ -12,7 +12,7 @@ export type ACTIONTYPE =
       type: typeof ACTIONS.SUBMIT_ANSWER;
       payload: {
         questionNumber: number;
-        userAnswer: number;
+        userAnswerIndex: number;
         isCorrect: boolean;
       };
     }

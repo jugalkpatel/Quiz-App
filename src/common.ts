@@ -71,7 +71,7 @@ export type GamePlayStateType = {
 
 export type RecordAnswerType = {
   isVisited: boolean;
-  userAnswer: number;
+  userAnswerIndex: number;
 };
 
 export type AttendedType = {
