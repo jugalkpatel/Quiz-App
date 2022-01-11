@@ -29,16 +29,20 @@ function gameplayReducer(questions: QuestionType[]) {
             to < 0 || to > questions.length - 1 ? state.questionNumber : to,
         };
       case ACTIONS.SUBMIT_ANSWER:
-        const { questionNumber, userAnswer, isCorrect } = action.payload;
+        const { questionNumber, userAnswerIndex, isCorrect } = action.payload;
         return {
           ...state,
           points: isCorrect ? state.points + 1 : state.points,
+          questionNumber:
+            state.questionNumber < questions.length - 1
+              ? state.questionNumber + 1
+              : state.questionNumber,
           negativePoints: !isCorrect
             ? state.negativePoints + 1
             : state.negativePoints,
           attended: {
             ...state.attended,
-            [questionNumber]: { isVisited: true, userAnswer },
+            [questionNumber]: { isVisited: true, userAnswerIndex },
           },
         };
       case ACTIONS.FINISH_ATTEMPT:
