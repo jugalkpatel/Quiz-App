@@ -6,6 +6,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { secondaryFont } from "../../styles/common.styles";
 
 const GamePlayHeaderContainer = styled.article`
+  grid-area: question_timebar;
   display: flex;
   justify-content: space-between;
   align-items: center;
