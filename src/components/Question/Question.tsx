@@ -8,44 +8,56 @@ import {
   BackButton,
 } from "./Question.styles";
 
-import { ACTIONS } from "../../helpers";
+import { GamePlayTypes, LevelTypes, QuestionType } from "../../common";
+import { Options } from "../../components";
 import { ACTIONTYPE } from "../../hooks/useGamePlay/useGamePlay.hook";
-
+import { ACTIONS } from "../../helpers";
 
 export type QUESTION_ACTIONTYPE =
   | { type: typeof ACTIONS.NEXT_QUESTION }
   | { type: typeof ACTIONS.PREV_QUESTION };
 
 export type QuestionProps = {
-  children: React.ReactNode;
-  statement: string;
-  questionNumber: number;
+  level: LevelTypes;
+  gameState: GamePlayTypes;
+  questions: QuestionType[];
   dispatch: React.Dispatch<ACTIONTYPE>;
 };
 
-function Question({
-  children,
-  statement,
-  dispatch,
-  questionNumber,
-}: QuestionProps) {
-  return (
-      <QuestionContainer>
-        <QuestionNumberLabel>
-          Question {questionNumber + 1} of 10
-        </QuestionNumberLabel>
+function Question({ level, gameState, questions, dispatch }: QuestionProps) {
+  const { questionNumber, isSubmitted, attended } = gameState;
+  const question = questions[questionNumber];
+  const isQuestionAttempted =
+    attended && attended[questionNumber] ? attended[questionNumber] : null;
 
-        <QuestionStatementLabel>{statement}</QuestionStatementLabel>
-        {children}
+  return (
+    <QuestionContainer>
+      <QuestionNumberLabel>
+        Question {questionNumber + 1} of 10
+      </QuestionNumberLabel>
+
+      <QuestionStatementLabel>{question.statement}</QuestionStatementLabel>
+
+      <Options
+        dispatch={dispatch}
+        question={question}
+        questionNumber={questionNumber}
+        attended={isQuestionAttempted}
+        isSubmitted={isSubmitted}
+      />
+
+      {level === "Rookie" || isSubmitted ? (
         <QuestionFooter>
           <BackButton onClick={() => dispatch({ type: ACTIONS.PREV_QUESTION })}>
             <IoMdArrowBack />
           </BackButton>
+
           <NextButton onClick={() => dispatch({ type: ACTIONS.NEXT_QUESTION })}>
             Next
           </NextButton>
         </QuestionFooter>
-      </QuestionContainer>
+      ) : null}
+    </QuestionContainer>
   );
 }
 
