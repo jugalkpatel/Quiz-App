@@ -88,6 +88,7 @@ export type GamePlayTypes = {
   points: number;
   negativePoints: number;
   isSubmitted: boolean;
+  totalTime: number;
   attended?: AttendedType;
 };
 

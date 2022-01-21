@@ -46,7 +46,11 @@ function gameplayReducer(questions: QuestionType[]) {
           },
         };
       case ACTIONS.FINISH_ATTEMPT:
-        return { ...state, isSubmitted: true };
+        return {
+          ...state,
+          isSubmitted: true,
+          totalTime: (Date.now() - state.totalTime) / 1000,
+        };
       default:
         return state;
     }

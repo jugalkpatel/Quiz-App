@@ -23,6 +23,7 @@ function useGamePlay(questions: QuestionType[]) {
     questionNumber: 0,
     points: 0,
     negativePoints: 0,
+    totalTime: Date.now(),
     isSubmitted: false,
   };
   const reducer = gameplayReducer(questions);
