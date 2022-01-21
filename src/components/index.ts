@@ -13,3 +13,4 @@ export { LeaderBoard } from "./LeaderBoard/LoaderBoard";
 export { NotFound } from "./NotFound/NotFound";
 export { Spinner } from "./Spinner/Spinner";
 export { Options } from "./Options/Options";
+export { ExitModal } from "./ExitModal/ExitModal";

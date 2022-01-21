@@ -42,7 +42,7 @@ function Lobby() {
       <Play
         disabled={disable}
         onClick={() =>
-          navigate(`/play/${level}/questions`, { state: { questions } })
+          navigate(`/play/${level}/quiz`, { state: { questions } })
         }
       >
         {isLoading ? <Spinner isLoading={isLoading} size="5px" /> : "start"}

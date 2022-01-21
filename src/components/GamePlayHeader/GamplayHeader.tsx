@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 
 import {
   GamePlayHeaderContainer,
-  QuitButton,
   TimeIcon,
   TimeLabel,
   ScoreLabel,
   ScoreIcon,
-  QuitIcon,
   CommonWrapper,
 } from "./GamePlayHeader.styles";
 
@@ -17,6 +14,7 @@ import { ACTIONTYPE } from "../../hooks/useGamePlay/useGamePlay.hook";
 import { ACTIONS } from "../../helpers";
 
 export type GamePlayHeaderProps = {
+  children: JSX.Element;
   isSubmitted: boolean;
   level: LevelTypes;
   questionNumber: number;
@@ -24,13 +22,13 @@ export type GamePlayHeaderProps = {
 };
 
 function GamePlayHeader({
+  children,
   isSubmitted,
   level,
   questionNumber,
   dispatch,
 }: GamePlayHeaderProps) {
   const [time, setTime] = useState(30);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (level === "Rookie" || isSubmitted) {
@@ -58,9 +56,7 @@ function GamePlayHeader({
 
   return (
     <GamePlayHeaderContainer>
-      <QuitButton onClick={() => navigate(-1)}>
-        <QuitIcon />
-      </QuitButton>
+      {children}
 
       {level !== "Rookie" && (
         <CommonWrapper>

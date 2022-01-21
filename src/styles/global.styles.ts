@@ -4,12 +4,7 @@ import QuickSand from "../fonts/Quicksand-SemiBold.ttf";
 
 const GlobalStyle = createGlobalStyle`
 
-html {
-  height: 100%;
-}
-
 body {
-  min-height: 100%;
   background: ${({ theme }) => theme.secondary};
   color: ${({ theme }) => theme.tertiary};
   transition: all 0.50s linear;
@@ -33,10 +28,9 @@ body {
   src: url(${QuickSand});
 }
 
-
-
 #root {
   height: 100vh;
+  position: relative;
 }
 
 `;
