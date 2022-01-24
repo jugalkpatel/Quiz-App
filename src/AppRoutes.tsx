@@ -2,7 +2,14 @@ import { Routes, Route } from "react-router-dom";
 
 import { ThemeTypes } from "./common";
 import { Home, Login, Signup, Main } from "./pages";
-import { Start, Lobby, LeaderBoard, NotFound, ExitModal } from "./components";
+import {
+  Start,
+  Lobby,
+  LeaderBoard,
+  NotFound,
+  ExitModal,
+  FinishModal,
+} from "./components";
 import { PrivateRoute, LevelRoute, GamePlayRoute } from "./helpers";
 
 function AppRoutes({ mode, setMode }: ThemeTypes) {
@@ -35,6 +42,7 @@ function AppRoutes({ mode, setMode }: ThemeTypes) {
       </Route>
       <Route path="/play/:level/quiz" element={<GamePlayRoute />}>
         <Route path="/play/:level/quiz/exit" element={<ExitModal />} />
+        <Route path="/play/:level/quiz/finish" element={<FinishModal />} />
       </Route>
     </Routes>
   );
