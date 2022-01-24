@@ -1,12 +1,12 @@
 import { QuestionNavigation, NumberLabel } from "./QuestionNav.styles";
 
-import { LevelTypes, QuestionType } from "../../common";
+import { GAME_STATUS, LevelTypes, QuestionType } from "../../common";
 import { ACTIONTYPE } from "../../hooks/useGamePlay/useGamePlay.hook";
 import { ACTIONS } from "../../helpers";
 
 export type QuestionNavProps = {
   level: LevelTypes;
-  isSubmitted: boolean;
+  status: GAME_STATUS;
   questionNumber: number;
   questions: QuestionType[];
   dispatch: React.Dispatch<ACTIONTYPE>;
@@ -14,13 +14,13 @@ export type QuestionNavProps = {
 
 function QuestionNav({
   level,
-  isSubmitted,
+  status,
   questionNumber,
   questions,
   dispatch,
 }: QuestionNavProps) {
   const handleClick = (index: number) => {
-    return level !== "Rookie" && !isSubmitted
+    return level !== "Rookie" && status === "PLAYING"
       ? null
       : dispatch({ type: ACTIONS.REDIRECT_TO, payload: { to: index } });
   };

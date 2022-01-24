@@ -25,7 +25,7 @@ export type QuestionProps = {
 };
 
 function Question({ level, gameState, questions, dispatch }: QuestionProps) {
-  const { questionNumber, isSubmitted, attended } = gameState;
+  const { questionNumber, attended, status } = gameState;
   const question = questions[questionNumber];
   const isQuestionAttempted =
     attended && attended[questionNumber] ? attended[questionNumber] : null;
@@ -43,10 +43,10 @@ function Question({ level, gameState, questions, dispatch }: QuestionProps) {
         question={question}
         questionNumber={questionNumber}
         attended={isQuestionAttempted}
-        isSubmitted={isSubmitted}
+        status={status}
       />
 
-      {level === "Rookie" || isSubmitted ? (
+      {level === "Rookie" || status !== "PLAYING" ? (
         <QuestionFooter>
           <BackButton onClick={() => dispatch({ type: ACTIONS.PREV_QUESTION })}>
             <IoMdArrowBack />

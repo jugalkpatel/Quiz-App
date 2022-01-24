@@ -9,13 +9,13 @@ import {
   CommonWrapper,
 } from "./GamePlayHeader.styles";
 
-import { LevelTypes } from "../../common";
+import { LevelTypes, GAME_STATUS } from "../../common";
 import { ACTIONTYPE } from "../../hooks/useGamePlay/useGamePlay.hook";
 import { ACTIONS } from "../../helpers";
 
 export type GamePlayHeaderProps = {
   children: JSX.Element;
-  isSubmitted: boolean;
+  status: GAME_STATUS;
   level: LevelTypes;
   questionNumber: number;
   dispatch: React.Dispatch<ACTIONTYPE>;
@@ -23,7 +23,7 @@ export type GamePlayHeaderProps = {
 
 function GamePlayHeader({
   children,
-  isSubmitted,
+  status,
   level,
   questionNumber,
   dispatch,
@@ -31,7 +31,7 @@ function GamePlayHeader({
   const [time, setTime] = useState(30);
 
   useEffect(() => {
-    if (level === "Rookie" || isSubmitted) {
+    if (level === "Rookie" || status !== "PLAYING") {
       return;
     }
 
@@ -52,7 +52,7 @@ function GamePlayHeader({
       clearTimeout(timeout);
       setTime(30);
     };
-  }, [questionNumber, dispatch, level, isSubmitted]);
+  }, [questionNumber, dispatch, level, status]);
 
   return (
     <GamePlayHeaderContainer>

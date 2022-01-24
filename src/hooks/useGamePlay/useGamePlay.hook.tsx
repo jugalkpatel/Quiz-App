@@ -24,7 +24,7 @@ function useGamePlay(questions: QuestionType[]) {
     points: 0,
     negativePoints: 0,
     totalTime: Date.now(),
-    isSubmitted: false,
+    status: "PLAYING",
   };
   const reducer = gameplayReducer(questions);
   const [state, dispatch] = useReducer(reducer, initialState);

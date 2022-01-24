@@ -47,12 +47,13 @@ function GamePlay({ level, questions }: GamePlayProps) {
         <GamePlayWrapper>
           <GamePlayContent>
             <GamePlayHeader
-              isSubmitted={state.isSubmitted}
+              status={state.status}
               level={level}
               questionNumber={state.questionNumber}
               dispatch={dispatch}
             >
               <QuitButton
+                disabled={state.status !== "PLAYING" ? true : false}
                 onClick={() => {
                   navigate(`/play/${level}/quiz/exit`, {
                     state: { questions },
@@ -72,13 +73,14 @@ function GamePlay({ level, questions }: GamePlayProps) {
 
             <QuestionNav
               level={level}
-              isSubmitted={state.isSubmitted}
+              status={state.status}
               questionNumber={state.questionNumber}
               questions={questions}
               dispatch={dispatch}
             />
 
             <FinishButton
+              disabled={state.status !== "PLAYING" ? true : false}
               onClick={() => dispatch({ type: ACTIONS.FINISH_ATTEMPT })}
             >
               finish attempt

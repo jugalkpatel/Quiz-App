@@ -83,13 +83,15 @@ export type QuestionStateType = {
   attended?: AttendedType;
 };
 
+export type GAME_STATUS = "PLAYING" | "SUBMITTING" | "FINISHED";
+
 export type GamePlayTypes = {
   questionNumber: number;
   points: number;
   negativePoints: number;
-  isSubmitted: boolean;
   totalTime: number;
   attended?: AttendedType;
+  status: GAME_STATUS;
 };
 
 // Level instructions

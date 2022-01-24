@@ -2,7 +2,7 @@ import { useTheme } from "styled-components";
 
 import { Option, OptionContainer } from "./Options.styles";
 
-import { QuestionType, RecordAnswerType } from "../../common";
+import { GAME_STATUS, QuestionType, RecordAnswerType } from "../../common";
 import { ACTIONTYPE } from "../../hooks/useGamePlay/useGamePlay.hook";
 import { ACTIONS } from "../../helpers";
 
@@ -33,7 +33,7 @@ export type OptionsProps = {
   question: QuestionType;
   dispatch: React.Dispatch<ACTIONTYPE>;
   attended: RecordAnswerType | null;
-  isSubmitted: boolean;
+  status: GAME_STATUS;
 };
 
 function Options({
@@ -41,7 +41,7 @@ function Options({
   question,
   dispatch,
   attended,
-  isSubmitted,
+  status,
 }: OptionsProps) {
   const { options, answers } = question;
   const { isVisited, userAnswerIndex }: RecordAnswerType = attended
@@ -52,6 +52,7 @@ function Options({
     : { isVisited: false, userAnswerIndex: -1 };
   const theme = useTheme();
   const correctAnswers = getCorrectAnswersIndex(answers, options);
+  const isSubmitted = status !== "PLAYING" ? true : false;
 
   // TODO: Seperate out isOptionCorrect
   // params can be: currentOption, theme obj,
