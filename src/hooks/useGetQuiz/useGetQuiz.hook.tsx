@@ -28,7 +28,7 @@ function useGetQuiz(requestedLevel: string) {
     const getQuizData = async () => {
       try {
         const quizRequest = await axios.get<QuizResponse>("/quiz", {
-          params: { quizType: requestedLevel },
+          params: { level: requestedLevel },
           cancelToken: cancelTokenSource.token,
         });
 
@@ -54,7 +54,6 @@ function useGetQuiz(requestedLevel: string) {
         }
 
         if (axios.isAxiosError(error)) {
-          console.log("caught an axios error");
           const serverError = error as AxiosError<ServerError>;
 
           if (serverError && serverError?.response) {

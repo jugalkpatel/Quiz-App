@@ -49,7 +49,6 @@ const AuthProvider: React.FC = ({ children }) => {
       setAuthConfig.current(authCredentials);
     }
   }, [authCredentials]);
-
   return (
     <AuthContext.Provider value={{ ...authCredentials, setAuthCredentials }}>
       {children}
@@ -60,10 +59,10 @@ const AuthProvider: React.FC = ({ children }) => {
 const useAuth = () => {
   const context = useContext(AuthContext);
 
-  if(!context) {
+  if (!context) {
     throw Error("Context values should not be null");
   }
-  
+
   return context;
 };
 
