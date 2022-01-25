@@ -92,6 +92,7 @@ export type GamePlayTypes = {
   totalTime: number;
   attended?: AttendedType;
   status: GAME_STATUS;
+  isInLeaderBoard: boolean;
 };
 
 // Level instructions
