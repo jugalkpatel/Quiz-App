@@ -42,8 +42,8 @@ function Navbar({ mode, setMode }: ThemeTypes) {
           {credentials?.authenticated ? (
             <ButtonContainer>
               <ColumnContainer>
-                <UserName>Jugal Patel</UserName>
-                <Level>Rookie</Level>
+                <UserName>{credentials.name}</UserName>
+                <Level>{credentials.level}</Level>
               </ColumnContainer>
 
               <NavUserIcon />
