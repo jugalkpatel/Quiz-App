@@ -60,7 +60,7 @@ function GamePlay({ level, questions }: GamePlayProps) {
               dispatch={dispatch}
             >
               <QuitButton
-                disabled={state.status !== "PLAYING" ? true : false}
+                disabled={state.status === "SUBMITTING" ? true : false}
                 onClick={() => {
                   navigate(`/play/${level}/quiz/exit`, {
                     state: { questions },
