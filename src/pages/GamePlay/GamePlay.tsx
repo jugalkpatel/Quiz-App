@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
+import { Toaster } from "react-hot-toast";
 
 import {
   FinishButton,
@@ -11,9 +12,15 @@ import {
   QuitButton,
   QuitIcon,
 } from "../../components/GamePlayHeader/GamePlayHeader.styles";
+import { secondaryFont } from "../../styles/common.styles";
 
 import { LevelTypes, QuestionType } from "../../common";
-import { GamePlayHeader, Question, QuestionNav } from "../../components";
+import {
+  GamePlayHeader,
+  Question,
+  QuestionNav,
+  Spinner,
+} from "../../components";
 import { useGamePlay } from "../../hooks";
 import { ACTIONS } from "../../helpers";
 
@@ -23,7 +30,7 @@ export type GamePlayProps = {
 };
 
 function GamePlay({ level, questions }: GamePlayProps) {
-  const { state, dispatch } = useGamePlay(questions);
+  const { state, dispatch } = useGamePlay(questions, level);
   const navigate = useNavigate();
 
   const isGameFinished =
@@ -31,13 +38,13 @@ function GamePlay({ level, questions }: GamePlayProps) {
 
   useEffect(() => {
     if (isGameFinished && level === "Skillful") {
-      dispatch({ type: ACTIONS.FINISH_ATTEMPT });
+      dispatch({ type: ACTIONS.SUBMIT_ATTEMPT });
     }
   }, [isGameFinished, dispatch, level]);
 
   useEffect(() => {
     if (state.negativePoints > 0 && level === "Expert") {
-      dispatch({ type: ACTIONS.FINISH_ATTEMPT });
+      dispatch({ type: ACTIONS.SUBMIT_ATTEMPT });
     }
   }, [state.negativePoints, level, dispatch]);
 
@@ -83,13 +90,19 @@ function GamePlay({ level, questions }: GamePlayProps) {
               disabled={state.status !== "PLAYING" ? true : false}
               onClick={() => dispatch({ type: ACTIONS.FINISH_ATTEMPT })}
             >
-              finish attempt
+              {state.status === "PLAYING" && "finish attempt"}
+              {state.status === "SUBMITTING" && (
+                <Spinner isLoading={true} size="5px" />
+              )}
+              {state.status === "FINISHED" && "exit"}
             </FinishButton>
           </GamePlayContent>
         </GamePlayWrapper>
       </MaxWidthWrapper>
 
       <Outlet />
+
+      <Toaster toastOptions={{ style: { fontFamily: secondaryFont } }} />
     </>
   );
 }

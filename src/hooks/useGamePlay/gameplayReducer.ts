@@ -45,12 +45,16 @@ function gameplayReducer(questions: QuestionType[]) {
             [questionNumber]: { isVisited: true, userAnswerIndex },
           },
         };
-      case ACTIONS.FINISH_ATTEMPT:
+      case ACTIONS.SUBMIT_ATTEMPT:
         return {
           ...state,
           status: "SUBMITTING",
           totalTime: (Date.now() - state.totalTime) / 1000,
         };
+      case ACTIONS.FINISH_ATTEMPT:
+        return { ...state, status: "FINISHED" };
+      case ACTIONS.CELEBRATIONS:
+        return { ...state, isInLeaderBoard: true };
       default:
         return state;
     }
