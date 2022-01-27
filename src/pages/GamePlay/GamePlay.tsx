@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate, useOutletContext } from "react-router";
 import { Toaster } from "react-hot-toast";
 
 import {
@@ -14,7 +14,7 @@ import {
 } from "../../components/GamePlayHeader/GamePlayHeader.styles";
 import { secondaryFont } from "../../styles/common.styles";
 
-import { LevelTypes, QuestionType } from "../../common";
+import { LevelTypes, QuestionType, GamePlayTypes } from "../../common";
 import {
   GamePlayHeader,
   Question,
@@ -28,6 +28,10 @@ export type GamePlayProps = {
   level: LevelTypes;
   questions: QuestionType[];
 };
+
+function useSprint() {
+  return useOutletContext<GamePlayTypes>();
+}
 
 function GamePlay({ level, questions }: GamePlayProps) {
   const { state, dispatch } = useGamePlay(questions, level);
@@ -47,6 +51,18 @@ function GamePlay({ level, questions }: GamePlayProps) {
       dispatch({ type: ACTIONS.SUBMIT_ATTEMPT });
     }
   }, [state.negativePoints, level, dispatch]);
+
+  const handleClick = () => {
+    if (state.status === "PLAYING") {
+      dispatch({ type: ACTIONS.SUBMIT_ATTEMPT });
+    }
+
+    if (state.status === "FINISHED") {
+      navigate(`/play/${level}/quiz/finish`, {
+        state: { questions },
+      });
+    }
+  };
 
   return (
     <>
@@ -87,8 +103,8 @@ function GamePlay({ level, questions }: GamePlayProps) {
             />
 
             <FinishButton
-              disabled={state.status !== "PLAYING" ? true : false}
-              onClick={() => dispatch({ type: ACTIONS.FINISH_ATTEMPT })}
+              disabled={state.status === "SUBMITTING" ? true : false}
+              onClick={handleClick}
             >
               {state.status === "PLAYING" && "finish attempt"}
               {state.status === "SUBMITTING" && (
@@ -100,11 +116,11 @@ function GamePlay({ level, questions }: GamePlayProps) {
         </GamePlayWrapper>
       </MaxWidthWrapper>
 
-      <Outlet />
+      <Outlet context={state} />
 
       <Toaster toastOptions={{ style: { fontFamily: secondaryFont } }} />
     </>
   );
 }
 
-export { GamePlay };
+export { GamePlay, useSprint };
