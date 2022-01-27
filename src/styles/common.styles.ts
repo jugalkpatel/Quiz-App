@@ -142,6 +142,18 @@ const FormLink = styled(Link)`
   margin-left: 0.3rem;
 `;
 
+const ModalBackContainer = styled(RowContainer)`
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+`;
+
 export {
   WidthContainer,
   primaryFont,
@@ -164,4 +176,5 @@ export {
   FormLabel,
   FormTitle,
   FormLink,
+  ModalBackContainer,
 };

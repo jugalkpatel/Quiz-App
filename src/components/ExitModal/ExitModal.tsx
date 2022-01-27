@@ -1,7 +1,7 @@
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router";
+
 import {
-  ExitModalContainer,
   ExitModalContentContainer,
   ExitModalHeader,
   ExitModalOptionsContainer,
@@ -9,12 +9,13 @@ import {
   ExitOptionButton,
   CloseButton,
 } from "./ExitModal.styles";
+import { ModalBackContainer } from "../../styles/common.styles";
 
 function ExitModal() {
   const navigate = useNavigate();
   const goBackClick = () => navigate(-1);
   return (
-    <ExitModalContainer>
+    <ModalBackContainer>
       <ExitModalContentContainer>
         <ExitModalHeader>
           exit to lobby
@@ -35,7 +36,7 @@ function ExitModal() {
           </ExitOptionButton>
         </ExitModalOptionsContainer>
       </ExitModalContentContainer>
-    </ExitModalContainer>
+    </ModalBackContainer>
   );
 }
 export { ExitModal };

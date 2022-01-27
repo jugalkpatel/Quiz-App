@@ -10,18 +10,6 @@ type ExitOptionType = {
   readonly option: "YES" | "NO";
 };
 
-const ExitModalContainer = styled(RowContainer)`
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-`;
-
 const ExitModalContentContainer = styled(ColumnContainer)`
   font-family: ${primaryFont};
   background-color: ${({ theme }) => theme.secondary};
@@ -74,7 +62,6 @@ const CloseButton = styled.button`
 `;
 
 export {
-  ExitModalContainer,
   ExitModalContentContainer,
   ExitModalHeader,
   ExitModalOptionsContainer,
