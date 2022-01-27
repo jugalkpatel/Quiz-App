@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useReducer } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useCallback, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../../contexts";
 import { GamePlayTypes, LevelTypes, QuestionType } from "../../common";
 import { gameplayReducer } from "./gameplayReducer";
 import { ACTIONS } from "../../helpers";
-import { useAuth } from "../../contexts";
 
 export type SprintResponse = {
   success: boolean;
@@ -29,7 +30,8 @@ export type ACTIONTYPE =
     }
   | { type: typeof ACTIONS.FINISH_ATTEMPT }
   | { type: typeof ACTIONS.SUBMIT_ATTEMPT }
-  | { type: typeof ACTIONS.CELEBRATIONS };
+  | { type: typeof ACTIONS.CELEBRATIONS }
+  | { type: typeof ACTIONS.LEVEL_UP };
 
 function useGamePlay(questions: QuestionType[], level: LevelTypes) {
   const initialState: GamePlayTypes = {
@@ -38,15 +40,17 @@ function useGamePlay(questions: QuestionType[], level: LevelTypes) {
     negativePoints: 0,
     totalTime: Date.now(),
     status: "PLAYING",
-    isInLeaderBoard: false,
+    isInLeaderBoard: true,
+    isLevelUp: false,
   };
   const reducer = gameplayReducer(questions);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { setAuthCredentials } = useAuth();
+  const navigate = useNavigate();
 
   const updateSprintData = useCallback(async () => {
     try {
-      const response = await axios.post<SprintResponse>("/istory/add", {
+      const response = await axios.post<SprintResponse>("/history/add", {
         level: level,
         score: state.points,
         time: state.totalTime,
@@ -65,16 +69,25 @@ function useGamePlay(questions: QuestionType[], level: LevelTypes) {
           ...prevState,
           level: updatedLevel,
         }));
+        dispatch({ type: ACTIONS.LEVEL_UP });
       }
+
+      navigate(`/play/${level}/quiz/finish`, { state: { questions } });
     } catch (error) {
       toast.error("error while uploading gameplay data", {
         position: "bottom-center",
       });
-      console.log("error");
     } finally {
       dispatch({ type: ACTIONS.FINISH_ATTEMPT });
     }
-  }, [state.points, state.totalTime, level, setAuthCredentials]);
+  }, [
+    state.points,
+    state.totalTime,
+    level,
+    setAuthCredentials,
+    navigate,
+    questions,
+  ]);
 
   useEffect(() => {
     if (state.status === "SUBMITTING") {
@@ -82,9 +95,6 @@ function useGamePlay(questions: QuestionType[], level: LevelTypes) {
     }
   }, [state.status, updateSprintData]);
 
-  console.log({ level });
-
-  console.log({ state });
   return { state, dispatch };
 }
 

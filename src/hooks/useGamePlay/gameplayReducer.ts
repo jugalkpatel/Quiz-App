@@ -55,6 +55,8 @@ function gameplayReducer(questions: QuestionType[]) {
         return { ...state, status: "FINISHED" };
       case ACTIONS.CELEBRATIONS:
         return { ...state, isInLeaderBoard: true };
+      case ACTIONS.LEVEL_UP:
+        return { ...state, isLevelUp: true };
       default:
         return state;
     }
