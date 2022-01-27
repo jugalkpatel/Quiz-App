@@ -38,6 +38,14 @@ export type User = {
   authenticated?: boolean;
 };
 
+export type CardType = {
+  name: string;
+  image: string;
+  route: string;
+  level?: LevelTypes;
+  levelNumber?: 1 | 2 | 3;
+};
+
 export type QuestionType = {
   id: string;
   statement: string;
@@ -99,7 +107,6 @@ export type GamePlayTypes = {
 // Level instructions
 export type LevelInfoTypes = {
   levelNumber?: 1 | 2 | 3;
-  image: string;
   description?: string;
   instructions?: string[];
 };
