@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import { QuizContext } from "./QuizContext";
-
 import { useGetQuiz } from "../../hooks";
 import { obtainLevel } from "../../utils";
 

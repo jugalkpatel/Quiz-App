@@ -14,8 +14,8 @@ import { QuizProvider } from "../../contexts";
 import { obtainLevel } from "../../utils";
 
 function Start() {
-  const location = useLocation();
-  const level = obtainLevel(location.pathname);
+  const { pathname } = useLocation();
+  const level = obtainLevel(pathname);
 
   const routes = {
     lobby: `/play/${level}`,

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
 import { FaPlay } from "react-icons/fa";
+
 import {
   LevelCard,
   PlayButton,
@@ -35,7 +35,7 @@ function DifficultyCard({ levelNumber, level, image, name, route }: CardType) {
         <ContentWrapper>
           {level && <LevelLabel>level {levelNumber}</LevelLabel>}
           <LevelName>{name}</LevelName>
-          <PlayButton onClick={() => navigate(route, { state: level })}>
+          <PlayButton onClick={() => navigate(route)}>
             <FaPlay />
           </PlayButton>
         </ContentWrapper>

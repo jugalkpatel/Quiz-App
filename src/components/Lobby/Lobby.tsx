@@ -10,15 +10,13 @@ import {
   Play,
 } from "./Lobby.styles";
 
-import { LevelTypes } from "../../common";
 import { useQuiz } from "../../contexts";
 import { Spinner } from "../../components";
-import { dashboardData } from "../../utils";
+import { dashboardData, obtainLevel } from "../../utils";
 
 function Lobby() {
-  const { state } = useLocation();
-  const level = state as LevelTypes;
-
+  const { pathname } = useLocation();
+  const level = obtainLevel(pathname);
   const { levelNumber, description, instructions } = dashboardData[level];
 
   const { questions, isLoading, error } = useQuiz();
