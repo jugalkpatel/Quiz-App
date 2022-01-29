@@ -23,17 +23,28 @@ const handleAuthClick = async ({
       throw new Error(data.message);
     }
 
-    const { id, name, token, level } = data.user;
+    const { id, name, token, level, history } = data.user;
 
-    if (!id || !name || !token || !level) {
+    if (!id || !name || !token || !level || !history) {
       throw new Error("missing values in response");
     }
 
     setAuthCredentials((prevState: User) => {
-      return { ...prevState, authenticated: true, id, name, token, level };
+      return {
+        ...prevState,
+        authenticated: true,
+        id,
+        name,
+        token,
+        level,
+        history,
+      };
     });
 
-    localStorage?.setItem("liquiz", JSON.stringify({ id, name, token, level }));
+    localStorage?.setItem(
+      "liquiz",
+      JSON.stringify({ id, name, token, level, history })
+    );
 
     navigate(path, { replace: true });
 

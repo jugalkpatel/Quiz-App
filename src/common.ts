@@ -30,12 +30,20 @@ export const Levels = {
 
 export type LevelTypes = keyof typeof Levels;
 
+export type HistoryRecord = {
+  id: string;
+  level: string;
+  score: number;
+  time: number;
+};
+
 export type User = {
   id: string;
   token: string;
   name: string;
   level: LevelTypes | "";
   authenticated?: boolean;
+  history: HistoryRecord[] | [];
 };
 
 export type CardType = {

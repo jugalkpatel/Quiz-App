@@ -43,7 +43,7 @@ const BackButton = styled(Link)`
 const StartContainer = styled(WidthContainer)`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 50vh;
+  grid-template-rows: max-content 50vh;
 
   @media (min-width: 568px) {
     padding: 1.5rem 1rem;

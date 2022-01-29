@@ -9,6 +9,7 @@ import {
   NotFound,
   ExitModal,
   FinishModal,
+  History,
 } from "./components";
 import { PrivateRoute, LevelRoute, GamePlayRoute } from "./helpers";
 
@@ -35,7 +36,14 @@ function AppRoutes({ mode, setMode }: ThemeTypes) {
           <Route index element={<Lobby />} />
           <Route path="/play/:level/leaderboard" element={<LeaderBoard />} />
         </Route>
-
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />

@@ -12,6 +12,7 @@ const zindex_four = 4;
 
 const WidthContainer = styled.article`
   max-width: 960px;
+  font-family: ${primaryFont};
 
   padding: 0.7rem;
 

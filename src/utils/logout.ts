@@ -6,7 +6,14 @@ const logout = (
   navigate: NavigateFunction
 ) => {
   return () => {
-    setAuth({ authenticated: false, token: "", name: "", id: "", level: "" });
+    setAuth({
+      authenticated: false,
+      token: "",
+      name: "",
+      id: "",
+      level: "",
+      history: [],
+    });
     navigate("/login");
     localStorage?.removeItem("liquiz");
   };

@@ -15,3 +15,5 @@ export { Spinner } from "./Spinner/Spinner";
 export { Options } from "./Options/Options";
 export { ExitModal } from "./ExitModal/ExitModal";
 export { FinishModal } from "./FinishModal/FinishModal";
+export { History } from "./History/History";
+export { NotAvailable } from "./NotAvailable/NotAvailable";

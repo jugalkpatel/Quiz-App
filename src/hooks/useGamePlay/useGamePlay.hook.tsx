@@ -1,10 +1,15 @@
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useCallback, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
+import {
+  GamePlayTypes,
+  HistoryRecord,
+  LevelTypes,
+  QuestionType,
+} from "../../common";
 import { useAuth } from "../../contexts";
-import { GamePlayTypes, LevelTypes, QuestionType } from "../../common";
 import { gameplayReducer } from "./gameplayReducer";
 import { ACTIONS } from "../../helpers";
 
@@ -13,6 +18,7 @@ export type SprintResponse = {
   details: {
     isInLeaderBoard: boolean;
     updatedLevel: LevelTypes;
+    history: HistoryRecord[];
   };
 };
 
@@ -57,12 +63,14 @@ function useGamePlay(questions: QuestionType[], level: LevelTypes) {
       });
 
       const {
-        details: { isInLeaderBoard, updatedLevel },
+        details: { isInLeaderBoard, updatedLevel, history },
       } = response.data;
 
       if (isInLeaderBoard) {
         dispatch({ type: ACTIONS.CELEBRATIONS });
       }
+
+      setAuthCredentials((prevState) => ({ ...prevState, history: history }));
 
       if (updatedLevel !== level) {
         setAuthCredentials((prevState) => ({

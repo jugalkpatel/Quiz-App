@@ -14,6 +14,7 @@ const AuthProvider: React.FC = ({ children }) => {
     name: "",
     id: "",
     level: "",
+    history: [],
   };
 
   // TODO: Seperate out localstorage code
@@ -26,10 +27,10 @@ const AuthProvider: React.FC = ({ children }) => {
         return initialAuthState;
       }
 
-      const { id, name, level, token }: User = JSON.parse(data);
+      const { id, name, level, token, history }: User = JSON.parse(data);
 
-      if (id && name && level && token) {
-        return { authenticated: true, id, name, level, token };
+      if (id && name && level && token && history) {
+        return { authenticated: true, id, name, level, token, history };
       }
 
       return initialAuthState;
@@ -49,6 +50,9 @@ const AuthProvider: React.FC = ({ children }) => {
       setAuthConfig.current(authCredentials);
     }
   }, [authCredentials]);
+
+  console.log({ authCredentials });
+
   return (
     <AuthContext.Provider value={{ ...authCredentials, setAuthCredentials }}>
       {children}
