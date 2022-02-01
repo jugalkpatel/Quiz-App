@@ -49,7 +49,7 @@ function gameplayReducer(questions: QuestionType[]) {
         return {
           ...state,
           status: "SUBMITTING",
-          totalTime: (Date.now() - state.totalTime) / 1000,
+          totalTime: (Date.now() - state.totalTime) / 10000,
         };
       case ACTIONS.FINISH_ATTEMPT:
         return { ...state, status: "FINISHED" };
