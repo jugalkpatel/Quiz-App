@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 import { primaryFont } from "../../styles/common.styles";
+import { WidthContainer } from "../../styles/common.styles";
 
-const ComponentWrapper = styled.article`
+const ComponentWrapper = styled(WidthContainer)`
   background-color: ${({ theme }) => theme.primary};
 
   padding: 2rem 1rem;
-  @media (min-width: 960px) {
-    width: 960px;
-    margin: 0 auto;
-  }
 `;
 
 const PageHeader = styled.article`

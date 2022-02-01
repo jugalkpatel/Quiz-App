@@ -29,7 +29,6 @@ body {
 }
 
 #root {
-  height: 100vh;
   position: relative;
 }
 

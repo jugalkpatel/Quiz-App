@@ -1,14 +1,13 @@
 import { Outlet, useLocation } from "react-router-dom";
 
 import {
-  Header,
   NavBar,
   Tab,
   BackButton,
-  StartContainer,
   BackIcon,
   TabContainer,
 } from "./Start.styles";
+import { WidthContainer } from "../../styles/common.styles";
 
 import { QuizProvider } from "../../contexts";
 import { obtainLevel } from "../../utils";
@@ -25,30 +24,28 @@ function Start() {
   return (
     <QuizProvider>
       <>
-        <StartContainer>
-          <Header>
-            <NavBar>
-              <BackButton to="/">
-                <BackIcon />
-                back to home
-              </BackButton>
+        <WidthContainer>
+          <NavBar>
+            <BackButton to="/">
+              <BackIcon />
+              back to home
+            </BackButton>
 
-              <TabContainer>
-                {Object.keys(routes).map((routeName) => (
-                  <Tab
-                    key={routeName}
-                    to={routes[routeName as keyof typeof routes]}
-                    end
-                  >
-                    {routeName}
-                  </Tab>
-                ))}
-              </TabContainer>
-            </NavBar>
-          </Header>
+            <TabContainer>
+              {Object.keys(routes).map((routeName) => (
+                <Tab
+                  key={routeName}
+                  to={routes[routeName as keyof typeof routes]}
+                  end
+                >
+                  {routeName}
+                </Tab>
+              ))}
+            </TabContainer>
+          </NavBar>
 
           <Outlet />
-        </StartContainer>
+        </WidthContainer>
       </>
     </QuizProvider>
   );

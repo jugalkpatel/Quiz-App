@@ -2,19 +2,12 @@ import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 
-import {
-  RowContainer,
-  primaryFont,
-  WidthContainer,
-} from "../../styles/common.styles";
-
-const Header = styled.header`
-  font-size: 1rem;
-`;
+import { RowContainer, primaryFont } from "../../styles/common.styles";
 
 const NavBar = styled.nav`
   display: flex;
   flex-direction: column;
+  height: fit-content;
 `;
 
 const BackButton = styled(Link)`
@@ -38,16 +31,6 @@ const BackButton = styled(Link)`
   cursor: pointer;
 
   text-decoration: none;
-`;
-
-const StartContainer = styled(WidthContainer)`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content 50vh;
-
-  @media (min-width: 568px) {
-    padding: 1.5rem 1rem;
-  }
 `;
 
 const TabContainer = styled(RowContainer)`
@@ -76,12 +59,4 @@ const BackIcon = styled(FaChevronLeft)`
   margin-right: 0.5rem;
 `;
 
-export {
-  Header,
-  Tab,
-  NavBar,
-  BackButton,
-  StartContainer,
-  BackIcon,
-  TabContainer,
-};
+export { Tab, NavBar, BackButton, BackIcon, TabContainer };
