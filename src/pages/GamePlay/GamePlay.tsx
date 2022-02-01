@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate, useOutletContext } from "react-router";
+import { useTheme } from "styled-components";
 import { Toaster } from "react-hot-toast";
 
 import {
@@ -36,6 +37,7 @@ function useSprint() {
 function GamePlay({ level, questions }: GamePlayProps) {
   const { state, dispatch } = useGamePlay(questions, level);
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const isGameFinished =
     state.attended && Object.keys(state.attended).length === 10 ? true : false;
@@ -108,7 +110,7 @@ function GamePlay({ level, questions }: GamePlayProps) {
             >
               {state.status === "PLAYING" && "finish attempt"}
               {state.status === "SUBMITTING" && (
-                <Spinner isLoading={true} size="5px" />
+                <Spinner isLoading={true} size="5px" color={theme.primary} />
               )}
               {state.status === "FINISHED" && "exit"}
             </FinishButton>

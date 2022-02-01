@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Formik } from "formik";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Location } from "history";
+import { useTheme } from "styled-components";
 
 import {
   FormContainer,
@@ -37,6 +38,7 @@ function Login() {
   const location = useLocation();
   const state = location.state as { from: Location };
   const from = state ? state.from.pathname : "/";
+  const theme = useTheme();
 
   // const expertLogin = (values: typeof initialValues) => {};
 
@@ -89,7 +91,11 @@ function Login() {
 
             <SubmitButton disabled={isSubmitting}>
               {isSubmitting ? (
-                <Spinner isLoading={isSubmitting} size="5px" />
+                <Spinner
+                  isLoading={isSubmitting}
+                  size="5px"
+                  color={theme.primary}
+                />
               ) : (
                 "login"
               )}
