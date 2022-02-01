@@ -9,5 +9,6 @@ declare module "styled-components" {
     label: string;
     valid: string;
     invalid: string;
+    leaderBoard: string;
   }
 }

@@ -1,4 +1,6 @@
 import { DefaultTheme } from "styled-components";
+import light_leaderboard from "../assets/light_leaderboard.svg";
+import dark_leaderboard from "../assets/dark_leaderboard.svg";
 
 export const lightTheme: DefaultTheme = {
   primary: "#FEFEFE",
@@ -8,6 +10,7 @@ export const lightTheme: DefaultTheme = {
   label: "#727272",
   valid: "#078D2C",
   invalid: "#CD1111",
+  leaderBoard: light_leaderboard,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -18,4 +21,5 @@ export const darkTheme: DefaultTheme = {
   label: "#AAAAAA",
   valid: "#078D2C",
   invalid: "#CD1111",
+  leaderBoard: dark_leaderboard,
 };
