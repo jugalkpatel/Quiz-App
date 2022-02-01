@@ -1,24 +1,28 @@
+import { useNavigate } from "react-router-dom";
+
 import { ColumnContainer } from "../../styles/common.styles";
 import {
-  BarContainer,
   HistoryContainer,
   HistoryRecord,
-  TextLabel,
-  HistoryRecordItem,
-  SuperText,
   PlayAgain,
   PlayIcon,
   PlayContainer,
   HistoryContent,
   HistoryTitle,
 } from "./History.styles";
+import {
+  BarContainer,
+  TextLabel,
+  SuperText,
+  RecordItem,
+} from "../../styles/common.styles";
 
 import { useAuth } from "../../contexts";
 import { NotAvailable } from "../../components";
 
 function History() {
   const { history } = useAuth();
-  console.log({ history });
+  const navigate = useNavigate();
   return (
     <HistoryContainer>
       <HistoryTitle>History</HistoryTitle>
@@ -26,7 +30,7 @@ function History() {
         {!history.length ? (
           <NotAvailable message="history yet not available!" />
         ) : (
-          history.map(({ id, level, score, time }) => {
+          history.reverse().map(({ id, level, score, time }) => {
             return (
               <HistoryRecord key={id}>
                 <ColumnContainer>
@@ -35,21 +39,21 @@ function History() {
                 </ColumnContainer>
 
                 <BarContainer>
-                  <HistoryRecordItem>
+                  <RecordItem>
                     <SuperText>score</SuperText>
                     <TextLabel>{score}</TextLabel>
-                  </HistoryRecordItem>
+                  </RecordItem>
                 </BarContainer>
 
                 <BarContainer>
-                  <HistoryRecordItem>
+                  <RecordItem>
                     <SuperText>time</SuperText>
                     <TextLabel>{time} sec</TextLabel>
-                  </HistoryRecordItem>
+                  </RecordItem>
                 </BarContainer>
 
                 <PlayContainer>
-                  <PlayAgain>
+                  <PlayAgain onClick={() => navigate(`/play/${level}`)}>
                     <PlayIcon />
                   </PlayAgain>
                 </PlayContainer>
