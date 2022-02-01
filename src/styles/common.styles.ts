@@ -27,7 +27,7 @@ const WidthContainer = styled.article`
   }
 
   @media (min-width: 970px) {
-    padding: 0.6rem 0;
+    padding: 0.6rem 1rem;
   }
 `;
 
@@ -155,6 +155,24 @@ const ModalBackContainer = styled(RowContainer)`
   left: 0;
 `;
 
+const TextLabel = styled.p`
+  color: ${({ theme }) => theme.tertiary};
+  font-size: 1.3rem;
+`;
+
+const SuperText = styled.label`
+  font-size: 0.9rem;
+`;
+
+const RecordItem = styled(ColumnContainer)`
+  align-items: center;
+`;
+
+const BarContainer = styled(RowContainer)`
+  border-left: 1px solid ${({ theme }) => theme.border};
+  justify-content: center;
+`;
+
 export {
   WidthContainer,
   primaryFont,
@@ -178,4 +196,8 @@ export {
   FormTitle,
   FormLink,
   ModalBackContainer,
+  TextLabel,
+  BarContainer,
+  SuperText,
+  RecordItem,
 };
