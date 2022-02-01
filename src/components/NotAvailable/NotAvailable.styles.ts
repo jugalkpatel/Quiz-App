@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ColumnContainer, PrimaryButton } from "../../styles/common.styles";
-import cactus from "../../assets/cactus.svg";
 
 const NotAvailableContainer = styled(ColumnContainer)`
   height: 40vh;
@@ -11,12 +10,12 @@ const NotAvailableContainer = styled(ColumnContainer)`
 const CactusImg = styled.img.attrs(() => ({
   height: "200px",
   width: "200px",
-  src: cactus,
 }))`
   width: 100%;
 `;
 
 const Message = styled.h3`
+  text-align: center;
   color: ${({ theme }) => theme.tertiary};
 `;
 
