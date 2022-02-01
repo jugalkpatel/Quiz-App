@@ -61,18 +61,21 @@ export type QuestionType = {
   answers: string[];
 };
 
-export type SprintType = {
-  userName: string;
-  points: number;
-  time: string;
-  level: LevelTypes;
+export type LeaderBoardRecord = {
+  id: string;
+  user: string;
+  score: number;
+  time: number;
+};
+
+export type LeaderBoard = {
+  leaderBoard: LeaderBoardRecord[] | [];
 };
 
 export type QuizType = {
   id: string;
   level: LevelTypes | "";
   questions: QuestionType[] | [];
-  leaderBoard: SprintType[] | [];
 };
 
 // Gameplay

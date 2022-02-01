@@ -13,7 +13,6 @@ function useGetQuiz(requestedLevel: string) {
   const initialQuizState: QuizType = {
     id: "",
     questions: [],
-    leaderBoard: [],
     level: "",
   };
 
@@ -36,10 +35,10 @@ function useGetQuiz(requestedLevel: string) {
           data: { quiz: requestedQuiz },
         } = quizRequest;
 
-        const { id, questions, level, leaderBoard } = requestedQuiz;
+        const { id, questions, level } = requestedQuiz;
 
         if (id && questions.length && level) {
-          setQuiz({ id, questions, level, leaderBoard });
+          setQuiz({ id, questions, level });
         } else {
           const error = new Error("Quiz unavailable! Please refresh");
           error.name = "Unavailable";
