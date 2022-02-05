@@ -19,16 +19,21 @@ import {
 
 import { useAuth } from "../../contexts";
 import { NotAvailable } from "../../components";
+import { useTheme } from "styled-components";
 
 function History() {
   const { history } = useAuth();
+  const theme = useTheme();
   const navigate = useNavigate();
   return (
     <HistoryContainer>
       <HistoryTitle>History</HistoryTitle>
       <HistoryContent>
         {!history.length ? (
-          <NotAvailable message="history yet not available!" />
+          <NotAvailable
+            image={theme.leaderBoard}
+            message="history yet not available!"
+          />
         ) : (
           history.reverse().map(({ id, level, score, time }) => {
             return (
