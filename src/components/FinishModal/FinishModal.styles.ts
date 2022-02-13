@@ -10,9 +10,9 @@ import {
 
 const FinishModalContainer = styled.div`
   font-family: ${primaryFont};
-  background-color: ${({ theme }) => theme.secondary};
+  background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.tertiary};
-  width: 85vw;
+  width: 70vw;
   max-height: 55vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -22,15 +22,20 @@ const FinishModalContainer = styled.div`
   border-radius: 0.7rem;
 
   @media (min-width: 568px) {
-    max-width: 60vw;
+    max-width: 55vw;
   }
 
   @media (min-width: 768px) {
-    max-width: 50vw;
+    max-width: 45vw;
   }
 
   @media (min-width: 991px) {
-    max-width: 40vw;
+    max-width: 35vw;
+    max-height: 80vh;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 30vw;
   }
 `;
 
@@ -45,16 +50,15 @@ const HomeIcon = styled(IoMdHome)`
 `;
 
 const ModalNavButton = styled.button`
-  background-color: transparent;
-  color: ${({ theme }) => theme.tertiary};
-  font-size: 1.3rem;
-  font-family: ${primaryFont};
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.secondary};
+  color: ${({ theme }) => theme.tertiary};
   border-color: transparent;
-  justify-self: start;
   cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3rem;
 `;
 
 const BackIcon = styled(IoIosArrowBack)`
