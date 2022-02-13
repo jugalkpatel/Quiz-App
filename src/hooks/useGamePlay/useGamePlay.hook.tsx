@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useReducer, useRef } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -39,7 +38,13 @@ export type ACTIONTYPE =
   | { type: typeof ACTIONS.CELEBRATIONS }
   | { type: typeof ACTIONS.LEVEL_UP };
 
-function useGamePlay(questions: QuestionType[], level: LevelTypes) {
+export type GamePlayProps = {
+  questions: QuestionType[];
+  level: LevelTypes;
+  toModal: () => void;
+};
+
+function useGamePlay({ questions, level, toModal }: GamePlayProps) {
   const initialState: GamePlayTypes = {
     questionNumber: 0,
     points: 0,
@@ -51,59 +56,60 @@ function useGamePlay(questions: QuestionType[], level: LevelTypes) {
   };
   const reducer = gameplayReducer(questions);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { setAuthCredentials } = useAuth();
-  const navigate = useNavigate();
-
-  const updateSprintData = useCallback(async () => {
-    try {
-      const response = await axios.post<SprintResponse>("/history/add", {
-        level: level,
-        score: state.points,
-        time: state.totalTime,
-      });
-
-      const {
-        details: { isInLeaderBoard, updatedLevel, history },
-      } = response.data;
-
-      if (isInLeaderBoard) {
-        dispatch({ type: ACTIONS.CELEBRATIONS });
-      }
-
-      setAuthCredentials((prevState) => ({ ...prevState, history: history }));
-
-      if (updatedLevel !== level) {
-        setAuthCredentials((prevState) => ({
-          ...prevState,
-          level: updatedLevel,
-        }));
-        dispatch({ type: ACTIONS.LEVEL_UP });
-      }
-
-      navigate(`/play/${level}/quiz/finish`, { state: { questions } });
-    } catch (error) {
-      toast.error("error while uploading gameplay data", {
-        position: "bottom-center",
-      });
-    } finally {
-      dispatch({ type: ACTIONS.FINISH_ATTEMPT });
-    }
-  }, [
-    state.points,
-    state.totalTime,
-    level,
-    setAuthCredentials,
-    navigate,
-    questions,
-  ]);
+  const { dispatch: dispatchAuthData } = useAuth();
+  const stableNavigate = useRef(toModal);
 
   useEffect(() => {
-    if (state.status === "SUBMITTING") {
-      updateSprintData();
+    if (state.status !== "SUBMITTING") {
+      return;
     }
-  }, [state.status, updateSprintData]);
 
-  return { state, dispatch };
+    const updateSprintData = async (): Promise<void> => {
+      try {
+        const response = await axios.post<SprintResponse>("/history/add", {
+          level: level,
+          score: state.points,
+          time: state.totalTime,
+        });
+
+        const {
+          details: { isInLeaderBoard, updatedLevel, history },
+        } = response.data;
+
+        if (isInLeaderBoard) {
+          dispatch({ type: ACTIONS.CELEBRATIONS });
+        }
+
+        dispatchAuthData({ type: ACTIONS.SET_HISTORY, payload: { history } });
+
+        if (updatedLevel !== level) {
+          dispatchAuthData({ type: ACTIONS.SET_LEVEL, payload: { level: updatedLevel } });
+          dispatch({ type: ACTIONS.LEVEL_UP });
+        }
+
+        stableNavigate.current();
+      } catch (error) {
+        toast.error("error while uploading gameplay data", {
+          position: "bottom-center",
+        });
+      } finally {
+        dispatch({ type: ACTIONS.FINISH_ATTEMPT });
+      }
+    };
+
+    updateSprintData();
+  }, [
+    state.points,
+    state.status,
+    state.totalTime,
+    level,
+    dispatch,
+    dispatchAuthData,
+  ]);
+
+  console.log({ state });
+
+  return [state, dispatch] as const;
 }
 
 export { useGamePlay };

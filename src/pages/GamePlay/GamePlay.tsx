@@ -35,8 +35,11 @@ function useSprint() {
 }
 
 function GamePlay({ level, questions }: GamePlayProps) {
-  const { state, dispatch } = useGamePlay(questions, level);
   const navigate = useNavigate();
+  const toModal = () =>
+    navigate(`/play/${level}/quiz/finish`, { state: { questions } });
+
+  const [state, dispatch] = useGamePlay({ questions, level, toModal });
   const theme = useTheme();
 
   const isGameFinished =
@@ -60,9 +63,7 @@ function GamePlay({ level, questions }: GamePlayProps) {
     }
 
     if (state.status === "FINISHED") {
-      navigate(`/play/${level}/quiz/finish`, {
-        state: { questions },
-      });
+      toModal();
     }
   };
 
@@ -108,11 +109,11 @@ function GamePlay({ level, questions }: GamePlayProps) {
               disabled={state.status === "SUBMITTING" ? true : false}
               onClick={handleClick}
             >
-              {state.status === "PLAYING" && "finish attempt"}
-              {state.status === "SUBMITTING" && (
+              {state.status === "PLAYING" ? "finish attempt" : null}
+              {state.status === "SUBMITTING" ? (
                 <Spinner isLoading={true} size="5px" color={theme.primary} />
-              )}
-              {state.status === "FINISHED" && "exit"}
+              ) : null}
+              {state.status === "FINISHED" ? "exit" : null}
             </FinishButton>
           </GamePlayContent>
         </GamePlayWrapper>
