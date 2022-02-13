@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Field } from "formik";
 import { Link } from "react-router-dom";
+import { HiCode } from "react-icons/hi";
 
 const primaryFont = "Alegreya";
 const secondaryFont = "QuickSand";
@@ -9,6 +10,14 @@ const zindex_one = 1;
 const zindex_two = 2;
 const zindex_three = 3;
 const zindex_four = 4;
+
+
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+`;
 
 const WidthContainer = styled.article`
   max-width: 960px;
@@ -79,14 +88,6 @@ const PrimaryButton = styled.button`
   cursor: pointer;
 `;
 
-const SubmitButton = styled(PrimaryButton).attrs(() => ({
-  type: "submit",
-}))`
-  width: 100%;
-
-  margin: 0.5rem 0;
-`;
-
 const RowContainer = styled.article`
   display: flex;
   flex-direction: row;
@@ -143,16 +144,39 @@ const FormLink = styled(Link)`
   margin-left: 0.3rem;
 `;
 
+const SubmitButton = styled(PrimaryButton).attrs(() => ({
+  type: "submit",
+}))`
+  width: 100%;
+
+  margin: 0.5rem 0;
+`;
+
+const GuestButton = styled(SubmitButton)`
+  background-color: transparent;
+  color: ${({ theme }) => theme.tertiary};
+  border-color: transparent;
+  width: fit-content;
+  margin: 0 auto;
+
+  @media (min-width: 568px) {
+    &:hover {
+      color: ${({ theme }) => theme.secondary};
+    }
+  }
+`;
+
 const ModalBackContainer = styled(RowContainer)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+  background-color: rgba(0, 0, 0, 0.64);
 `;
 
 const TextLabel = styled.p`
@@ -173,7 +197,29 @@ const BarContainer = styled(RowContainer)`
   justify-content: center;
 `;
 
+const LinkButton = styled.a.attrs((_) => ({ target: "_blank" }))`
+  display: flex;
+  align-items: center;
+
+  color: ${({ theme }) => theme.tertiary};
+
+  margin: 0 0.1rem;
+
+  text-decoration: none;
+
+  @media (min-width: 568px) {
+    margin: 0 0.3rem;
+  }
+`;
+
+const CodeIcon = styled(HiCode)`
+  font-size: 1rem;
+
+  margin: 0 0.3rem;
+`;
+
 export {
+  Container,
   WidthContainer,
   primaryFont,
   secondaryFont,
@@ -200,4 +246,7 @@ export {
   BarContainer,
   SuperText,
   RecordItem,
+  GuestButton,
+  LinkButton,
+  CodeIcon
 };

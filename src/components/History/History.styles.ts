@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import { IoMdPlay } from "react-icons/io";
+import { MdOutlineReplay } from "react-icons/md";
 import {
   BigText,
   ColumnContainer,
   PrimaryButton,
   primaryFont,
   RowContainer,
-  WidthContainer,
 } from "../../styles/common.styles";
 
-const HistoryContainer = styled(WidthContainer)`
+const HistoryContainer = styled.section`
   font-family: ${primaryFont};
   background-color: ${({ theme }) => theme.primary};
   display: flex;
@@ -39,14 +38,16 @@ const HistoryContent = styled(ColumnContainer)`
   margin-top: 0.5rem;
 `;
 
-const PlayIcon = styled(IoMdPlay)`
+const PlayIcon = styled(MdOutlineReplay)`
   color: ${({ theme }) => theme.primary};
-  font-size: 1rem;
+  font-size: 1.5rem;
 `;
 
 const PlayAgain = styled(PrimaryButton)`
   border-radius: 1rem;
-  justify-self: end;
+  background-color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.primary};
+  padding: 0.3rem 0.5rem;
 `;
 
 const PlayContainer = styled(RowContainer)`

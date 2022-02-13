@@ -58,7 +58,7 @@ function FinishModal() {
               <ModalNavButton onClick={() => navigate(-1)}>
                 <BackIcon />
               </ModalNavButton>
-              <ModalNavButton onClick={() => navigate("/")}>
+              <ModalNavButton onClick={() => navigate("/home")}>
                 <HomeIcon />
               </ModalNavButton>
             </Buttons>

@@ -7,7 +7,6 @@ import {
   BackIcon,
   TabContainer,
 } from "./Start.styles";
-import { WidthContainer } from "../../styles/common.styles";
 
 import { QuizProvider } from "../../contexts";
 import { obtainLevel } from "../../utils";
@@ -24,28 +23,26 @@ function Start() {
   return (
     <QuizProvider>
       <>
-        <WidthContainer>
-          <NavBar>
-            <BackButton to="/">
+        <NavBar>
+          {/* <BackButton to="/">
               <BackIcon />
               back to home
-            </BackButton>
+            </BackButton> */}
 
-            <TabContainer>
-              {Object.keys(routes).map((routeName) => (
-                <Tab
-                  key={routeName}
-                  to={routes[routeName as keyof typeof routes]}
-                  end
-                >
-                  {routeName}
-                </Tab>
-              ))}
-            </TabContainer>
-          </NavBar>
+          <TabContainer>
+            {Object.keys(routes).map((routeName) => (
+              <Tab
+                key={routeName}
+                to={routes[routeName as keyof typeof routes]}
+                end
+              >
+                {routeName}
+              </Tab>
+            ))}
+          </TabContainer>
+        </NavBar>
 
-          <Outlet />
-        </WidthContainer>
+        <Outlet />
       </>
     </QuizProvider>
   );

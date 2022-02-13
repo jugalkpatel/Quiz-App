@@ -19,7 +19,7 @@ function NotAvailable({ image, message }: NotAvailableProps) {
     <NotAvailableContainer>
       <CactusImg src={image || cactus} />
       <Message>{message}</Message>
-      <GoHome onClick={() => navigate("/")}>home</GoHome>
+      <GoHome onClick={() => navigate("/home")}>home</GoHome>
     </NotAvailableContainer>
   );
 }

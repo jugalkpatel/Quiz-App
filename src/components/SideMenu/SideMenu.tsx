@@ -21,7 +21,7 @@ export type SideMenuProps = {
 function SideMenu({ visibility, setVisibility }: SideMenuProps) {
   const navigate = useNavigate();
   const credentials = useAuth();
-  const userLogout = logout(credentials.setAuthCredentials, navigate);
+  const userLogout = logout(credentials.dispatch, navigate);
   return (
     <SideMenuContainer show={visibility} onClick={() => setVisibility(false)}>
       <SideMenuContent>
@@ -35,12 +35,12 @@ function SideMenu({ visibility, setVisibility }: SideMenuProps) {
                   <SubText>{credentials?.level}</SubText>
                 </ColumnContainer>
               </MenuItem>
+              <MenuItem onClick={() => navigate('/profile')}>profile</MenuItem>
               <MenuItem onClick={() => userLogout()}>logout</MenuItem>
             </>
           ) : (
             <MenuItem onClick={() => navigate("/login")}>login</MenuItem>
           )}
-          <MenuItem>about</MenuItem>
           <MenuItem>close</MenuItem>
         </MenuList>
       </SideMenuContent>

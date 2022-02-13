@@ -19,7 +19,7 @@ const LeaderBoardRecord = styled.article`
   grid-template-rows: 1fr;
   align-items: center;
   color: ${({ theme }) => theme.tertiary};
-  background-color: ${({ theme }) => theme.primary};
+  background-color: ${({ theme }) => theme.secondary};
   padding: 0.5rem;
   border-radius: 0.3rem;
   margin: 0.5rem 0;

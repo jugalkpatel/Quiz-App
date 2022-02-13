@@ -4,13 +4,6 @@ import QuickSand from "../fonts/Quicksand-SemiBold.ttf";
 
 const GlobalStyle = createGlobalStyle`
 
-body {
-  background: ${({ theme }) => theme.secondary};
-  color: ${({ theme }) => theme.tertiary};
-  transition: all 0.50s linear;
-  font-family: url(${Alegreya})
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -26,6 +19,13 @@ body {
 @font-face {
   font-family: "QuickSand";
   src: url(${QuickSand});
+}
+
+body {
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.tertiary};
+  transition: all 0.50s linear;
+  font-family: 'Alegreya';
 }
 
 #root {

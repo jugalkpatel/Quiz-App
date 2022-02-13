@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
 import { primaryFont } from "../../styles/common.styles";
-import { WidthContainer } from "../../styles/common.styles";
 
-const ComponentWrapper = styled(WidthContainer)`
-  background-color: ${({ theme }) => theme.primary};
-
+const MainContainer = styled.section`
   padding: 2rem 1rem;
 `;
 
@@ -27,4 +24,4 @@ const CardWrapper = styled.article`
   }
 `;
 
-export { ComponentWrapper, PageHeader, CardWrapper };
+export { MainContainer, PageHeader, CardWrapper };

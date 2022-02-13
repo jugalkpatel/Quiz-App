@@ -11,7 +11,7 @@ type LogoProps = {
 function Logo({ mode }: LogoProps) {
   return (
     <>
-      <StyledLink to="/">
+      <StyledLink to="/home">
         <LogoImgWrapper>
           <LogoImg src={mode === "light" ? black_logo : white_logo} />
         </LogoImgWrapper>

@@ -21,14 +21,18 @@ const SideMenuContainer = styled.article<SideMenuProps>`
   right: 0;
   bottom: 0;
 
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
 
   background-color: transparent;
 
   font-family: ${primaryFont};
 
   z-index: ${zindex_three};
+
+  @media (min-width: 568px) {
+    display: none;
+  }
 `;
 
 const SideMenuContent = styled(ColumnContainer)`

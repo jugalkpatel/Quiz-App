@@ -1,4 +1,4 @@
-import { ComponentWrapper, PageHeader, CardWrapper } from "./Main.styles";
+import { MainContainer, PageHeader, CardWrapper } from "./Main.styles";
 import { BigText, SubText, ColumnContainer } from "../../styles/common.styles";
 
 import { DifficultyCard } from "../../components";
@@ -7,7 +7,7 @@ import { cardDetails } from "../../utils";
 function Main() {
   return (
     <>
-      <ComponentWrapper>
+      <MainContainer>
         <PageHeader>
           <ColumnContainer>
             <BigText>Let's Play</BigText>
@@ -20,7 +20,7 @@ function Main() {
             return <DifficultyCard key={card.name} {...card} />;
           })}
         </CardWrapper>
-      </ComponentWrapper>
+      </MainContainer>
     </>
   );
 }
