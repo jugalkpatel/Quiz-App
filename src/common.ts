@@ -1,5 +1,3 @@
-import { NavigateFunction } from "react-router";
-
 export type Theme = "dark" | "light";
 
 export type ThemeTypes = {
@@ -8,7 +6,7 @@ export type ThemeTypes = {
 };
 
 // Register
-export type RegisterTypes = {
+export type Register = {
   name: string;
   email: string;
   password: string;
@@ -41,9 +39,18 @@ export type User = {
   id: string;
   token: string;
   name: string;
-  level: LevelTypes | "";
-  authenticated?: boolean;
+  level: LevelTypes;
   history: HistoryRecord[] | [];
+};
+
+//AuthState 
+export type AuthState = {
+  authenticated: boolean;
+  token: null | string;
+  name: null | string;
+  id: null | string;
+  level: null | LevelTypes;
+  history: [] | HistoryRecord[];
 };
 
 export type CardType = {
@@ -123,12 +130,6 @@ export type LevelInfoTypes = {
 };
 
 // Auth Types
-
-export type AuthTypes = {
-  setAuthCredentials: React.Dispatch<React.SetStateAction<User>>;
-  navigate: NavigateFunction;
-};
-
 export type AuthResponse = {
   success: boolean;
   message: string;

@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 import {
-  RegisterTypes,
+  Register,
   LoginTypes,
   ServerError,
   AuthResponse,
@@ -9,7 +9,7 @@ import {
 
 export async function authenticate(
   url: string,
-  payload: RegisterTypes | LoginTypes
+  payload: Register | LoginTypes
 ): Promise<AuthResponse | ServerError> {
   try {
     const response = await axios.post<AuthResponse>(url, payload);

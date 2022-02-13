@@ -1,19 +1,11 @@
 import { createContext } from "react";
 
-import { User } from "../../common";
+import { AuthState } from "../../common";
+import { AUTH_ACTIONS } from "../../hooks/useAuthData/useAuthData.hook";
 
-export type AuthContextTypes = User & {
-  setAuthCredentials: React.Dispatch<React.SetStateAction<User>>;
+export type AuthContextTypes = AuthState & {
+  dispatch: React.Dispatch<AUTH_ACTIONS>;
 };
-
-// const initialAuthContextValues: AuthContextTypes = {
-//   authenticated: false,
-//   id: "",
-//   token: "",
-//   name: "",
-//   level: "",
-//   setAuthCredentials: () => null,
-// };
 
 const AuthContext = createContext<AuthContextTypes | null>(null);
 

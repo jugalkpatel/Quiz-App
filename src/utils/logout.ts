@@ -1,19 +1,15 @@
 import React from "react";
-import { NavigateFunction } from "react-router";
-import { User } from "../common";
+import { NavigateFunction } from "react-router-dom";
+
+import { AUTH_ACTIONS } from "../hooks/useAuthData/useAuthData.hook";
+import { ACTIONS } from "../helpers";
+
 const logout = (
-  setAuth: React.Dispatch<React.SetStateAction<User>>,
+  dispatch: React.Dispatch<AUTH_ACTIONS>,
   navigate: NavigateFunction
 ) => {
   return () => {
-    setAuth({
-      authenticated: false,
-      token: "",
-      name: "",
-      id: "",
-      level: "",
-      history: [],
-    });
+    dispatch({ type: ACTIONS.RESET_STATE });
     navigate("/login");
     localStorage?.removeItem("liquiz");
   };

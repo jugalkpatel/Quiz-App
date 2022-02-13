@@ -1,21 +1,24 @@
+import React from "react";
 import toast from "react-hot-toast";
 
-import { RegisterTypes, AuthTypes, LoginTypes, User } from "../common";
+import { Register, LoginTypes } from "../common";
+import { AUTH_ACTIONS } from "../hooks/useAuthData/useAuthData.hook";
 import { authenticate } from "../services";
+import { ACTIONS } from "../helpers";
 
-export type SubmitTypes = AuthTypes & {
+export type AuthClickParams = {
+  values: Register | LoginTypes;
   url: string;
-  path: string;
-  values: RegisterTypes | LoginTypes;
+  dispatch: React.Dispatch<AUTH_ACTIONS>;
+  redirect: () => void;
 };
 
 const handleAuthClick = async ({
   values,
-  setAuthCredentials,
-  navigate,
   url,
-  path,
-}: SubmitTypes) => {
+  dispatch,
+  redirect,
+}: AuthClickParams): Promise<void> => {
   try {
     const data = await authenticate(url, values);
 
@@ -29,16 +32,17 @@ const handleAuthClick = async ({
       throw new Error("missing values in response");
     }
 
-    setAuthCredentials((prevState: User) => {
-      return {
-        ...prevState,
-        authenticated: true,
-        id,
-        name,
-        token,
-        level,
-        history,
-      };
+    dispatch({
+      type: ACTIONS.SET_DATA,
+      payload: {
+        user: {
+          id,
+          history,
+          level,
+          name,
+          token,
+        },
+      },
     });
 
     localStorage?.setItem(
@@ -46,13 +50,10 @@ const handleAuthClick = async ({
       JSON.stringify({ id, name, token, level, history })
     );
 
-    navigate(path, { replace: true });
-
-    return data;
+    redirect();
   } catch (error) {
     const toastError = error as Error;
     toast.error(toastError.message, { position: "bottom-center" });
-    return error;
   }
 };
 

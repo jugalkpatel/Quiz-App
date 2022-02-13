@@ -11,7 +11,6 @@ const useDarkMode = () => {
   });
 
   const toggleTheme = (): void => {
-    console.log("i am executing");
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 

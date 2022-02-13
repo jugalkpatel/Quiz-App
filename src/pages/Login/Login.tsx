@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Form, Formik } from "formik";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Location } from "history";
-import { useTheme } from "styled-components";
+import { Form, Formik } from "formik";
 
 import {
   FormContainer,
@@ -11,6 +9,7 @@ import {
   FormTitle,
   FormLink,
   SubmitButton,
+  GuestButton,
 } from "../../styles/common.styles";
 
 import { LoginTypes } from "../../common";
@@ -19,40 +18,32 @@ import { InputField, Spinner } from "../../components";
 import { loginSchema } from "../../validation";
 import { handleAuthClick } from "../../helpers";
 
+const GUEST_EMAIL = process.env.REACT_APP_GUEST_EMAIL as string;
+const GUEST_PASS = process.env.REACT_APP_GUEST_PASS as string;
+
 function Login() {
   const initialValues: LoginTypes = {
     email: "",
     password: "",
   };
 
-  // const savedValues: LoginTypes = {
-  //   email: "expert@co.mail",
-  //   password: "Expert1234",
-  // };
-
-  const [loginCredentials, setLoginCredentials] =
-    useState<LoginTypes>(initialValues);
-
-  const { setAuthCredentials } = useAuth();
+  const { dispatch } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as { from: Location };
-  const from = state ? state.from.pathname : "/";
-  const theme = useTheme();
+  const from = state ? state.from.pathname : "/home";
 
-  // const expertLogin = (values: typeof initialValues) => {};
-
-  const handleSubmit = async (values: typeof initialValues) => {
+  const handleSubmit = async (values: LoginTypes) => {
     const url = "/auth/login";
-    // TODO: Add types to result
-    const result = await handleAuthClick({
+
+    const redirect = () => navigate(from, { replace: true });
+
+    await handleAuthClick({
       values,
-      setAuthCredentials,
-      navigate,
       url,
-      path: from,
+      dispatch,
+      redirect,
     });
-    return result;
   };
 
   return (
@@ -66,12 +57,12 @@ function Login() {
       </FormHeader>
 
       <Formik
-        initialValues={loginCredentials}
+        initialValues={initialValues}
         validationSchema={loginSchema}
         onSubmit={handleSubmit}
         enableReinitialize
       >
-        {({ isSubmitting, handleSubmit }) => (
+        {({ isSubmitting, setValues }) => (
           <Form>
             <InputField
               label="email"
@@ -82,7 +73,7 @@ function Login() {
             />
 
             <InputField
-              label="Password"
+              label="password"
               id="password"
               type="password"
               value="password"
@@ -91,15 +82,23 @@ function Login() {
 
             <SubmitButton disabled={isSubmitting}>
               {isSubmitting ? (
-                <Spinner
-                  isLoading={isSubmitting}
-                  size="5px"
-                  color={theme.primary}
-                />
+                <Spinner isLoading={isSubmitting} size="5px" />
               ) : (
                 "login"
               )}
             </SubmitButton>
+
+            <GuestButton
+              disabled={isSubmitting}
+              onClick={() =>
+                setValues({
+                  email: GUEST_EMAIL,
+                  password: GUEST_PASS,
+                })
+              }
+            >
+              enter as expert
+            </GuestButton>
           </Form>
         )}
       </Formik>

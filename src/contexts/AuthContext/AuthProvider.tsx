@@ -1,60 +1,12 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 
-import toast from "react-hot-toast";
-
-import { User } from "../../common";
-import { AuthContext } from "./AuthContext";
-import { setupAuth } from "../../utils";
+import { AuthContext } from "../../contexts";
+import { useAuthData } from "../../hooks";
 
 const AuthProvider: React.FC = ({ children }) => {
-  const initialAuthState: User = {
-    authenticated: false,
-    token: "",
-    name: "",
-    id: "",
-    level: "",
-    history: [],
-  };
-
-  // TODO: Seperate out localstorage code
-  // used useState because i'm getting all data from api at same time
-  const [authCredentials, setAuthCredentials] = useState<User>(() => {
-    try {
-      const data = localStorage?.getItem("liquiz") || null;
-
-      if (!data) {
-        return initialAuthState;
-      }
-
-      const { id, name, level, token, history }: User = JSON.parse(data);
-
-      if (id && name && level && token && history) {
-        return { authenticated: true, id, name, level, token, history };
-      }
-
-      return initialAuthState;
-    } catch (error) {
-      const toastError = error as Error;
-      toast.error(toastError.message || "error while accessing localstorage!", {
-        position: "bottom-center",
-      });
-      return initialAuthState;
-    }
-  });
-  const navigate = useNavigate();
-  const setAuthConfig = useRef(setupAuth({ setAuthCredentials, navigate }));
-
-  useEffect(() => {
-    if (authCredentials?.authenticated) {
-      setAuthConfig.current(authCredentials);
-    }
-  }, [authCredentials]);
-
-  console.log({ authCredentials });
-
+  const [state, dispatch] = useAuthData();
   return (
-    <AuthContext.Provider value={{ ...authCredentials, setAuthCredentials }}>
+    <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}
     </AuthContext.Provider>
   );

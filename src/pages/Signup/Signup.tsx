@@ -1,6 +1,6 @@
-import { Formik, Form } from "formik";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Location } from "history";
+import { Formik, Form } from "formik";
 
 import {
   SubmitButton,
@@ -11,28 +11,29 @@ import {
   FormLink,
 } from "../../styles/common.styles";
 
-import { RegisterTypes } from "../../common";
+import { Register } from "../../common";
 import { useAuth } from "../../contexts/";
-import { InputField } from "../../components/";
+import { InputField, Spinner } from "../../components/";
 import { registerSchema } from "../../validation";
 import { handleAuthClick } from "../../helpers";
 
 function Signup() {
-  const initialValues: RegisterTypes = {
+  const initialValues: Register = {
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   };
-  const { setAuthCredentials } = useAuth();
+  const { dispatch } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as { from: Location };
-  const from = state ? state.from.pathname : "/";
+  const from = state ? state.from.pathname : "/home";
 
-  const handleSubmit = (values: typeof initialValues) => {
+  const handleSubmit = async (values: Register) => {
     const url = "/auth/register";
-    handleAuthClick({ values, setAuthCredentials, navigate, url, path: from });
+    const redirect = () => navigate(from, { replace: true });
+    await handleAuthClick({ values, url, dispatch, redirect });
   };
 
   return (
@@ -50,10 +51,10 @@ function Signup() {
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
-        {() => (
+        {({ isSubmitting }) => (
           <Form>
             <InputField
-              label="Name"
+              label="name"
               id="name"
               type="text"
               value="name"
@@ -61,7 +62,7 @@ function Signup() {
             />
 
             <InputField
-              label="Email"
+              label="email"
               id="email"
               type="text"
               value="email"
@@ -69,7 +70,7 @@ function Signup() {
             />
 
             <InputField
-              label="Password"
+              label="password"
               id="password"
               type="password"
               value="password"
@@ -77,16 +78,23 @@ function Signup() {
             />
 
             <InputField
-              label="Password Confirmation"
+              label="password confirmation"
               id="confirm"
               type="password"
               value="confirmPassword"
               placeholder="Re Enter Password"
             />
 
-            <SubmitButton type="submit">sign in</SubmitButton>
-
-            {/* <pre>{JSON.stringify(values, null, 4)}</pre> */}
+            <SubmitButton type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <Spinner
+                  isLoading={isSubmitting}
+                  size="5px"
+                />
+              ) : (
+                "register"
+              )}
+            </SubmitButton>
           </Form>
         )}
       </Formik>

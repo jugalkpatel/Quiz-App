@@ -11,6 +11,8 @@ const ACTIONS = {
   SET_DATA: "SET_DATA",
   SET_ERROR: "SET_ERROR",
   RESET_STATE: "RESET_STATE",
+  SET_HISTORY: "SET_HISTORY",
+  SET_LEVEL: "SET_LEVEL",
 } as const;
 
 export { ACTIONS };
