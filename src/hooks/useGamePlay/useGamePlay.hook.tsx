@@ -107,8 +107,6 @@ function useGamePlay({ questions, level, toModal }: GamePlayProps) {
     dispatchAuthData,
   ]);
 
-  console.log({ state });
-
   return [state, dispatch] as const;
 }
 

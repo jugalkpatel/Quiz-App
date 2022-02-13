@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import Alegreya from "../fonts/AlegreyaSansSC-Medium.ttf";
+import Alegreya from "../fonts/AlegreyaSansSC-Regular.ttf";
 import QuickSand from "../fonts/Quicksand-SemiBold.ttf";
 
 const GlobalStyle = createGlobalStyle`
