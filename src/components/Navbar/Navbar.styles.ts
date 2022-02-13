@@ -9,9 +9,12 @@ import {
   WidthContainer,
 } from "../../styles/common.styles";
 
+export type MenuWrapperProps = {
+  isVisible: boolean;
+};
+
 const NavbarContainer = styled.div`
   flex-shrink: 0;
-  position: relative;
 
   background-color: ${({ theme }) => theme.primary};
 
@@ -31,7 +34,7 @@ const NavbarContent = styled(WidthContainer)`
   justify-content: space-between;
 `;
 
-const Menu = styled(CgMenu)`
+const MenuIcon = styled(CgMenu)`
   font-size: 1.5rem;
 
   cursor: pointer;
@@ -78,9 +81,23 @@ const ButtonContainer = styled(RowContainer)`
     display: none;
   }
 
+  @media (min-width: 568px) {
+    position: relative;
+  }
+
   @media (min-width: 568px) and (max-width: 1040px) {
     margin: 0 2.5rem 0 0;
   }
+`;
+
+const MenuWrapper = styled.article<MenuWrapperProps>`
+  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
+  position: absolute;
+  top: 2.6rem;
+  right: 0;
+  width: 10rem;
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: 0px 7px 12px 0px ${({ theme }) => theme.primary};
 `;
 
 const UserName = styled.h5`
@@ -132,7 +149,7 @@ const LoginButton = styled.button`
 
 export {
   NavbarContainer,
-  Menu,
+  MenuIcon,
   DarkButton,
   ButtonContainer,
   UserName,
@@ -140,4 +157,5 @@ export {
   Level,
   LoginButton,
   NavbarContent,
+  MenuWrapper,
 };

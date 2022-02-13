@@ -5,7 +5,7 @@ import { HiSun } from "react-icons/hi";
 import { IoIosCloudyNight } from "react-icons/io";
 import {
   NavbarContainer,
-  Menu,
+  MenuIcon,
   DarkButton,
   ButtonContainer,
   UserName,
@@ -13,12 +13,13 @@ import {
   Level,
   LoginButton,
   NavbarContent,
+  MenuWrapper,
 } from "./Navbar.styles";
 import { ColumnContainer } from "../../styles/common.styles";
 
 import { ThemeTypes } from "../../common";
 import { useAuth } from "../../contexts";
-import { Logo, SideMenu } from "../../components";
+import { Logo, SideMenu, Menu } from "../../components";
 
 function Navbar({ mode, setMode }: ThemeTypes) {
   const [sidebarVisibility, setSideBarVisibility] = useState(false);
@@ -28,7 +29,7 @@ function Navbar({ mode, setMode }: ThemeTypes) {
     <>
       <NavbarContainer>
         <NavbarContent>
-          <Menu
+          <MenuIcon
             onClick={() =>
               setSideBarVisibility((prevState) => (prevState ? false : true))
             }
@@ -40,13 +41,21 @@ function Navbar({ mode, setMode }: ThemeTypes) {
           </DarkButton>
 
           {credentials?.authenticated ? (
-            <ButtonContainer>
+            <ButtonContainer
+              onClick={() =>
+                setSideBarVisibility((prevState) => (prevState ? false : true))
+              }
+            >
               <ColumnContainer>
                 <UserName>{credentials.name}</UserName>
                 <Level>{credentials.level}</Level>
               </ColumnContainer>
 
               <NavUserIcon />
+
+              <MenuWrapper isVisible={sidebarVisibility}>
+                <Menu />
+              </MenuWrapper>
             </ButtonContainer>
           ) : (
             <LoginButton onClick={() => navigate("/login")}>LOG IN</LoginButton>
