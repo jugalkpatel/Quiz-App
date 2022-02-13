@@ -27,7 +27,7 @@ function History() {
   const navigate = useNavigate();
   return (
     <HistoryContainer>
-      <HistoryTitle>History</HistoryTitle>
+      <HistoryTitle>recent plays</HistoryTitle>
       <HistoryContent>
         {!history.length ? (
           <NotAvailable
