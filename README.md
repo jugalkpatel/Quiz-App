@@ -1,4 +1,4 @@
-# Liquiz - Quiz App
+# Liquiz - Quiz App [![Netlify Status](https://api.netlify.com/api/v1/badges/4f55985b-137e-4782-b489-26fb05c196e1/deploy-status)](https://app.netlify.com/sites/liquiz/deploys)
 
 Liquiz is an quiz application to attest you on various linux topics.
 
