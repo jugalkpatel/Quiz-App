@@ -6,7 +6,7 @@ Liquiz is an quiz application to attest you on various linux topics.
 
 Frontend: React, Typescript, Styled-components, formik
 
-[Backend](https://github.com/jugalkpatel/Quiz-App--Backend/tree/development): Node, Expess, Mongooes, MongoDB
+[Backend](https://github.com/jugalkpatel/Quiz-App--Backend/tree/development): Node, Expess, Mongoose ODM, MongoDB
 
 ## Features
 - Authentication
