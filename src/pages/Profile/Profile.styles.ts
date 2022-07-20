@@ -6,7 +6,6 @@ const ProfileContainer = styled(ColumnContainer)`
   color: ${({ theme }) => theme.tertiary};
   align-items: center;
   justify-content: center;
-  height: 70%;
 `;
 
 const ProfileContent = styled(ColumnContainer)`
